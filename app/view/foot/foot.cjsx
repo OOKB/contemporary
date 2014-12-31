@@ -1,12 +1,15 @@
 React = require 'react'
 
+Sponsors = require './sponsors'
+
 module.exports = React.createClass
   render: ->
-
-    {title, tagline} = @props.data
+    {data} = @props
+    {title, tagline, since} = data
     yr = new Date().getFullYear()
-    msg = "copyright #{yr} — #{title} — #{tagline}"
+    msg = "\u00a9 Copyright #{since}-#{yr}, #{title}"
 
     <footer>
+      <Sponsors data={data} />
       <p>{msg}</p>
     </footer>

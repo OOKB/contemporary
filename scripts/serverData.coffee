@@ -54,9 +54,9 @@ module.exports = (callback) ->
     url = "http://social.cape.io/instagram/#{data.instagram}"
     getData.insta = makeReq url
 
-  if data.googlesheet
-    getData.members = gSheetReq data.googlesheet, 1
-    getData.bars = gSheetReq data.googlesheet, 2
+  #if data.googlesheet
+    #getData.members = gSheetReq data.googlesheet, 1
+    #getData.bars = gSheetReq data.googlesheet, 2
 
   save = (err, serverData) ->
     throw err if err
@@ -66,26 +66,10 @@ module.exports = (callback) ->
     if fb and fb.name
       data.title = fb.name
       data.mission = fb.mission
+      data.description = fb.description
+      data.about = fb.about
+      data.phone = fb.phone
 
-    # MEMBERS
-    bars = _.indexBy bars, 'name'
-    data.members = _.map members, (member) ->
-      # Put the bar fields into a single array and map to bars sheet.
-      member.bars = [member.bar1, member.bar2, member.bar3].map (bar) ->
-        if bars[bar] then return bars[bar] else return undefined
-      # Clean up empty fields. Not sure this is needed.
-      member.bars = _.compact member.bars
-      # Remove fields from obj we don't need.
-      _.without member, ['bar1', 'bar2', 'bar3', 'membernumber']
-
-    # data.coverImg = _.rename fb.cover.images[0], {source: 'url'}
-    # key = process.env.IMGIX_CAPE
-    # domain = 'cape.imgix.net'
-    # ops =
-    #   h: 480
-    #   w: Math.min(data.coverImg.width, 900)
-    #   fit: 'crop'
-    # data.coverImg.url = imgix domain, key, data.coverImg.url, ops
 
     fs.outputJsonSync 'app/data/index.json', data
     if _.isFunction callback

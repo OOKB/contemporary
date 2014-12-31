@@ -3,9 +3,8 @@ React = require 'react'
 module.exports = React.createClass
   render: ->
 
-    {title, tagline} = @props.data
-    pgTitle = title + ' | ' + tagline
+    {title} = @props.data
 
     <section id="hero">
-      <img src="logo.png" alt="{pgTitle}" />
+      <img src="logo.png" alt="{title}" />
     </section>

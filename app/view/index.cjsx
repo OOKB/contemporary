@@ -6,12 +6,11 @@ Foot = require './foot/foot'
 
 module.exports = React.createClass
   render: ->
-    {title, tagline} = @props.data
-    pgTitle = title + ' | ' + tagline
+    {title} = @props.data
 
     <html>
       <head>
-        <title>{pgTitle}</title>
+        <title>{title}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="stylesheet" href="assets/app.css" />
       </head>

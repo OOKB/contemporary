@@ -48,17 +48,31 @@ gulp.task "browser-sync", ['templates', 'styles', 'static'], ->
     #logLevel: 'debug'
   return
 
-# This generate js app file.
+gulp.task 'compile-watch', ->
+  compileJS true
+
 gulp.task 'compile', ->
-  browserified = transform (filename) ->
+  compileJS false
+
+# This generate js app file.
+compileJS = (watch) ->
+  ops = if watch then watchify.args else {}
+  opts.extensions = ['.coffee', '.cjsx']
+  opts.debug = true
+
+  transform ->
     b = browserify {debug: true, extensions: ['.cjsx', '.coffee']}
-    b.add filename
+    if watch
+      b = watchify b
+      b.on 'update', ->
+        _compileJs b, watch
+
+    b.add './app/app.cjsx'
+    _compileJs b, false
     #b.transform 'coffee-reactify'
-    b.bundle()
 
-
-  gulp.src 'app/app.cjsx'
-    .pipe browserified
+_compileJs = (b, watch) ->
+  b.bundle()
     # Extract the map.
     .pipe transform(-> exorcist('./public/assets/app.js.map'))
     # Shrink the codebase.
@@ -66,6 +80,7 @@ gulp.task 'compile', ->
     # Rename the file.
     .pipe rename('app.js')
     .pipe gulp.dest('./public/assets')
+    .pipe gulpif(watch, browserSync.reload())
 
 # Convert yaml files from the content dir to json files.
 gulp.task 'data', ->
@@ -83,7 +98,7 @@ gulp.task 'serverData', ['data'], (cb) ->
   serverData cb
 
 # Compile the static html files.
-gulp.task 'templates', ['compile'], (cb) ->
+gulp.task 'templates', (cb) ->
   # Calling an external script for this.
   exec 'coffee ./scripts/renderMarkup.coffee', (err, stdout, stderr) ->
     console.log stdout
@@ -100,33 +115,6 @@ gulp.task 'styles', ->
 gulp.task 'static', ->
   gulp.src('./static/**')
     .pipe gulp.dest('./public/')
-
-gulp.task 'facebook', ->
-  r 'http://social.cape.io/facebook/330679596992065'
-    .pipe source('facebook.json')
-    .pipe gulp.dest('./app/data/')
-
-gulp.task 'instagram', ->
-  r 'http://social.cape.io/instagram/29592386'
-    .pipe source('instagram.json')
-    .pipe gulp.dest('./app/data/')
-
-# Watchify the main app file.
-# gulp.task 'compile', ->
-#   opts = watchify.args
-#   opts.extensions = ['.coffee', '.json']
-#   opts.debug = true
-#   w = watchify(browserify('./app/index.coffee', opts))
-#   w.transform coffeeify
-#   w.transform bd
-#   bundle = () ->
-#     w.bundle()
-#       .pipe(source('app.js'))
-#       .pipe(gulp.dest('./dev/'))
-#   w.on('update', bundle)
-#   bundle()
-#   return
-
 
 # - - - - prod - - - -
 

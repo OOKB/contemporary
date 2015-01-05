@@ -1,7 +1,6 @@
 React = require 'react'
 
 Hero = require './hero'
-Contact = require './contact'
 
 module.exports = React.createClass
   render: ->
@@ -10,5 +9,4 @@ module.exports = React.createClass
 
     <main>
       <Hero data={data} />
-      <Contact data={data} />
     </main>

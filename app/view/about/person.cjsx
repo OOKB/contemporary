@@ -17,5 +17,6 @@ module.exports = React.createClass
       <img src={imgSrc} className="img-circle" />
       <h2>{fullName}</h2>
       {Position}
+      {Email}
       <div className="bio-content" dangerouslySetInnerHTML={{__html:content}} style={display:'none'} />
     </li>

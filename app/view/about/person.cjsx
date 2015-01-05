@@ -3,8 +3,8 @@ React = require 'react'
 module.exports = React.createClass
   render: ->
 
-    {firstname, lastname, position, content, filename, email} = @props.person
-    fullName = "#{firstname} #{lastname}"
+    {firstname, lastname, position, content, filename, email, name} = @props.person
+    fullName = name or "#{firstname} #{lastname}"
     imgSrc = "img/headshot/#{filename}.jpg"
 
     if position
@@ -17,5 +17,5 @@ module.exports = React.createClass
       <img src={imgSrc} className="img-circle" />
       <h2>{fullName}</h2>
       {Position}
-      <div className="bio-content" dangerouslySetInnerHTML={{__html:content}} />
+      <div className="bio-content" dangerouslySetInnerHTML={{__html:content}} style={display:'none'} />
     </li>

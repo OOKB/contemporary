@@ -3,6 +3,7 @@
 firstname: Terry
 lastname: Squyres
 position: "President"
+order: 1
 
 ---
 

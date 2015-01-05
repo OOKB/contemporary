@@ -1,19 +1,9 @@
 ---
 
-firstname: "Firstname"
-lastname: "Lastname"
-position: "Board Position if applicable. Leave empty or delete if not required"
+firstname: "Deanna"
+lastname: "Haggag"
+position: "Secretary"
 order: 3
 
 ---
 
-
-Bio Here.
-
-Duplicate this file, name it firstname-lastname.md
-
-Name the photo with the same name that you name this document firstname-lastname.jpg.
-
-When dropbox finishes synccing you should have created a new board member.
-
-Replace all these instructions with the new person's bio.

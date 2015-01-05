@@ -1,18 +1,8 @@
 ---
 
-firstname: "Firstname"
-lastname: "Lastname"
-position: "Board Position if applicable. Leave empty or delete if not required"
+firstname: "Jason"
+lastname: "Lowy"
 
 ---
 
-
-Bio Here.
-
-Duplicate this file, name it firstname-lastname.md
-
-Name the photo with the same name that you name this document firstname-lastname.jpg.
-
-When dropbox finishes synccing you should have created a new board member.
-
-Replace all these instructions with the new person's bio.
+Jason Lowy is Vice President &ndash; Wealth Management at UBS Financial Services and partner of The Murray Group. He holds the designations of CERTIFIED FINANCIAL PLANNER&trade;, Accredited Investment Fiduciary designee, Chartered Retirement Plan Specialist and Wealth Advisor. Jason started his career in 2004 when he joined the Murray Group at Legg Mason in downtown Baltimore. His main focus is helping business owners and retirees manage their retirement income needs and achieve their financial dreams. He graduated from Western Maryland/McDaniel college, where he holds a dual major in Philosophy and Human Behavior in Organizations. Jason is an actively involved in Best Buddies, National Collegiate Cancer Foundation and Junior Achievement of Central Maryland.

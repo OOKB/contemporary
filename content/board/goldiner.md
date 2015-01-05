@@ -1,18 +1,8 @@
 ---
 
-firstname: "Firstname"
-lastname: "Lastname"
-position: "Board Position if applicable. Leave empty or delete if not required"
+firstname: "William"
+lastname: "Goldiner"
 
 ---
 
-
-Bio Here.
-
-Duplicate this file, name it firstname-lastname.md
-
-Name the photo with the same name that you name this document firstname-lastname.jpg.
-
-When dropbox finishes synccing you should have created a new board member.
-
-Replace all these instructions with the new person's bio.
+William Goldiner has been the Team Physician and Medical Director for the Baltimore Orioles since 1993. He also is an internal medicine consultant and works for hospitals such as Sheppard Pratt. A Baltimore native, William is an avid contemporary art collector and lives in Pikesville, Maryland.

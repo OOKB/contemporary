@@ -1,0 +1,8 @@
+---
+
+firstname: "Elissa"
+lastname: "Blount Moorhead"
+
+---
+
+Elissa Blount Moorhead is a Brooklyn based Exhibition Designer, Curator and Lecturer. She has developed public art events, gallery based exhibitions, and education programs for the last 20 years. She created and taught the _Cultural Pluralism_ course for Pratt Institute’s Graduate School of Art and Cultural Management (1999-2011), and currently teaches at Parsons Graduate School of Design @Cooper Hewitt. She co-founded _Red Clay Arts_ in NYC where she curated/produced over 20 groundbreaking exhibitions and programs in NYC and London including; _Random Occurrences_ - a multi- venue exhibition in conjunction with Project Diversity/ 2005; _Cat Calls_ (Street Harassment project) at St Ann’s Warehouse and the NYC Museum/2001; and _Practicum_ - the inaugural experimental series at BRIC/2002. She served as Director of _RushKids_, arts education program administered by Rush Arts Gallery (2001-2003). She lectures and publishes work internationally covering environmental design, history, and museology. As Weeksville Heritage Center’s Vice Director and Director of Design, Programming, and Exhibitions (2007- 2013), she developed the education, exhibition, and programming slate for WHC’s contemporary gallery, garden, and performance spaces. She also served as project director, for the construction of WHC’s 19,000 sq. ft. LEED Gold Cultural Arts Building. She is co-curator of the multisite public art project in partnership with the NYC based _Creative Time_, which is set to launch in Fall 2014. Elissa is co-founder of the art and social practice team, _Tandem_, which develops site-specific public art and design projects in several US cities.

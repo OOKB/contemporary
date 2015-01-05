@@ -1,7 +1,7 @@
 ---
 
 firstname: "Firstname"
-lastname: "Lastname"
+lastname: "Cudlin"
 position: "Board Position if applicable. Leave empty or delete if not required"
 
 ---

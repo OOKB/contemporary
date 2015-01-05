@@ -1,11 +1,9 @@
 ---
 
-firstname: "Firstname"
-lastname: "Lastname"
-position: "Board Position if applicable. Leave empty or delete if not required"
+lastname: "Douglas"
+firstname: "Bothner"
 
 ---
-
 
 Bio Here.
 

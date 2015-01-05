@@ -5,16 +5,16 @@ Member = require './boardMember'
 module.exports = React.createClass
   render: ->
 
-    {board} = @props
+    {people, title, id} = @props
 
-    BoardMembers = for person, i in board
+    Members = for person, i in people
       {filename} = person
 
       <Member key={filename} person={person} />
 
-    <article id="board" className="toggle border-top">
-      <h2>Board.</h2>
+    <article id={id} className="toggle border-top">
+      <h2>{title}</h2>
       <ul className="row add-top">
-        {BoardMembers}
+        {Members}
       </ul>
     </article>

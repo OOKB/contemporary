@@ -48,31 +48,15 @@ gulp.task "browser-sync", ['templates', 'styles', 'static'], ->
     #logLevel: 'debug'
   return
 
-gulp.task 'compile-watch', ->
-  compileJS true
-
-gulp.task 'compile', ->
-  compileJS false
-
 # This generate js app file.
-compileJS = (watch) ->
-  ops = if watch then watchify.args else {}
-  opts.extensions = ['.coffee', '.cjsx']
-  opts.debug = true
-
-  transform ->
+gulp.task 'compile', ->
+  browserified = transform (filename) ->
     b = browserify {debug: true, extensions: ['.cjsx', '.coffee']}
-    if watch
-      b = watchify b
-      b.on 'update', ->
-        _compileJs b, watch
-
-    b.add './app/app.cjsx'
-    _compileJs b, false
+    b.add filename
     #b.transform 'coffee-reactify'
-
-_compileJs = (b, watch) ->
-  b.bundle()
+    b.bundle()
+  gulp.src 'app/app.cjsx'
+    .pipe browserified
     # Extract the map.
     .pipe transform(-> exorcist('./public/assets/app.js.map'))
     # Shrink the codebase.
@@ -80,7 +64,6 @@ _compileJs = (b, watch) ->
     # Rename the file.
     .pipe rename('app.js')
     .pipe gulp.dest('./public/assets')
-    .pipe gulpif(watch, browserSync.reload())
 
 # Convert yaml files from the content dir to json files.
 gulp.task 'data', ->

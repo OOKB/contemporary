@@ -1,6 +1,6 @@
 React = require 'react'
 
-Member = require './boardMember'
+Member = require './person'
 
 module.exports = React.createClass
   render: ->

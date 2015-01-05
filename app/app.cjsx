@@ -2,6 +2,7 @@ React = require 'react'
 _ = require 'queries'
 
 data = require './data'
+data.content = require './data/content'
 
 Index = require './view/index'
 

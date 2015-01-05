@@ -28,9 +28,10 @@ markdown = require 'gulp-markdown-to-json'
 yaml = require 'gulp-yaml'
 
 serverData = require './serverData'
+content = require './content'
 
 # Default gulp tasks watches files for changes
-gulp.task "default", ['serverData', 'browser-sync'], ->
+gulp.task "default", ['serverData', 'content', 'browser-sync'], ->
   gulp.watch './app/**/*.*', ['templates', browserSync.reload]
   gulp.watch "styles/*.less", ["styles", browserSync.reload]
   gulp.watch 'static/**', ['static', browserSync.reload]
@@ -73,9 +74,7 @@ gulp.task 'data', ->
 
 # Convert markdown files from content dir to json files.
 gulp.task 'content', ->
-  gulp.src './content/**/*.md'
-    .pipe markdown()
-    .pipe gulp.dest('./app/data/')
+  content()
 
 gulp.task 'serverData', ['data'], (cb) ->
   serverData cb

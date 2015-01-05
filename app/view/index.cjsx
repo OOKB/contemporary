@@ -2,6 +2,7 @@ React = require 'react'
 
 Head = require './head/head'
 Main = require './main/main'
+About = require './about/about'
 Foot = require './foot/foot'
 
 module.exports = React.createClass
@@ -18,6 +19,7 @@ module.exports = React.createClass
         <div id="wrapper">
           <Head data={@props.data} />
           <Main data={@props.data} />
+          <About data={@props.data} />
           <Foot data={@props.data} />
         </div>
         <script src="/assets/app.js" />

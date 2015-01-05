@@ -3,6 +3,7 @@
 firstname: Ray
 lastname: Allen
 position: "Vice President"
+order: 2
 
 ---
 

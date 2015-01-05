@@ -3,6 +3,7 @@
 firstname: "Firstname"
 lastname: "Lastname"
 position: "Board Position if applicable. Leave empty or delete if not required"
+order: 3
 
 ---
 

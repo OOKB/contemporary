@@ -1,8 +1,9 @@
 ---
 
-firstname: "Firstname"
-lastname: "Lastname"
+firstname: "Jessica"
+lastname: "Lanzillotti"
 position: "Board Position if applicable. Leave empty or delete if not required"
+order: 4
 
 ---
 

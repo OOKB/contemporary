@@ -9,6 +9,8 @@ Index = require './view/index'
 App = (vars) ->
   React.createElement Index, {data: data, vars: vars}
 
+# Need to add router.
+
 if typeof window isnt "undefined"
   window.onload = -> # Attach event handlers.
     # Attach app to global window var as app.

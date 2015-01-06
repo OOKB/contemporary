@@ -9,13 +9,15 @@ browserSync = require 'browser-sync'
 
 browserify = require 'browserify'
 exorcist = require 'exorcist'
-#coffeeify = require 'coffeeify'
+watchify = require 'watchify'
 #bd = require 'browserify-data'
 
-source = require('vinyl-source-stream')
+buffer = require 'vinyl-buffer'
+source = require 'vinyl-source-stream'
 transform = require 'vinyl-transform'
 
 less = require 'gulp-less'
+gutil = require 'gulp-util'
 #clean = require 'gulp-clean'
 #zopfli = require 'gulp-zopfli'
 rename = require 'gulp-rename'
@@ -26,13 +28,14 @@ deploy = require 'gulp-gh-pages'
 runSequence = require 'run-sequence'
 markdown = require 'gulp-markdown-to-json'
 yaml = require 'gulp-yaml'
+sourcemaps = require 'gulp-sourcemaps'
 
 serverData = require './serverData'
 content = require './content'
 
 # Default gulp tasks watches files for changes
 gulp.task "default", ['serverData', 'content', 'browser-sync'], ->
-  gulp.watch './app/**/*.*', ['templates', browserSync.reload]
+  #gulp.watch './app/**/*.*', ['templates', browserSync.reload]
   gulp.watch "styles/*.less", ["styles", browserSync.reload]
   gulp.watch 'static/**', ['static', browserSync.reload]
   gulp.watch './content/**/*.md', ['content', browserSync.reload]
@@ -40,7 +43,7 @@ gulp.task "default", ['serverData', 'content', 'browser-sync'], ->
   return
 
 # For development.
-gulp.task "browser-sync", ['templates', 'styles', 'static'], ->
+gulp.task "browser-sync", ['compile-watch', 'styles', 'static'], ->
   browserSync
     server:
       baseDir: 'public'
@@ -65,6 +68,26 @@ gulp.task 'compile', ->
     # Rename the file.
     .pipe rename('app.js')
     .pipe gulp.dest('./public/assets')
+
+# WATCHIFY
+opts = watchify.args
+opts.extensions = ['.coffee', '.cjsx']
+opts.debug = true
+w = watchify browserify('./app/app.cjsx', opts)
+
+bundle = () ->
+  runSequence 'templates'
+  w.bundle()
+    .on 'error', gutil.log.bind gutil, 'Browserify Error'
+    .pipe source('app.js')
+      .pipe buffer()
+      .pipe(sourcemaps.init({loadMaps: true}))
+      .pipe(sourcemaps.write('./'))
+    .pipe gulp.dest('./public/assets')
+    .pipe browserSync.reload({stream:true})
+w.on 'update', bundle
+gulp.task 'compile-watch', bundle
+
 
 # Convert yaml files from the content dir to json files.
 gulp.task 'data', ->

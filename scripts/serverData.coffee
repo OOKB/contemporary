@@ -49,6 +49,8 @@ module.exports = (callback) ->
       return data
 
     getData.fb = makeReq url, handleData
+    url = "http://social.cape.io/facebook/#{data.facebook}/events"
+    getData.events = makeReq url
 
   if data.instagram
     url = "http://social.cape.io/instagram/#{data.instagram}"
@@ -60,7 +62,7 @@ module.exports = (callback) ->
 
   save = (err, serverData) ->
     throw err if err
-    {fb, insta, members, bars} = serverData
+    {fb, insta, events} = serverData
     # console.log serverData
     data.fb = fb
     if fb and fb.name
@@ -69,7 +71,8 @@ module.exports = (callback) ->
       data.description = fb.description
       data.about = fb.about
       data.phone = fb.phone
-
+    if events and events.data
+      data.events = events.data
 
     fs.outputJsonSync 'app/data/index.json', data
     if _.isFunction callback

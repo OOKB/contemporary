@@ -11,7 +11,7 @@ module.exports = React.createClass
       <Event key={id} item={item} />
 
     <section id="events">
-      <h3>Events</h3>
+      <h3>Upcoming</h3>
       <ul className="events">
         {Events}
       </ul>

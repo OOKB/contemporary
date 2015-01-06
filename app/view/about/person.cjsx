@@ -17,7 +17,7 @@ module.exports = React.createClass
     if content
       Content = <div className="bio-content" dangerouslySetInnerHTML={{__html:content}} />
 
-    <li className="col-xs-4 col-sm-3 col-md-2 bio" style={{height: 198}}>
+    <li className="col-xs-4 col-sm-3 col-md-2 bio">
       <OverlayTrigger trigger="click" placement="bottom" overlay={<Popover>{Content}</Popover>}>
         <Button bsStyle="default">
           <img src={imgSrc} className="img-circle" />

@@ -34,7 +34,8 @@
     "coffee-react": "^2.1.2",
     "lodash": "^2.4.1",
     "coffee-reactify": "^2.1.0",
-    "react-bootstrap": "^0.13.0"
+    "react-bootstrap": "^0.13.0",
+    "react-router": "^0.11.6"
   },
   "devDependencies": {
     "browserify": "^8.0.2",

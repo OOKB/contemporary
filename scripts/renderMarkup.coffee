@@ -1,15 +1,29 @@
 # Core node modules.
-fs = require 'fs'
+fs = require 'fs-extra'
+path = require 'path'
+_ = require 'queries'
+
 # Contrib.
 nodejsx = require 'coffee-react/register'
 React = require 'react'
+{Router} = require 'react-router'
+
 # Custom.
 App = require '../app/app'
 
 # Run Code.
 # app = App
-vars =
-  path: '/' # index page. Could be changed for other pages.
+render = (Handler, props) ->
+  filePath = path.join 'public', props.vars.path, 'index.html'
+  markup = React.renderToString React.createElement(Handler, props)
+  fs.mkdirsSync path.dirname(filePath)
+  fs.writeFile(filePath, "<!doctype html>\n" + markup)
 
-markup = React.renderToString App(vars)
-fs.writeFile('public/index.html', "<!doctype html>\n" + markup)
+processPg = (path) ->
+  vars = {path: path}
+  App vars, render
+
+pages = ['/', '/about/']
+
+_.each pages, (pg) ->
+  processPg pg

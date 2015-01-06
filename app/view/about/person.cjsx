@@ -5,7 +5,7 @@ module.exports = React.createClass
 
     {firstname, lastname, position, content, filename, email, name} = @props.person
     fullName = name or "#{firstname} #{lastname}"
-    imgSrc = "img/headshot/#{filename}.jpg"
+    imgSrc = "/img/headshot/#{filename}.jpg"
 
     if position
       Position = <h3>{position}</h3>

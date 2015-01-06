@@ -13,7 +13,7 @@ module.exports = React.createClass
     if email
       Email = <div className="text-center email">{email}</div>
 
-    <li className="col-xs-4 col-sm-3 col-md-2 bio" style={{height: 198}}>
+    <li className="col-xs-4 col-sm-3 col-md-2 bio">
       <img src={imgSrc} className="img-circle" />
       <h2>{fullName}</h2>
       {Position}

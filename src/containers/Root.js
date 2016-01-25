@@ -15,8 +15,10 @@ export default class Root extends Component {
     // Provider only wants a single child?
     return (
       <Provider store={store}>
-        <App />
-        { devEnv && <DevTools /> }
+        <div>
+          <App />
+          { devEnv && <DevTools /> }
+        </div>
       </Provider>
     )
   }

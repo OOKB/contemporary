@@ -31,30 +31,28 @@ class App extends Component {
   }
 
   render() {
+    const { children } = this.props
     return (
       <div>
         { this.renderErrorMessage() }
-        <h1>hello</h1>
+        <h1>hello!</h1>
+        { children }
       </div>
     )
   }
 }
 
 App.propTypes = {
-  // Injected by React Redux
   errorMessage: PropTypes.string,
   resetErrorMessage: PropTypes.func.isRequired,
-  // Injected by React Router
   children: PropTypes.node,
   db: PropTypes.object.isRequired,
-  showResult: PropTypes.bool.isRequired,
 }
 
 function mapStateToProps(state) {
   return {
     errorMessage: state.errorMessage,
     db: state.db,
-    showResult: state.quiz.showResult,
   }
 }
 

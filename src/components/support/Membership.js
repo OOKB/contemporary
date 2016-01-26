@@ -15,7 +15,6 @@ function Membership({ plans, sectionName }) {
             </div>
             <div className="six columns">
               <div className="group">
-                {/* print different membership plans here */}
                 <Plans plans={plans} />
               </div>
             </div>

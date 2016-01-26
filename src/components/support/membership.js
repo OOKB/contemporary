@@ -3,9 +3,9 @@ import React, { PropTypes } from 'react'
 import Plans from '../Plan/Plans'
 
 // Basic suggestion button.
-function Membership({ message, sectionName }) {
+function Membership({ sectionName }) {
   return (
-      <article className="border-top">
+      <article className="pad-top border-top">
         <section id="membership">
           <h2>{ sectionName }</h2>
           <div className="group mb4">
@@ -22,7 +22,7 @@ function Membership({ message, sectionName }) {
             </div>
             <div className="six columns">
               <div className="group">
-                {/* plan boxes? */}
+                {/* print different membership plans here */}
                 <Plans />
               </div>
             </div>
@@ -34,7 +34,6 @@ function Membership({ message, sectionName }) {
 
 Membership.propTypes = {
   sectionName: PropTypes.string.isRequired,
-  message: PropTypes.string.isRequired,
 }
 Membership.defaultProps = {
   sectionName: 'Membership',

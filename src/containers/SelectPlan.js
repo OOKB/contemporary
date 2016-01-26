@@ -1,12 +1,12 @@
 import { connect } from 'react-redux'
-import Component from '../components/Support/Membership'
+import Component from '../components/Support/Support'
 // Redux connections.
 
 function mapStateToProps(state) {
-  const { entity: { membership } } = state
+  const { entity: { support } } = state
 
   return {
-    membership,
+    support,
   }
 }
 // const mapDispatchToProps = {

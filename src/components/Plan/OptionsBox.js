@@ -2,13 +2,13 @@ import React, { PropTypes } from 'react'
 import Option from './Option'
 
 // Basic suggestion button.
-function OptionsBox({ name, description, options, price }) {
+function OptionsBox({ name, options, price }) {
   return (
     <div className="six columns">
       <div className="inner bg-blue white">
         <div className="p1">
           <h3>{name}</h3>
-          { description && <div>{description}</div>}
+          <Option />
           { options && options.map(option => (
             <Option {...option} />
           ))
@@ -26,7 +26,6 @@ function OptionsBox({ name, description, options, price }) {
 }
 
 OptionsBox.propTypes = {
-  description: PropTypes.string,
   name: PropTypes.string.isRequired,
   options: PropTypes.array.isRequired,
 }

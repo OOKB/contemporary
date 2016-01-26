@@ -11,9 +11,9 @@ const defaultEntityState = {
   form: {},
   user: {},
 }
-function entities(state = defaultEntityState, action) {
-  if (action.response && action.response.entities) {
-    return merge({}, state, action.response.entities)
+function entity(state = defaultEntityState, action) {
+  if (action.response && action.response.entity) {
+    return merge({}, state, action.response.entity)
   }
   return state
 }
@@ -33,7 +33,7 @@ function errorMessage(state = null, action) {
 
 const rootReducer = combineReducers({
   db,
-  entities,
+  entity,
   errorMessage,
   form: formReducer,
 })

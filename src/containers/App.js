@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { resetErrorMessage } from '../redux/actions'
+import SelectPlan from './SelectPlan'
 
 class App extends Component {
   constructor(props) {
@@ -35,7 +36,7 @@ class App extends Component {
     return (
       <div>
         { this.renderErrorMessage() }
-        <h1>hello!</h1>
+        <SelectPlan />
         { children }
       </div>
     )

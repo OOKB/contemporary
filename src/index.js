@@ -16,6 +16,9 @@ const initialState = {
   db: {
     currentYear: new Date().getFullYear(),
   },
+  entity: {
+    plan: {},
+  },
 }
 
 // Configure and create our Redux store.

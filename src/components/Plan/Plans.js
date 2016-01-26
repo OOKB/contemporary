@@ -1,12 +1,12 @@
 import React, { PropTypes } from 'react'
 
 // Basic suggestion button.
-function Plans({ message }) {
+function Plans({ message, membershipLevel }) {
   return (
     <div className="six columns">
       <div className="inner bg-blue white clearfix">
         <div className="twelve columns">
-          <h2 className="mt1">{ membership level }</h2>
+          <h2 className="mt1">{ membershipLevel }</h2>
 
           <OptionsBox />
         </div>

@@ -17,7 +17,10 @@ function entity(state = defaultEntityState, action) {
   }
   return state
 }
-
+// Do not f with the id. Use whatever the default is.
+function id(state = null) {
+  return state
+}
 // Updates error message to notify about the failed fetches.
 function errorMessage(state = null, action) {
   const { type, error } = action
@@ -36,6 +39,7 @@ const rootReducer = combineReducers({
   entity,
   errorMessage,
   form: formReducer,
+  id,
   socket,
 })
 

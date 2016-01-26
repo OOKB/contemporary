@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react'
+import OptionsBox from './OptionsBox'
 
 // Basic suggestion button.
 function Plans({ message, membershipLevel }) {
@@ -7,7 +8,6 @@ function Plans({ message, membershipLevel }) {
       <div className="inner bg-blue white clearfix">
         <div className="twelve columns">
           <h2 className="mt1">{ membershipLevel }</h2>
-
           <OptionsBox />
         </div>
         <div className="text-center">

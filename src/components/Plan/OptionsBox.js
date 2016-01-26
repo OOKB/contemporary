@@ -7,7 +7,7 @@ function OptionsBox({ name, description, options }) {
     <div>
       <h3>{name}</h3>
       { description && <div>{description}</div>}
-      { options.map(option => (
+      { options && options.map(option => (
         <Option {...option} />
       ))
       }

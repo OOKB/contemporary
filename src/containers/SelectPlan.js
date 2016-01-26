@@ -1,10 +1,9 @@
-import { compose } from 'redux'
 import { connect } from 'react-redux'
 import Component from '../components/Plan/Plans'
 // Redux connections.
 
 function mapStateToProps(state) {
-  const { entities: { plan } } = state
+  const { entity: { plan } } = state
 
   return {
     plan,

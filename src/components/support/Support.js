@@ -1,9 +1,6 @@
 import React, { PropTypes } from 'react'
 
-import Donate from './Donate'
 import Membership from './Membership'
-import Wishlist from './Wishlist'
-import Supporters from './Supporters'
 import Row from './Row'
 
 // Basic suggestion button.
@@ -11,14 +8,11 @@ function Support({ pageName, pageSections }) {
   return (
     <div className="container">
       <h1>{ pageName }</h1>
+      <Membership />
       { pageSections && pageSections.map(({ sectionName, sectionBlurb }) => (
         <Row sectionName={sectionName} sectionBlurb={sectionBlurb} />
         ))
       }
-      <Donate />
-      <Membership />
-      <Wishlist />
-      <Supporters />
     </div>
   )
 }

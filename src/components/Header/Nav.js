@@ -6,7 +6,7 @@ function Nav({ navLinks }) {
   return (
     <nav>
       <ul className="main-menu list-reset clearfix sticky" id="main-menu-wrap">
-        { navLinks && navLinks.map(({ mainlink, url }) => (
+        { navLinks && navLinks.map(({ mainlink, url, primary }) => (
           <li className="mainlink evenly-spread drop-down">
             <a className="main-link" href={ url }>{ mainlink }</a>
             <Drawer />
@@ -22,6 +22,7 @@ Nav.propTypes = {
   navLinks: PropTypes.array.isRequired,
   mainlink: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
+  primary: PropTypes.string.isRequired,
 }
 Nav.defaultProps = {
   navLinks: [

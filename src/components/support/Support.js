@@ -6,12 +6,12 @@ import Wishlist from './Wishlist'
 import Supporters from './Supporters'
 
 // Basic suggestion button.
-function Support({ pageName }) {
+function Support({ pageName, plans }) {
   return (
     <div className="container">
       <h1>{ pageName }</h1>
       <Donate />
-      <Membership />
+      <Membership plans={plans} />
       <Wishlist />
       <Supporters />
     </div>
@@ -20,6 +20,7 @@ function Support({ pageName }) {
 
 Support.propTypes = {
   pageName: PropTypes.string.isRequired,
+  plans: PropTypes.array.isRequired,
 }
 Support.defaultProps = {
   pageName: 'Support',

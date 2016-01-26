@@ -1,12 +1,12 @@
 import { connect } from 'react-redux'
-import Component from '../components/Plan/Plans'
+import Component from '../components/Support/Membership'
 // Redux connections.
 
 function mapStateToProps(state) {
-  const { entity: { plan } } = state
+  const { entity: { membership } } = state
 
   return {
-    plan,
+    membership,
   }
 }
 // const mapDispatchToProps = {

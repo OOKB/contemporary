@@ -7,7 +7,7 @@ import Supporters from './Supporters'
 import Row from './Row'
 
 // Basic suggestion button.
-function Support({ pageName, pageSections }) {
+function Support({ pageName, pageSections, plans }) {
   return (
     <div className="container">
       <h1>{ pageName }</h1>
@@ -16,7 +16,7 @@ function Support({ pageName, pageSections }) {
         ))
       }
       <Donate />
-      <Membership />
+      <Membership plans={plans} />
       <Wishlist />
       <Supporters />
     </div>

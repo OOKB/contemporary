@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { resetErrorMessage } from '../redux/actions'
 
 import Header from '../components/Header/Header'
+import Footer from '../components/Footer/Footer'
 import SelectPlan from './SelectPlan'
 
 class App extends Component {
@@ -41,6 +42,7 @@ class App extends Component {
         <Header />
         <SelectPlan />
         { children }
+        <Footer />
       </div>
     )
   }

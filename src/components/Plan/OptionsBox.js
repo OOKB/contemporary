@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react'
 import Option from './Option'
 
 // Basic suggestion button.
-function OptionsBox({ name, options, price }) {
+function OptionsBox({ name, options }) {
   return (
     <div className="six columns">
       <div className="inner bg-blue white">

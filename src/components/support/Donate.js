@@ -8,7 +8,7 @@ function Donate({ sectionName }) {
           <h2>{ sectionName }</h2>
           <div className="group mb4">
             <div className="six columns">
-              TK
+              TK. Need a donation form... can use the old wufoo one until we build our own?
             </div>
           </div>
         </section>

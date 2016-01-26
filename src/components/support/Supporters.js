@@ -8,7 +8,7 @@ function Supporters({ sectionName }) {
           <h2>{ sectionName }</h2>
           <div className="group mb4">
             <div className="six columns">
-              TK
+              TK. This will end up being a listing of all the donations from the last year...
             </div>
           </div>
         </section>

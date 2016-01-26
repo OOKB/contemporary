@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { resetErrorMessage } from '../redux/actions'
+import Header from '../Components/Header/Header'
 import SelectPlan from './SelectPlan'
 
 class App extends Component {
@@ -36,6 +37,7 @@ class App extends Component {
     return (
       <div>
         { this.renderErrorMessage() }
+        <Header />
         <SelectPlan />
         { children }
       </div>

@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react'
 
 import Drawer from './Drawer'
 
-function Nav({ navLinks }) {
+function Nav({ navLinks, mainlink, url, primary, sublink }) {
   return (
     <nav>
       <ul className="main-menu list-reset clearfix sticky" id="main-menu-wrap">

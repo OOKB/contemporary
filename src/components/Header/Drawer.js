@@ -10,7 +10,7 @@ function Drawer({ primary, sublink }) {
         { sublink && sublink.map(({ title, url, secondary }) => (
           <li className="group">
             <p className="four columns">
-              <a className="sub-link" href="{ url }">{ title }</a>
+              <a className="sub-link" href={ url }>{ title }</a>
             </p>
             <p className="eight columns secondary">
               { secondary }

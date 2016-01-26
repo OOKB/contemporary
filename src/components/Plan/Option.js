@@ -1,11 +1,12 @@
 import React, { PropTypes } from 'react'
 
 // Basic suggestion button.
-function Option({ message }) {
+function Option({ name, price }) {
   return (
     <div classname="input-group">
-      <label htmlfor="VARIABLE">VARIABLE</label>
-      <input type="radio" name="VARIABLE" id="VARIABLE" defaultvalue="VARIABLE" />
+      <label htmlfor="{ name }">{ name }</label>
+      <input type="radio" name="{ name }" id="{ name }" defaultvalue="{ price }" />
+      <span className="price">$ { price }</span>
     </div>
   )
 }
@@ -16,5 +17,7 @@ Option.propTypes = {
   id: PropTypes.string.isRequired,
 }
 Option.defaultProps = {
+  name: 'Individual',
+  price: 50,
 }
 export default Option

@@ -8,15 +8,13 @@ function Drawer({ primary, sublink }) {
       </div>
       <ul className="eight columns offset-by-one sub-menu list-reset">
         { sublink && sublink.map(({ title, url, secondary }) => (
-          <li className="mainlink evenly-spread drop-down">
-            <li className="group">
-              <p className="four columns">
-                <a className="sub-link" href="{ url }">{ title }</a>
-              </p>
-              <p className="eight columns secondary">
-                { secondary }
-              </p>
-            </li>
+          <li className="group">
+            <p className="four columns">
+              <a className="sub-link" href="{ url }">{ title }</a>
+            </p>
+            <p className="eight columns secondary">
+              { secondary }
+            </p>
           </li>
           ))
         }

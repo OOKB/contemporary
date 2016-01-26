@@ -17,7 +17,7 @@ function Header({ title, location }) {
 
       </div>
     </header>
-  );
+  )
 }
 
 Header.propTypes = {

@@ -5,12 +5,18 @@ import Option from './Option'
 function OptionsBox({ name, description, options }) {
   return (
     <div>
-      <h3>{name}</h3>
+      <h3 className="mt1">{name}</h3>
       { description && <div>{description}</div>}
       { options && options.map(option => (
         <Option {...option} />
       ))
       }
+      <Submit
+        text={submit}
+        handleSubmit={handleSubmit}
+        invalid={invalid}
+        pristine={pristine}
+      />
     </div>
   )
 }

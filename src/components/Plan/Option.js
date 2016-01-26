@@ -3,9 +3,10 @@ import React, { PropTypes } from 'react'
 // Basic suggestion button.
 function Option({ message }) {
   return (
-    <h2 className="loading">
-      { message }
-    </h2>
+    <div classname="input-group">
+      <label htmlfor="VARIABLE">VARIABLE</label>
+      <input type="radio" name="VARIABLE" id="VARIABLE" defaultvalue="VARIABLE" />
+    </div>
   )
 }
 

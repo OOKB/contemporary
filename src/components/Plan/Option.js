@@ -4,7 +4,7 @@ import React, { PropTypes } from 'react'
 function Option({ name, price }) {
   return (
     <div classname="input-group">
-      <label htmlfor="{ name }">{ name }</label>
+      <label htmlFor="{ name }">{ name }</label>
       <input type="radio" name="{ name }" id="{ name }" defaultvalue="{ price }" />
       <span className="price">$ { price }</span>
     </div>

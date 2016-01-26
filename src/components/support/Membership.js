@@ -27,6 +27,7 @@ function Membership({ sectionName }) {
 
 Membership.propTypes = {
   sectionName: PropTypes.string.isRequired,
+  plans: PropTypes.array.isRequired,
 }
 Membership.defaultProps = {
   sectionName: 'Membership',

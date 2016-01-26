@@ -5,9 +5,8 @@ import OptionsBox from './OptionsBox'
 function Plans({ message, membershipLevel }) {
   return (
     <div>
-      <OptionsBox />
-      <OptionsBox />
       {/* so, to print more than one box, this needs to be some sort of map? */}
+      <OptionsBox />
     </div>
   )
 }

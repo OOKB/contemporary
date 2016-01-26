@@ -9,15 +9,15 @@ function mapStateToProps(state) {
   if (plan.individual) {
     plans.push({
       type: 'individual',
-      title: 'Individual Membership',
-      plans: values(plan.individual),
+      name: 'Individual Membership',
+      options: values(plan.individual),
     })
   }
   if (plan.team) {
     plans.push({
       type: 'team',
-      title: 'Team Membership',
-      plans: values(plan.individual),
+      name: 'Team Membership',
+      options: values(plan.team),
     })
   }
   return {

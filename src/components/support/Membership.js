@@ -4,7 +4,7 @@ import Plans from '../Plan/Plans'
 import SectionText from './SectionText'
 
 // Basic suggestion button.
-function Membership({ sectionName }) {
+function Membership({ plans, sectionName }) {
   return (
       <article className="pad-top border-top">
         <section id="{ sectionName }">
@@ -16,7 +16,7 @@ function Membership({ sectionName }) {
             <div className="six columns">
               <div className="group">
                 {/* print different membership plans here */}
-                <Plans />
+                <Plans plans={plans} />
               </div>
             </div>
           </div>

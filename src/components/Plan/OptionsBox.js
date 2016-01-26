@@ -8,9 +8,8 @@ function OptionsBox({ name, options }) {
       <div className="inner bg-blue white">
         <div className="p1">
           <h3>{name}</h3>
-          <Option />
           { options && options.map(option => (
-            <Option {...option} />
+            <Option {...option} key={option.id} />
           ))
           }
         </div>

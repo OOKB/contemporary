@@ -56,6 +56,7 @@
     "isomorphic-fetch": "^2.2.0",
     "lodash": "4.x",
     "lru-memoize": "^1.0.0",
+    "query-string": "^3.0.0",
     "react": "0.14.x",
     "react-dom": "0.14.x",
     "react-json-inspector": "github:lapple/react-json-inspector",

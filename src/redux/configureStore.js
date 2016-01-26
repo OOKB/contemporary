@@ -5,6 +5,9 @@ import { applyMiddleware, createStore, compose } from 'redux'
 import thunk from 'redux-thunk'
 // Log state changes to console.
 // import createLogger from 'redux-logger'
+// Socket.io linking
+import createSocketMiddleware from './middleware/socket'
+const socket = createSocketMiddleware()
 
 // Redux Reducers.
 // Our reducer index.
@@ -15,6 +18,7 @@ import DevTools from '../containers/DevTools'
 
 // Define the middeware we want to apply to the store.
 const middleware = [
+  socket,
   thunk,
 ]
 

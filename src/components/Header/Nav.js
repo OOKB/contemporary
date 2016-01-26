@@ -6,8 +6,8 @@ function Nav({ navLinks }) {
   return (
     <nav>
       <ul className="main-menu list-reset clearfix sticky" id="main-menu-wrap">
-        { navLinks && navLinks.map(({ mainlink, url, primary, sublink }) => (
-          <li className="mainlink evenly-spread drop-down">
+        { navLinks && navLinks.map(({ mainlink, url, primary, sublink }, index) => (
+          <li className="mainlink evenly-spread drop-down" key={index}>
             <a className="main-link" href={ url }>{ mainlink }</a>
             <Drawer primary={primary} sublink={sublink} />
           </li>

@@ -8,9 +8,8 @@ import db from './modules/db'
 // Updates an entity cache in response to any action with response.entities.
 // Define our default entities collection database.
 const defaultEntityState = {
-  forms: {},
-  repos: {},
-  users: {},
+  form: {},
+  user: {},
 }
 function entities(state = defaultEntityState, action) {
   if (action.response && action.response.entities) {

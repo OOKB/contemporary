@@ -1,12 +1,15 @@
 import React, { Component, PropTypes } from 'react'
 
+import Drawer from './Drawer'
+
 function Nav({ navLinks }) {
   return (
     <nav>
       <ul className="main-menu list-reset clearfix sticky" id="main-menu-wrap">
         { navLinks && navLinks.map(({ mainlink, url }) => (
           <li className="mainlink evenly-spread drop-down">
-            <a href={ url }>{ mainlink }</a>
+            <a className="main-link" href={ url }>{ mainlink }</a>
+            <Drawer />
           </li>
           ))
         }

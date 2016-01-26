@@ -4,11 +4,11 @@ import Membership from './Membership'
 import Row from './Row'
 
 // Basic suggestion button.
-function Support({ pageName, pageSections }) {
+function Support({ pageName, pageSections, plans }) {
   return (
     <div className="container">
       <h1>{ pageName }</h1>
-      <Membership />
+      <Membership plans={plans} />
       { pageSections && pageSections.map(({ sectionName, sectionBlurb }) => (
         <Row sectionName={sectionName} sectionBlurb={sectionBlurb} />
         ))

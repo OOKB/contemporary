@@ -1,11 +1,17 @@
 import React, { PropTypes } from 'react'
 
 // Basic suggestion button.
-function Option({ name, amount }) {
+function Option({ name, amount, onClick }) {
   const price = `$${amount / 100}`
+  function handleClick() {
+    onClick({
+      amount,
+      description: name,
+    })
+  }
   return (
     <li className="input-group">
-      <button>{ name }</button>
+      <button onClick={handleClick}>{ name }</button>
       <span className="price">{ price }</span>
     </li>
   )
@@ -15,6 +21,7 @@ Option.propTypes = {
   name: PropTypes.string.isRequired,
   amount: PropTypes.number.isRequired,
   id: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
 }
 Option.defaultProps = {
   name: 'Individual',

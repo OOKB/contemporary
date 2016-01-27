@@ -5,15 +5,13 @@ import Option from './Option'
 function OptionsBox({ name, type, options }) {
   return (
     <div className={`six columns ${type}-plan`}>
-      <div className="inner bg-blue white">
-        <div className="p1">
-          <h3>{name}</h3>
-          <ul className="plan-options">
-            { options && options.map(option =>
-              <Option {...option} key={option.id} />
-            )}
-          </ul>
-        </div>
+      <div className="inner white">
+        <h3 className="m0 p1">{name}</h3>
+        <ul className="plan-options list-reset">
+          { options && options.map(option =>
+            <Option {...option} key={option.id} />
+          )}
+        </ul>
       </div>
     </div>
   )

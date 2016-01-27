@@ -1,3 +1,64 @@
 html {
   margin: 0;
 }
+
+.individual-plan .inner {
+  background-color: rgba(000,075,124,1);
+}
+
+.team-plan .inner {
+  background-color: rgba(040,109,076,1);
+}
+
+.plan-options { margin: 0; }
+
+.plan-options li {
+  border-top: 1px solid white;
+}
+
+.plan-options li:hover {
+  background-color: rgba(250,252,255,.75);
+}
+
+.plan-options li:after {
+  clear:both;
+  content: '';
+  display: table;
+}
+
+.plan-options button {
+  width: 70%;
+  float: left;
+  display: block;
+  line-height: 1rem;
+  height: 3rem;
+  border:none;
+  color:white;
+  vertical-align: middle;
+  background: transparent;
+  cursor: pointer;
+}
+
+.individual-plan .plan-options li:hover button,
+.individual-plan .plan-options button:hover {
+  background-color: rgba(255,117,044,1);
+}
+.team-plan .plan-options li:hover button,
+.team-plan .plan-options button:hover {
+  background-color: rgba(241,097,074,1);
+}
+
+.plan-options .price {
+  width: 30%;
+  float: left;
+  display: block;
+  text-align: center;
+  line-height: 3rem;
+  vertical-align: middle;
+  font-size: 1.25rem;
+}
+
+.plan-options li:hover .price {
+  color: rgba(026,010,008,1);
+}
+

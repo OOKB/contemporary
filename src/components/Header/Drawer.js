@@ -4,7 +4,7 @@ function Drawer({ primary, sublink }) {
   return (
     <div className="drawer bg-white">
       <div className="three columns blurb">
-        <p>{ primary }</p>
+        <p dangerouslySetInnerHTML={{ __html: primary }} />
       </div>
       <ul className="eight columns offset-by-one sub-menu list-reset">
         { sublink && sublink.map(({ title, url, secondary }) => (
@@ -12,9 +12,10 @@ function Drawer({ primary, sublink }) {
             <p className="four columns">
               <a className="sub-link" href={ url }>{ title }</a>
             </p>
-            <p className="eight columns secondary">
-              { secondary }
-            </p>
+            <p
+              className="eight columns secondary"
+              dangerouslySetInnerHTML={{ __html: secondary }}
+            />
           </li>
           ))
         }

@@ -1,14 +1,13 @@
 import React, { PropTypes } from 'react'
 
 // Basic suggestion button.
-function Option({ name, amount, id }) {
+function Option({ name, amount }) {
   const price = `$${amount / 100}`
   return (
-    <label>
-      <input type="radio" id={ id } value={ id } />
-      <span className="name">{ name }</span>
+    <li className="input-group">
+      <button>{ name }</button>
       <span className="price">{ price }</span>
-    </label>
+    </li>
   )
 }
 

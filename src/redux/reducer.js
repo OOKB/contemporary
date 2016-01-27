@@ -1,7 +1,6 @@
 import * as ActionTypes from './actions'
 import merge from 'lodash/merge'
 import { combineReducers } from 'redux'
-import { reducer as formReducer } from 'redux-form'
 
 import db from './modules/db'
 import socket from './modules/socket'
@@ -38,7 +37,6 @@ const rootReducer = combineReducers({
   db,
   entity,
   errorMessage,
-  form: formReducer,
   id,
   socket,
 })

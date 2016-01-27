@@ -2,6 +2,13 @@ html {
   margin: 0;
 }
 
+/** fixing a footer problem **/
+footer .social a {
+  display: inline-block;
+  margin-left: .25em;
+}
+
+/** membership forms stuff **/
 .individual-plan .inner {
   background-color: rgba(000,075,124,1);
 }
@@ -18,6 +25,7 @@ html {
 
 .plan-options li:hover {
   background-color: rgba(250,252,255,.75);
+  box-shadow: 0 0 .25em 0 rgba(026,010,008,.33)
 }
 
 .plan-options li:after {

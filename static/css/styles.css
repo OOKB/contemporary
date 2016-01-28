@@ -21,11 +21,12 @@ footer .social a {
 
 .plan-options li {
   border-top: 1px solid white;
+  display: block;
 }
 
 .plan-options li:hover {
   background-color: rgba(250,252,255,.75);
-  box-shadow: 0 0 .25em 0 rgba(026,010,008,.33)
+  box-shadow: 0 0 .25em 0 rgba(026,010,008,.33);
 }
 
 .plan-options li:after {

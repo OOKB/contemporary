@@ -5,6 +5,7 @@ import { resetErrorMessage } from '../redux/actions'
 import Header from '../components/Header/Header'
 import Footer from '../components/Footer/Footer'
 import SelectPlan from './SelectPlan'
+import Profile from './Profile'
 
 class App extends Component {
   constructor(props) {
@@ -40,6 +41,7 @@ class App extends Component {
       <div>
         { this.renderErrorMessage() }
         <Header />
+        <Profile />
         <SelectPlan />
         { children }
         <Footer />

@@ -4,12 +4,10 @@ import { combineReducers } from 'redux'
 
 import db from './modules/db'
 import socket from './modules/socket'
-
+import form from './modules/editField'
 // Updates an entity cache in response to any action with response.entities.
 // Define our default entities collection database.
-const defaultEntityState = {
-  form: {},
-}
+const defaultEntityState = {}
 function entity(state = defaultEntityState, action) {
   if (action.response && action.response.entity) {
     return merge({}, state, action.response.entity)
@@ -37,6 +35,7 @@ const rootReducer = combineReducers({
   db,
   entity,
   errorMessage,
+  form,
   id,
   socket,
 })

@@ -37,7 +37,7 @@ const defaultState = immutable({
   value: null, // Anything.
 })
 
-export function getReducer(_state = defaultFormState, action) {
+export default function reducer(_state = defaultFormState, action) {
   let prefix = action.meta && action.meta.prefix
   if (isString(prefix)) {
     prefix = prefix.split('.')
@@ -190,7 +190,3 @@ export function getActions(prefix) {
     validating,
   }
 }
-
-export const actions = getActions('default')
-const reducer = getReducer('default')
-export default reducer

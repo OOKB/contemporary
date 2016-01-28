@@ -18,7 +18,8 @@ export function isInteger(value) {
     return 'Must be an integer'
   }
 }
-export function isName(value) {
+
+export function isFullName(value) {
   const valParts = value.split(' ')
   if (valParts.length < 2) {
     return 'Full name must include a first and last name.'

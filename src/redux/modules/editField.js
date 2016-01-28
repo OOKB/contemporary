@@ -1,5 +1,7 @@
 import immutable from 'seamless-immutable'
 import get from 'lodash/get'
+import invert from 'lodash/invert'
+import isFunction from 'lodash/isFunction'
 import isString from 'lodash/isString'
 
 export const BLUR = 'edit/BLUR'
@@ -21,8 +23,9 @@ export const types = {
   ERROR, FOCUS, META, OPEN, SAVE,
   SAVED, SUBMIT, UPDATE, TOGGLE_VALIDATING,
 }
-
+const typeIndex = invert(types)
 const defaultFormState = {}
+
 // Only keeping state we can not calculate. See derivedState().
 const defaultState = immutable({
   blur: false, // When true the field is open but does not have focus.
@@ -37,16 +40,21 @@ const defaultState = immutable({
   value: null, // Anything.
 })
 
+function getFieldState(state, prefix) {
+  return get(state, prefix, defaultState)
+}
+
 export default function reducer(_state = defaultFormState, action) {
   let prefix = action.meta && action.meta.prefix
   if (isString(prefix)) {
     prefix = prefix.split('.')
   }
-  if (!prefix || !action.type || !types[action.type]) return _state
+  if (!prefix || !action.type || !typeIndex[action.type]) return _state
+  console.log('process form action')
   // Used during rehydration.
   const formState = _state.asMutable ? _state : immutable(_state)
   // Get the state slice we need for this action.
-  const state = get(formState, prefix, defaultState)
+  const state = getFieldState(formState, prefix)
   let newState = false
   // Ignore all actions that do not have a meta prefix that matches the one passed on creation.
   switch (action.type) {
@@ -88,7 +96,7 @@ export default function reducer(_state = defaultFormState, action) {
         error: defaultState.error,
         focus: defaultState.focus,
         saving: true,
-        value: action.payload,
+        value: action.payload || state.value,
       })
       break
     case SAVED:
@@ -114,31 +122,52 @@ export default function reducer(_state = defaultFormState, action) {
   return formState.setIn(prefix, newState)
 }
 
+// Validate function should return a string
+// or object { message: String, suggestion: String, status: String }
 export function derivedState(state, validate) {
-  const errorVal = validate ? (validate(state.value) || state.help) : state.error
+  const errorVal = isFunction(validate) ? (validate(state.value) || state.help) : state.error
   const pristine = state.value === state.initalValue
-  return {
-    ...state,
+  let status = errorVal ? 'error' : null
+  if (errorVal && errorVal.status) {
+    status = errorVal.status
+  }
+  const valid = !errorVal && !pristine
+  if (valid) {
+    status = 'success'
+  }
+  return state.merge({
     editing: state.focus && !pristine,
     dirty: !pristine,
-    error: errorVal,
+    errorMessage: errorVal && errorVal.message ? errorVal.message : errorVal,
     // The field is open.
     open: state.blur || state.focus,
     pristine,
     saved: pristine || state.value === state.savedValue,
-    valid: !!errorVal,
-  }
+    status,
+    suggestion: errorVal && errorVal.suggestion ? errorVal.suggestion : undefined,
+    valid,
+  })
+}
+function getPrefix(formId, fieldId) {
+  return [ formId, fieldId ]
 }
 
-export function getActions(prefix) {
+export function getState(formState, formId, fieldId) {
+  const prefix = getPrefix(formId, fieldId)
+  const fieldState = getFieldState(formState, prefix)
+  return derivedState(fieldState)
+}
+
+export function getActions(formId, fieldId) {
   function createAction(type, payload, error) {
-    const meta = { prefix }
-    return {
-      error,
+    const meta = { prefix: getPrefix(formId, fieldId) }
+    const action = {
       type,
-      payload,
       meta,
     }
+    if (error) action.error = error
+    if (payload) action.payload = payload
+    return action
   }
   function blur() {
     return createAction(BLUR)
@@ -176,7 +205,7 @@ export function getActions(prefix) {
     onInput: update,
     onSubmit: submit,
     // Almost always the first thing that is called.
-    open: (initalValue, fieldId) => createAction(OPEN, { fieldId, initalValue }),
+    open: (initalValue) => createAction(OPEN, { fieldId, initalValue }),
     // Saving to server.
     save: () => createAction(SAVE),
     // Has been saved on server.

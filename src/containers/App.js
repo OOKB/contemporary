@@ -42,8 +42,10 @@ class App extends Component {
         { this.renderErrorMessage() }
         <Header />
         <Profile />
-        <SelectPlan />
-        { children }
+        <main>
+          <SelectPlan />
+          { children }
+        </main>
         <Footer />
       </div>
     )

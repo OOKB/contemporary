@@ -17,6 +17,7 @@ class EditableButtons extends Component {
             onSubmit()
           }}
         >
+          <span>Save</span>
           <Icon symbol="ok" />
         </button>
         <button
@@ -24,6 +25,7 @@ class EditableButtons extends Component {
           type="button"
           onClick={onClose}
         >
+          <span>Cancel</span>
           <Icon symbol="ban-circle" />
         </button>
       </div>
@@ -32,6 +34,6 @@ class EditableButtons extends Component {
 }
 EditableButtons.propTypes = {
   onClose: PropTypes.func.isRequired,
-  onSubmit: PropTypes.func.isRequired
+  onSubmit: PropTypes.func.isRequired,
 }
 export default EditableButtons

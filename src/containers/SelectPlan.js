@@ -21,7 +21,6 @@ function mapStateToProps(state) {
       options: sortBy(values(plan.team), 'amount'),
     })
   }
-  console.log(plans)
   return {
     plans,
   }

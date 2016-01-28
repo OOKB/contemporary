@@ -12,18 +12,22 @@ import Editable from './Editable'
 export default function connectTextField(formId, fieldId) {
   const actions = getActions(formId, fieldId)
   function Wrapper(props) {
-    const { field, value, action } = props
-    const { open } = action
+    const { action, field, form, value } = props
+    const { handleOpen } = action
     const { editable } = field
+    const { open } = form
     return (
       <Editable {...props}>
-        <PreviewText editable={editable} onClick={partial(open, value)} />
+        { !open &&
+          <PreviewText editable={editable} onClick={partial(handleOpen, value)} />
+        }
       </Editable>
     )
   }
   Wrapper.propTypes = {
     action: PropTypes.object.isRequired,
     field: PropTypes.object.isRequired,
+    form: PropTypes.object.isRequired,
     value: PropTypes.any,
   }
   function mapStateToProps(state) {

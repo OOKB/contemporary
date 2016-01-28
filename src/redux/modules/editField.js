@@ -175,6 +175,9 @@ export function getActions(formId, fieldId) {
   function focus() {
     return createAction(FOCUS)
   }
+  function open(initalValue) {
+    return createAction(OPEN, { fieldId, initalValue })
+  }
   function update(value) {
     return createAction(UPDATE, value)
   }
@@ -197,6 +200,8 @@ export function getActions(formId, fieldId) {
     error: (value) => createAction(ERROR, value, true),
     // When a user clicks on a field to edit it.
     focus,
+    handleOpen: open,
+    handleSubmit: submit,
     // Set metadata about the editing process. If you need a place to put extra information.
     meta: (value) => createAction(META, value),
     onBlur: blur,
@@ -205,7 +210,7 @@ export function getActions(formId, fieldId) {
     onInput: update,
     onSubmit: submit,
     // Almost always the first thing that is called.
-    open: (initalValue) => createAction(OPEN, { fieldId, initalValue }),
+    open,
     // Saving to server.
     save: () => createAction(SAVE),
     // Has been saved on server.

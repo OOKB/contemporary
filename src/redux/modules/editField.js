@@ -140,6 +140,7 @@ export function derivedState(state, validate) {
     dirty: !pristine,
     errorMessage: errorVal && errorVal.message ? errorVal.message : errorVal,
     // The field is open.
+    hasError: !!errorVal,
     open: state.blur || state.focus,
     pristine,
     saved: pristine || state.value === state.savedValue,
@@ -200,6 +201,7 @@ export function getActions(formId, fieldId) {
     error: (value) => createAction(ERROR, value, true),
     // When a user clicks on a field to edit it.
     focus,
+    handleChange: update,
     handleOpen: open,
     handleSubmit: submit,
     // Set metadata about the editing process. If you need a place to put extra information.

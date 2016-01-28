@@ -83,3 +83,13 @@ footer .social a {
 .border-button:hover {
   box-shadow: inset 0 0 1rem 0 rgba(026,010,008,.1);
 }
+
+/** okay. buttons on the form? **/
+.editable-empty button {
+  background: transparent;
+  color: rgba(241,97,74,1);
+  border: none;
+  border-bottom: 1px dashed;
+  font-size: 1em;
+  padding: 0 0 .25em 0;
+}

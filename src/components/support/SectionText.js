@@ -7,8 +7,9 @@ function SectionText({ sectionName, sectionBlurb, memberAlready, featureButtons,
         { sectionBlurb }
       </p>
       <p>
-        { featureButtons && featureButtons.map(({ planType, color }) => (
+        { featureButtons && featureButtons.map(({ planType, color }, index) => (
           <button
+            key={index}
             className={`mr1 border-button ${planType}-plan ${color}`}
             >
               Learn more about { planType } membership

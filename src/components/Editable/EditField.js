@@ -95,7 +95,9 @@ class EditField extends Component {
 }
 
 EditField.propTypes = {
+  className: PropTypes.string,
   defaultValue: PropTypes.any,
+  id: PropTypes.string.isRequired,
   onClose: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
 }

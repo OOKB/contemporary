@@ -8,7 +8,7 @@ import EditField from './EditField'
 function Wrapper(props) {
   const { action, field, form, value } = props
   const { handleOpen } = action
-  const { editable } = field
+  const { editable, id } = field
   const { open } = form
   return (
     <Editable {...props}>
@@ -17,7 +17,7 @@ function Wrapper(props) {
       }
       {
         open &&
-        <EditField />
+        <EditField id={id} />
       }
     </Editable>
   )

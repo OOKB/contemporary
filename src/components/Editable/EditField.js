@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import classNames from 'classnames'
 
-import Input from './input/Text'
+import Input from './input/Input'
 
 import EditableButtons from './Buttons'
 import Help from './Help'
@@ -20,31 +20,14 @@ class EditField extends Component {
     }
   }
 
-  handleChange(result) {
-    const { onValidation, required } = this.props
-    const { hasErrors, breakPoint, value } = result
-    let errs = hasErrors
-    let status = 'error'
-    // get status.
-    if (!hasErrors) {
-      status = 'success'
-    } else if (breakPoint === 'help') {
-      status = 'warning'
-    }
-    if (!required && !value && errs) {
-      errs = false
-      status = null
-    }
-    // Pass status to parent.
-    onValidation(status)
-    // if (this.isMounted()) {}
-    this.setState({ ...result, hasErrors: errs })
-  }
   handleSuggestion(newVal) {
     this.setState({ value: newVal })
   }
   render() {
-    const { className, errorMessage, help, id, onSubmit, onClose, type, ...other } = this.props
+    const {
+      className, errorMessage, help, id,
+      onChange, onSubmit, onClose, type, ...other
+    } = this.props
     const { suggestion, value, breakPoint, hasErrors } = this.state
     const extraHelp = this.state.help
 
@@ -78,7 +61,7 @@ class EditField extends Component {
             {...other}
             className="form-control"
             id={id}
-            onChange={this.handleChange.bind(this)}
+            onChange={onChange}
             onClose={onClose}
             value={value}
           />
@@ -97,7 +80,9 @@ class EditField extends Component {
 EditField.propTypes = {
   className: PropTypes.string,
   defaultValue: PropTypes.any,
+  errorMessage: PropTypes.string,
   id: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
   onClose: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
 }

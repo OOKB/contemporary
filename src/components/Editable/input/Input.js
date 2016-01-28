@@ -37,7 +37,7 @@ class Input extends Component {
   }
   handleBlur(e) {
     const newValue = e.target.value
-    const {onClose} = this.props
+    const { onClose } = this.props
     // Save value.
     if (newValue) {
       // submit.
@@ -49,7 +49,7 @@ class Input extends Component {
   }
   // The function that is called every interval.
   tick() {
-    const {id} = this.props
+    const { id } = this.props
     // Get the form field value. Not using refs so it's usable with Redux...
     // const fieldVal = this.refs[id].getDOMNode().value
     const fieldVal = document.getElementById(id).value
@@ -121,6 +121,6 @@ Input.propTypes = {
   // Needed in place of refs.
   id: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
-  value: PropTypes.string
+  value: PropTypes.string,
 }
 export default Input

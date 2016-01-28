@@ -173,9 +173,15 @@ export function getActions(formId, fieldId) {
   function blur() {
     return createAction(BLUR)
   }
+  // The field has been closed.
+  function close() {
+    return createAction(CLOSE)
+  }
+
   function focus() {
     return createAction(FOCUS)
   }
+  // Almost always the first thing that is called.
   function open(initalValue) {
     return createAction(OPEN, { fieldId, initalValue })
   }
@@ -195,8 +201,6 @@ export function getActions(formId, fieldId) {
     clear: () => createAction(CLEAR),
     // Not sure when you would use this.
     clearError: () => createAction(CLEAR_ERROR),
-    // The field has been closed.
-    close: () => createAction(CLOSE),
     // Async error result. Sync errors should be calculated in container. See derivedState().
     error: (value) => createAction(ERROR, value, true),
     // When a user clicks on a field to edit it.
@@ -208,11 +212,11 @@ export function getActions(formId, fieldId) {
     meta: (value) => createAction(META, value),
     onBlur: blur,
     onChange: update,
+    onClose: close,
     onFocus: focus,
     onInput: update,
+    onOpen: open,
     onSubmit: submit,
-    // Almost always the first thing that is called.
-    open,
     // Saving to server.
     save: () => createAction(SAVE),
     // Has been saved on server.

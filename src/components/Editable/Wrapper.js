@@ -7,21 +7,24 @@ import EditField from './EditField'
 
 function Wrapper(props) {
   const { action, field, form, value } = props
-  const { handleChange, handleOpen, close } = action
-  const { editable, id } = field
+  const { onBlur, onChange, onClose, onOpen, onSubmit } = action
+  const { editable, id, type } = field
   const { errorMessage, open } = form
   return (
     <Editable {...props}>
       { !open &&
-        <PreviewText editable={editable} onClick={partial(handleOpen, value)} />
+        <PreviewText editable={editable} onClick={partial(onOpen, value)} />
       }
       {
         open &&
         <EditField
           id={id}
-          onChange={handleChange}
-          onClose={close}
+          onBlur={onBlur}
+          onChange={onChange}
+          onClose={onClose}
+          onSubmit={onSubmit}
           errorMessage={errorMessage}
+          type={type}
           value={form.value}
         />
       }

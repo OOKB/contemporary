@@ -25,16 +25,13 @@ class EditField extends Component {
   }
   render() {
     const {
-      className, errorMessage, help, id,
-      onChange, onSubmit, onClose, type, ...other
+      className, errorMessage, hasErrors, help, id,
+      onBlur, onChange, onSubmit, onClose, suggestion, type,
+      value, ...other
     } = this.props
-    const { suggestion, value, breakPoint, hasErrors } = this.state
-    const extraHelp = this.state.help
 
-    let helpTxt = hasErrors ? errorMessage : help
-    if (extraHelp) {
-      helpTxt += ' ' + extraHelp
-    }
+    const helpTxt = hasErrors ? errorMessage : help
+
     let helpEl = false
     if (helpTxt || suggestion) {
       helpEl = (
@@ -62,7 +59,8 @@ class EditField extends Component {
             className="form-control"
             id={id}
             onChange={onChange}
-            onClose={onClose}
+            onBlur={onBlur}
+            type={type}
             value={value}
           />
           <EditableButtons

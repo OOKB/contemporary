@@ -7,9 +7,9 @@ import EditField from './EditField'
 
 function Wrapper(props) {
   const { action, field, form, value } = props
-  const { handleOpen, close } = action
+  const { handleChange, handleOpen, close } = action
   const { editable, id } = field
-  const { open } = form
+  const { errorMessage, open } = form
   return (
     <Editable {...props}>
       { !open &&
@@ -17,11 +17,18 @@ function Wrapper(props) {
       }
       {
         open &&
-        <EditField id={id} onClose={close} />
+        <EditField
+          id={id}
+          onChange={handleChange}
+          onClose={close}
+          errorMessage={errorMessage}
+          value={form.value}
+        />
       }
     </Editable>
   )
 }
+
 Wrapper.propTypes = {
   action: PropTypes.object.isRequired,
   field: PropTypes.object.isRequired,

@@ -1,4 +1,5 @@
 import { connect } from 'react-redux'
+import sortBy from 'lodash/sortBy'
 import values from 'lodash/values'
 import Component from '../components/Support/Support'
 // Redux connections.
@@ -10,16 +11,17 @@ function mapStateToProps(state) {
     plans.push({
       type: 'individual',
       name: 'Individual Membership',
-      options: values(plan.individual),
+      options: sortBy(values(plan.individual), 'amount'),
     })
   }
   if (plan.team) {
     plans.push({
       type: 'team',
       name: 'Team Membership',
-      options: values(plan.team),
+      options: sortBy(values(plan.team), 'amount'),
     })
   }
+  console.log(plans)
   return {
     plans,
   }

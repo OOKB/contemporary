@@ -1,14 +1,20 @@
 import React, { PropTypes } from 'react'
 
-// Basic suggestion button.
-function SectionText({ sectionName, sectionBlurb, memberAlready, individualFeatures, teamFeatures }) {
+function SectionText({ sectionName, sectionBlurb, memberAlready, featureButtons, individualFeatures, teamFeatures, }) {
   return (
     <div>
       <p>
         { sectionBlurb }
       </p>
       <p>
-        <button id="indTxt" className="button">Learn more about Individual Membership</button> <button id="teamTxt" className="button">Learn more about Team Membership</button>
+        { featureButtons && featureButtons.map(({ planType, color }) => (
+          <button
+            className={`mr1 border-button ${planType}-plan ${color}`}
+            >
+              Learn more about { planType } membership
+          </button>
+          ))
+        }
       </p>
       <div>
         <p>SHOW FEATURES HERE FOR EACH MEMBERSHIP LEVEL WHEN YOU CLICK THE ABOVE BUTTONS</p>
@@ -22,13 +28,28 @@ SectionText.propTypes = {
   sectionName: PropTypes.string.isRequired,
   sectionBlurb: PropTypes.string.isRequired,
   memberAlready: PropTypes.string.isRequired,
+  featureButtons: PropTypes.array.isRequired,
   individualFeatures: PropTypes.array.isRequired,
   teamFeatures: PropTypes.array.isRequired,
+  planType: PropTypes.string.isRequired,
+  color: PropTypes.string.isRequired,
 }
 SectionText.defaultProps = {
   sectionName: 'SectionText',
   sectionBlurb: "Our members are crucial to the overall health of the museum. In return for their important philanthropic support, we offer a selection of benefits and resources that are designed to help artists continue making their work.",
   memberAlready: 'Already a member? <a href="TK" className="button">Login here</a>',
+  featureButtons: [
+    {
+      'planType': 'individual',
+      'planContent': 'individualFeatures',
+      'color': 'blue',
+    },
+    {
+      'planType': 'team',
+      'planContent': 'teamFeatures',
+      'color': 'darkgreen',
+    },
+  ],
   individualFeatures: [
     {
       "title":"Workspace",

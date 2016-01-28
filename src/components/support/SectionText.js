@@ -1,27 +1,62 @@
 import React, { PropTypes } from 'react'
 
 // Basic suggestion button.
-function SectionText({ sectionName }) {
+function SectionText({ sectionName, sectionBlurb, memberAlready, individualFeatures, teamFeatures }) {
   return (
     <div>
-      <p>Our members are crucial to the overall health of the museum. In return for their important philanthropic support, we offer a selection of benefits and resources that are designed to help artists continue making their work.
+      <p>
+        { sectionBlurb }
       </p>
       <p>
-        <a href="#individual" id="indTxt" className="button">Learn more about Individual Membership</a> <a href="#team" id="teamTxt" className="button">Learn more about Team Membership</a>
+        <button id="indTxt" className="button">Learn more about Individual Membership</button> <button id="teamTxt" className="button">Learn more about Team Membership</button>
       </p>
-      <div>PRINT OUT INFO RE: each membership features here when you click on ind. or team. above</div>
-      <p>
-        Already a member? <a href="TK" className="button">Login here</a>
-      </p>
-      <p>here is some proof this is working</p>
+      <div>
+        <p>SHOW FEATURES HERE FOR EACH MEMBERSHIP LEVEL WHEN YOU CLICK THE ABOVE BUTTONS</p>
+      </div>
+      <p dangerouslySetInnerHTML={{ __html: memberAlready }}/>
     </div>
   )
 }
 
 SectionText.propTypes = {
   sectionName: PropTypes.string.isRequired,
+  sectionBlurb: PropTypes.string.isRequired,
+  memberAlready: PropTypes.string.isRequired,
+  individualFeatures: PropTypes.array.isRequired,
+  teamFeatures: PropTypes.array.isRequired,
 }
 SectionText.defaultProps = {
   sectionName: 'SectionText',
+  sectionBlurb: "Our members are crucial to the overall health of the museum. In return for their important philanthropic support, we offer a selection of benefits and resources that are designed to help artists continue making their work.",
+  memberAlready: 'Already a member? <a href="TK" className="button">Login here</a>',
+  individualFeatures: [
+    {
+      "title":"Workspace",
+      "blurb":"Individual Members can utilize Workspace, which is our main headquarters. We offer a cowering space equipped with private workstations, group meeting space, a conference room, and library of contemporary art books, magazines, and publications. There is also free Wi-Fi."
+    },
+    {
+      "title":"Studio Visits",
+      "blurb":"Individual Members are eligible for studio visits with our visit artists, critics, curators, and colleagues. We invite dozens of distinguished arts professionals to Baltimore every year and give them access to our Member Database to select their desired visits, in efforts to build continued dialogue, networking opportunities, and create discourse between our local constituency and the global arts community."
+    },
+    {
+      "title":"Artist Retreat",
+      "blurb":"We will host Our inaugural Artist Retreat in August 2016 and will convene about 60 Baltimore Artists and 30 national arts consultants including critics, curators, gallerists, and collectors for three days of intensive professional development, community building, networking, and leisure. Membership is not required to attend but there is an application fee for all non-members. Selections for the retreat will be made by a panel of museum staff and outside colleagues."
+    },
+  ],
+  teamFeatures: [
+    {
+      "title":"Workspace",
+      "blurb":"Team Members can utilize Workspace, which is our main headquarters, to work individually or host team meetings and events. We offer a coworking space equipped with private workstations, group meeting space, a conference room, and library of contemporary art books, magazines, and publications. There is also free Wi-Fi."
+    },
+    {
+      "title":"Artist Database",
+      "blurb":"Team Members can access our Artist Database of Artist Members …"
+    },
+    {
+      "title":"Equipment Library",
+      "blurb":"Team Members can borrow museum-grade equipment from our library, including projects, monitors, speakers, and more. Team Members are also entitled to submit requested equipment to our Amazon Wishlist, which we will acquire when possible. Non-members can rent equipment for requested fees and should inquire directly."
+    },
+  ],
 }
+
 export default SectionText

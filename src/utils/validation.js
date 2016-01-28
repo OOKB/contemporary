@@ -18,6 +18,21 @@ export function isInteger(value) {
     return 'Must be an integer'
   }
 }
+export function isName(value) {
+  const valParts = value.split(' ')
+  if (valParts.length < 2) {
+    return 'Full name must include a first and last name.'
+  }
+  if (valParts[0].length < 2) {
+    return 'First name is too short.'
+  }
+  if (valParts[valParts.length - 1].length < 2) {
+    return 'Last name is too short.'
+  }
+  if (value.length < 5) {
+    return 'Name is too short.'
+  }
+}
 
 export function isRequired(value) {
   if (isEmpty(value)) {

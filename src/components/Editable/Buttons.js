@@ -1,10 +1,10 @@
-import React, { Component, PropTypes } from 'react';
-import Icon from './Icon';
+import React, { Component, PropTypes } from 'react'
+import Icon from './Icon'
 
 class EditableButtons extends Component {
 
   render() {
-    const {onSubmit, onClose, disabled} = this.props;
+    const {onSubmit, onClose, disabled} = this.props
 
     return (
       <div className="editable-buttons">
@@ -13,8 +13,8 @@ class EditableButtons extends Component {
           disabled={disabled}
           type="submit"
           onClick={(e) => {
-            e.preventDefault();
-            onSubmit();
+            e.preventDefault()
+            onSubmit()
           }}
         >
           <Icon symbol="ok" />
@@ -27,11 +27,11 @@ class EditableButtons extends Component {
           <Icon symbol="ban-circle" />
         </button>
       </div>
-    );
+    )
   }
-};
+}
 EditableButtons.propTypes = {
   onClose: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired
-};
-export default EditableButtons;
+}
+export default EditableButtons

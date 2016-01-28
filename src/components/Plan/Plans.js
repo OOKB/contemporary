@@ -4,7 +4,6 @@ import OptionsBox from './OptionsBox'
 class Plans extends Component {
   constructor(props) {
     super(props)
-
     this.showStripeDialog = this.showStripeDialog.bind(this)
   }
   componentDidMount() {
@@ -44,7 +43,7 @@ Plans.propTypes = {
 }
 Plans.defaultProps = {
   config: {
-    image: 'http://dbox.cape.io/7192159/cape/contemporary/media/contemporary-neon-sq.jpg',
+    image: 'https://dbox.cape.io/7192159/cape/contemporary/media/contemporary-neon-sq.jpg',
     locale: 'auto',
     key: 'pk_test_tkGympU68Zs5EUNyvdXfu0Tj',
     name: 'Contemporary Museum',

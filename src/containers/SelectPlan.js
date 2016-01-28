@@ -11,7 +11,7 @@ function mapStateToProps(state) {
     plans.push({
       type: 'individual',
       name: 'Individual Membership',
-      options: sortBy(values(plan.individual), 'amount'),
+      options: values(plan.individual),
     })
   }
   if (plan.team) {

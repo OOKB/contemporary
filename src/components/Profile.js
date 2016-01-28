@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react'
 
 import connectTextField from './Editable/connectTextField'
+import Wrapper from './Editable/Wrapper'
 
 // Basic suggestion button.
 function Profile({ field, fields, profile }) {
@@ -10,7 +11,7 @@ function Profile({ field, fields, profile }) {
       <div>
         {
           fields.map(id => {
-            const Field = connectTextField('profile', id)
+            const Field = connectTextField('profile', id)(Wrapper)
             return <Field field={field[id]} value="kai" />
           })
         }

@@ -1,10 +1,10 @@
 import React, { Component, PropTypes } from 'react'
 import classNames from 'classnames'
 
-import getInputType from './input/getInputType'
+import Input from './input/Text'
+
 import EditableButtons from './Buttons'
 import Help from './Help'
-import Icon from './Icon'
 
 // Manage help text.
 // Bubble hasError (and value?) up.
@@ -16,20 +16,19 @@ class EditField extends Component {
       hasErrors: false,
       suggestion: '',
       help: '',
-      value: props.defaultValue
+      value: props.defaultValue,
     }
   }
 
   handleChange(result) {
-    const {onValidation, required} = this.props
-    const {hasErrors, breakPoint, value} = result
+    const { onValidation, required } = this.props
+    const { hasErrors, breakPoint, value } = result
     let errs = hasErrors
     let status = 'error'
     // get status.
     if (!hasErrors) {
       status = 'success'
-    }
-    else if (breakPoint === 'help') {
+    } else if (breakPoint === 'help') {
       status = 'warning'
     }
     if (!required && !value && errs) {
@@ -39,14 +38,14 @@ class EditField extends Component {
     // Pass status to parent.
     onValidation(status)
     // if (this.isMounted()) {}
-    this.setState({...result, hasErrors: errs})
+    this.setState({ ...result, hasErrors: errs })
   }
   handleSuggestion(newVal) {
-    this.setState({value: newVal})
+    this.setState({ value: newVal })
   }
   render() {
-    const {className, errorMessage, help, id, onSubmit, onClose, type, ...other} = this.props
-    const {suggestion, value, breakPoint, hasErrors} = this.state
+    const { className, errorMessage, help, id, onSubmit, onClose, type, ...other } = this.props
+    const { suggestion, value, breakPoint, hasErrors } = this.state
     const extraHelp = this.state.help
 
     let helpTxt = hasErrors ? errorMessage : help
@@ -55,7 +54,7 @@ class EditField extends Component {
     }
     let helpEl = false
     if (helpTxt || suggestion) {
-      helpEl =
+      helpEl = (
         <Help
           help={helpTxt}
           hasErrors={hasErrors}
@@ -63,9 +62,9 @@ class EditField extends Component {
           suggestion={suggestion}
           onChange={this.handleSuggestion.bind(this)}
         />
+      )
     }
     // Decide what component the input is.
-    const Input = getInputType(type)
 
     // let warningIcon = false
     // if (hasErrors) {
@@ -96,8 +95,9 @@ class EditField extends Component {
 }
 
 EditField.propTypes = {
+  defaultValue: PropTypes.any,
   onClose: PropTypes.func.isRequired,
-  onSubmit: PropTypes.func.isRequired
+  onSubmit: PropTypes.func.isRequired,
 }
 
 export default EditField

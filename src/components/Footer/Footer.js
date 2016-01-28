@@ -23,8 +23,10 @@ function Footer({blurb, social, sponsors}) {
               { blurb }
             </p>
             <div className="social four columns offset-by-four text-right">
-            { social && social.map(({ href, icon }) => (
-              <a href={href} className="darkblue"><i className={`fa fa-lg ${ icon }`} /></a>
+            { social && social.map(({ href, icon }, index) => (
+              <a key={index} href={href} className="darkblue">
+                <i className={`fa fa-lg ${ icon }`} />
+              </a>
               ))
             }
             </div>

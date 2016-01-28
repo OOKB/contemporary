@@ -9,8 +9,8 @@ function Footer({blurb, social, sponsors}) {
             <div className="sponsors twelve columns">
               <h6 className="mb0">Featured Sponsors</h6>
               <ul className="m0 list-reset">
-                { sponsors && sponsors.map(({ href, src }) => (
-                  <li><a href={href}><img src={src} /></a></li>
+                { sponsors && sponsors.map(({ href, src }, index) => (
+                  <li key={index}><a href={href}><img src={src} /></a></li>
                   ))
                 }
               </ul>

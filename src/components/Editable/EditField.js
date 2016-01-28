@@ -1,59 +1,59 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react'
 import classNames from 'classnames'
 
 import getInputType from './input/getInputType'
 import EditableButtons from './Buttons'
 import Help from './Help'
-import Icon from './Icon';
+import Icon from './Icon'
 
 // Manage help text.
 // Bubble hasError (and value?) up.
 
 class EditField extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       hasErrors: false,
       suggestion: '',
       help: '',
       value: props.defaultValue
-    };
+    }
   }
 
   handleChange(result) {
-    const {onValidation, required} = this.props;
-    const {hasErrors, breakPoint, value} = result;
-    let errs = hasErrors;
-    let status = 'error';
+    const {onValidation, required} = this.props
+    const {hasErrors, breakPoint, value} = result
+    let errs = hasErrors
+    let status = 'error'
     // get status.
     if (!hasErrors) {
-      status = 'success';
+      status = 'success'
     }
     else if (breakPoint === 'help') {
-      status = 'warning';
+      status = 'warning'
     }
     if (!required && !value && errs) {
-      errs = false;
-      status = null;
+      errs = false
+      status = null
     }
     // Pass status to parent.
-    onValidation(status);
+    onValidation(status)
     // if (this.isMounted()) {}
-    this.setState({...result, hasErrors: errs});
+    this.setState({...result, hasErrors: errs})
   }
   handleSuggestion(newVal) {
-    this.setState({value: newVal});
+    this.setState({value: newVal})
   }
   render() {
-    const {className, errorMessage, help, id, onSubmit, onClose, type, ...other} = this.props;
-    const {suggestion, value, breakPoint, hasErrors} = this.state;
-    const extraHelp = this.state.help;
+    const {className, errorMessage, help, id, onSubmit, onClose, type, ...other} = this.props
+    const {suggestion, value, breakPoint, hasErrors} = this.state
+    const extraHelp = this.state.help
 
-    let helpTxt = hasErrors ? errorMessage : help;
+    let helpTxt = hasErrors ? errorMessage : help
     if (extraHelp) {
-      helpTxt += ' ' + extraHelp;
+      helpTxt += ' ' + extraHelp
     }
-    let helpEl = false;
+    let helpEl = false
     if (helpTxt || suggestion) {
       helpEl =
         <Help
@@ -65,9 +65,9 @@ class EditField extends Component {
         />
     }
     // Decide what component the input is.
-    const Input = getInputType(type);
+    const Input = getInputType(type)
 
-    // let warningIcon = false;
+    // let warningIcon = false
     // if (hasErrors) {
     //   warningIcon = <Icon symbol="remove" className="form-control-feedback" />
     // }
@@ -91,13 +91,13 @@ class EditField extends Component {
         </div>
         {helpEl}
       </div>
-    );
+    )
   }
-};
+}
 
 EditField.propTypes = {
   onClose: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired
-};
+}
 
-export default EditField;
+export default EditField

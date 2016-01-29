@@ -9,8 +9,7 @@ const styles = {
     borderBottom: '1px dashed currentColor',
     borderRadius: 0,
     fontSize: '1rem',
-    paddingLeft: 0,
-    paddingRight: 0,
+    padding: '.25em',
     textDecoration: 'none',
     ':hover': {
       color: 'blue',

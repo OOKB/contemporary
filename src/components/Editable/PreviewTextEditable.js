@@ -6,9 +6,7 @@ const styles = {
   base: {
     background: 'transparent',
     border: 'none',
-    borderBottomColor: currentColor,
-    borderBottomStyle: 'dashed',
-    borderBottomWidth: '1px',
+    borderBottom: '1px dashed currentColor',
     borderRadius: 0,
     paddingLeft: 0,
     paddingRight: 0,

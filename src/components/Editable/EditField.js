@@ -13,31 +13,13 @@ class EditField extends Component {
 
   render() {
     const {
-      className, errorMessage, hasErrors, help, id,
+      className, errorMessage, hasError, help, id,
       onBlur, onChange, onSubmit, onClose, suggestion, type,
       value, ...other
     } = this.props
 
-    const helpTxt = hasErrors ? errorMessage : help
-
-    let helpEl = false
-    if (helpTxt || suggestion) {
-      helpEl = (
-        <Help
-          help={helpTxt}
-          hasErrors={hasErrors}
-          id={id}
-          suggestion={suggestion}
-          onChange={this.handleSuggestion.bind(this)}
-        />
-      )
-    }
-    // Decide what component the input is.
-
-    // let warningIcon = false
-    // if (hasErrors) {
-    //   warningIcon = <Icon symbol="remove" className="form-control-feedback" />
-    // }
+    const helpTxt = hasError ? errorMessage : help
+    console.log(helpTxt)
 
     return (
       <div className={classNames('editable-form col-md-9', className)}>
@@ -52,12 +34,19 @@ class EditField extends Component {
             value={value}
           />
           <EditableButtons
-            disabled={hasErrors}
+            disabled={hasError}
             onSubmit={onSubmit}
             onClose={onClose}
           />
         </div>
-        {helpEl}
+        { (helpTxt || suggestion) &&
+          <Help
+            help={helpTxt}
+            hasErrors={hasError}
+            id={id}
+            suggestion={suggestion}
+          />
+        }
       </div>
     )
   }
@@ -67,6 +56,7 @@ EditField.propTypes = {
   className: PropTypes.string,
   defaultValue: PropTypes.any,
   errorMessage: PropTypes.string,
+  hasError: PropTypes.bool,
   id: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   onClose: PropTypes.func.isRequired,

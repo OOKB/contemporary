@@ -159,6 +159,7 @@ export function getState(formState, formId, fieldId, validate) {
   return derivedState(fieldState, validate)
 }
 export function getValue(thing) {
+  if (!thing) return thing
   if (thing.target && thing.target.value) {
     return thing.target.value
   }

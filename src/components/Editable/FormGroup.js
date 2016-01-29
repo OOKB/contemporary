@@ -36,13 +36,11 @@ FormGroup.propTypes = {
   editable: PropTypes.bool.isRequired,
   id: PropTypes.string.isRequired,
   label: PropTypes.string,
-  hasErrors: PropTypes.bool,
   required: PropTypes.bool,
   status: PropTypes.string,
 }
 
 FormGroup.defaultProps = {
-  hasErrors: false,
 }
 
 export default FormGroup

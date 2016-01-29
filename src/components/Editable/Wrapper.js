@@ -19,6 +19,7 @@ function Wrapper(props) {
         open &&
         <EditField
           id={id}
+          key={id}
           onBlur={onBlur}
           onChange={onChange}
           onClose={onClose}

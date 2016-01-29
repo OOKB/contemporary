@@ -158,7 +158,12 @@ export function getState(formState, formId, fieldId) {
   const fieldState = getFieldState(formState, prefix)
   return derivedState(fieldState)
 }
-
+export function getValue(thing) {
+  if (thing.target && thing.target.value) {
+    return thing.target.value
+  }
+  return thing
+}
 export function getActions(formId, fieldId) {
   function createAction(type, payload, error) {
     const meta = { prefix: getPrefix(formId, fieldId) }
@@ -170,8 +175,8 @@ export function getActions(formId, fieldId) {
     if (payload) action.payload = payload
     return action
   }
-  function blur() {
-    return createAction(BLUR)
+  function blur(eventOrValue) {
+    return createAction(BLUR, getValue(eventOrValue))
   }
   // The field has been closed.
   function close() {
@@ -185,11 +190,11 @@ export function getActions(formId, fieldId) {
   function open(initalValue) {
     return createAction(OPEN, { fieldId, initalValue })
   }
-  function update(value) {
-    return createAction(UPDATE, value)
+  function update(eventOrValue) {
+    return createAction(UPDATE, getValue(eventOrValue))
   }
-  function submit(value) {
-    return createAction(SUBMIT, value)
+  function submit(eventOrValue) {
+    return createAction(SUBMIT, getValue(eventOrValue))
   }
   function validating() {
     return createAction(TOGGLE_VALIDATING)

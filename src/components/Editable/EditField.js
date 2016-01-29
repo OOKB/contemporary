@@ -10,19 +10,7 @@ import Help from './Help'
 // Bubble hasError (and value?) up.
 
 class EditField extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      hasErrors: false,
-      suggestion: '',
-      help: '',
-      value: props.defaultValue,
-    }
-  }
 
-  handleSuggestion(newVal) {
-    this.setState({ value: newVal })
-  }
   render() {
     const {
       className, errorMessage, hasErrors, help, id,
@@ -54,7 +42,7 @@ class EditField extends Component {
     return (
       <div className={classNames('editable-form col-md-9', className)}>
         <div className="editable-row">
-          <Input
+          <input
             {...other}
             className="form-control"
             id={id}

@@ -83,8 +83,9 @@ export default function reducer(_state = defaultFormState, action) {
     case OPEN:
       newState = state.merge({
         focus: true,
-        fieldId: action.payload.initalValue,
-        initalValue: action.payload.initalValue,
+        fieldId: action.payload.fieldId,
+        initalValue: state.initalValue || action.payload.initalValue,
+        value: state.value || action.payload.initalValue,
       })
       break
     case SAVE:

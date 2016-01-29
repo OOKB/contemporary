@@ -13,11 +13,16 @@ function Wrapper(props) {
   return (
     <Editable {...props}>
       { !open &&
-        <PreviewText editable={editable} onClick={partial(onOpen, value)} />
+        <PreviewText
+          editable={editable}
+          onClick={partial(onOpen, value)}
+          value={value}
+        />
       }
       {
         open &&
         <EditField
+          defaultValue={value}
           id={id}
           key={id}
           onBlur={onBlur}

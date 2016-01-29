@@ -30,7 +30,6 @@ class InputClear extends Component {
 }
 
 InputClear.propTypes = {
-  color: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
   style: PropTypes.object,

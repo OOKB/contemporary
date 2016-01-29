@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import Icon from '../Icon'
-
+import InputClear from './InputClear'
 // Simple wrapper around an input field.
 // 1. Checks for changes every 300ms. Useful for safari autocomplete.
 // 2. Also has a clear button that changes input value to empty string.
@@ -93,14 +93,7 @@ class Input extends Component {
           value={value}
         />
         { value &&
-          <button
-            type="button"
-            title="Clear input value"
-            className="input-clear-x btn btn-default btn-xs"
-            onClick={this.clearInputValue}
-          >
-            <Icon symbol="remove" />
-          </button>
+          <InputClear onClick={this.clearInputValue} />
         }
       </div>
     )

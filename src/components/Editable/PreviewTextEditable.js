@@ -8,9 +8,19 @@ const styles = {
     border: 'none',
     borderBottom: '1px dashed currentColor',
     borderRadius: 0,
+    fontSize: '1rem',
     paddingLeft: 0,
     paddingRight: 0,
     textDecoration: 'none',
+    ':hover': {
+      color: 'blue',
+    },
+    ':focus': {
+      outline: 'none',
+    },
+    ':active': {
+      outline: 'none',
+    },
   },
 }
 

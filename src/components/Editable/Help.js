@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react'
 import classNames from 'classnames'
 
 // A simple span that displays help text.
@@ -7,17 +7,17 @@ import classNames from 'classnames'
 class Help extends Component {
 
   render() {
-    const {help, hasErrors, id, suggestion, onChange} = this.props;
+    const { help, hasErrors, id, suggestion, onChange } = this.props
 
     const className = classNames({
       'help-block': true,
-      'validation-message': hasErrors
-    });
+      'validation-message': hasErrors,
+    })
 
-    let suggButton = false;
+    let suggButton = false
 
     if (suggestion) {
-      const preTxt = 'Do you mean ';
+      const preTxt = 'Do you mean '
       const postTxt = '? '
 
       suggButton = <span>
@@ -34,14 +34,14 @@ class Help extends Component {
         {suggButton}
         {help}
       </span>
-    );
+    )
   }
 }
 
 Help.propTypes = {
   help: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
-  hasErrors: PropTypes.bool
+  hasErrors: PropTypes.bool,
 }
 
-export default Help;
+export default Help

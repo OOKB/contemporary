@@ -4,10 +4,10 @@ import classNames from 'classnames'
 class Icon extends Component {
   render() {
     const {symbol, className, hidden} = this.props;
-    const classStr = `glyphicon glyphicon-${symbol}`
+    const classStr = `fa fa-${symbol}`
 
     return (
-      <span
+      <i
         className={classNames(classStr, className)}
         aria-hidden={hidden}
       />

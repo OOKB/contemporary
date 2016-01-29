@@ -9,7 +9,7 @@ class EditableButtons extends Component {
     return (
       <div className="editable-buttons">
         <button
-          className="btn btn-sm editable-submit"
+          className="editable-submit"
           disabled={disabled}
           type="submit"
           onClick={(e) => {
@@ -18,15 +18,15 @@ class EditableButtons extends Component {
           }}
         >
           <span>Save</span>
-          <Icon symbol="ok" />
+          <Icon symbol="check" />
         </button>
         <button
-          className="btn btn-sm editable-close"
+          className="editable-close"
           type="button"
           onClick={onClose}
         >
           <span>Cancel</span>
-          <Icon symbol="ban-circle" />
+          <Icon symbol="ban" />
         </button>
       </div>
     )

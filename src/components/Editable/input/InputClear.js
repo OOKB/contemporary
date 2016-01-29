@@ -11,6 +11,10 @@ const styles = {
     border: 'none',
     background: 'transparent',
     width: '1rem',
+    color: 'currentColor',
+    ':hover': {
+      color: 'red',
+    },
   },
 }
 
@@ -32,12 +36,6 @@ InputClear.propTypes = {
   style: PropTypes.object,
 }
 InputClear.defaultProps = {
-  style: {
-    color: 'currentColor',
-    ':hover': {
-      color: 'red',
-    },
-  },
   title: 'Clear input value',
 }
 export default radium(InputClear)

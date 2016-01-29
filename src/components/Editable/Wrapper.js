@@ -18,7 +18,7 @@ function Wrapper(props) {
         <PreviewText
           editable={editable}
           onClick={handleOpen}
-          value={value}
+          value={form.value || value}
         />
       }
       {

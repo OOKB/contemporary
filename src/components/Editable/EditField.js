@@ -19,7 +19,6 @@ class EditField extends Component {
     } = this.props
 
     const helpTxt = hasError ? errorMessage : help
-    console.log(helpTxt)
 
     return (
       <div className={classNames('editable-form col-md-9', className)}>
@@ -58,6 +57,7 @@ EditField.propTypes = {
   errorMessage: PropTypes.string,
   hasError: PropTypes.bool,
   id: PropTypes.string.isRequired,
+  onBlur: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
   onClose: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,

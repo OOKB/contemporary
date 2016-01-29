@@ -65,6 +65,7 @@ export default function reducer(_state = defaultFormState, action) {
       newState = state.set('error', defaultState.error)
       break
     case CLOSE:
+      // Should close also change value to initialValue?
       newState = state.merge({ blur: defaultState.blur, focus: defaultState.focus })
       break
     case ERROR:
@@ -198,7 +199,11 @@ export function getActions(formId, fieldId) {
   }
   // Submit, close, save.
   function submit(eventOrValue) {
-    return createAction(SUBMIT, getValue(eventOrValue))
+    return (dispatch, getStoreState) => {
+      // @TODO Fix this getState().form BS. How do we known where the reducer is mounted?
+      const value = getValue(eventOrValue) || getState(getStoreState().form, formId, fieldId).value
+      return dispatch(createAction(SUBMIT, value))
+    }
   }
   // Once on async validation. Once on result.
   function validating() {

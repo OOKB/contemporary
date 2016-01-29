@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react'
-import partial from 'lodash/partial'
 
 import Editable from './Editable'
 import PreviewText from './PreviewText'
@@ -10,12 +9,15 @@ function Wrapper(props) {
   const { onBlur, onChange, onClose, onOpen, onSubmit } = action
   const { editable, id, type } = field
   const { errorMessage, open } = form
+  function handleOpen() {
+    onOpen(form.value || value)
+  }
   return (
     <Editable {...props}>
       { !open &&
         <PreviewText
           editable={editable}
-          onClick={partial(onOpen, value)}
+          onClick={handleOpen}
           value={value}
         />
       }

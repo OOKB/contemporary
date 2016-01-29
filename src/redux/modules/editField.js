@@ -158,7 +158,12 @@ export function getState(formState, formId, fieldId) {
   const fieldState = getFieldState(formState, prefix)
   return derivedState(fieldState)
 }
-
+export function getValue(thing) {
+  if (thing.target && thing.target.value) {
+    return thing.target.value
+  }
+  return thing
+}
 export function getActions(formId, fieldId) {
   function createAction(type, payload, error) {
     const meta = { prefix: getPrefix(formId, fieldId) }
@@ -170,14 +175,14 @@ export function getActions(formId, fieldId) {
     if (payload) action.payload = payload
     return action
   }
-  function blur() {
-    return createAction(BLUR)
+  function blur(eventOrValue) {
+    return createAction(BLUR, getValue(eventOrValue))
   }
   // The field has been closed.
   function close() {
     return createAction(CLOSE)
   }
-
+  // When a user clicks on a field to edit it.
   function focus() {
     return createAction(FOCUS)
   }
@@ -185,27 +190,29 @@ export function getActions(formId, fieldId) {
   function open(initalValue) {
     return createAction(OPEN, { fieldId, initalValue })
   }
-  function update(value) {
-    return createAction(UPDATE, value)
+  // On every change of field value.
+  function update(eventOrValue) {
+    return createAction(UPDATE, getValue(eventOrValue))
   }
-  function submit(value) {
-    return createAction(SUBMIT, value)
+  // Submit, close, save.
+  function submit(eventOrValue) {
+    return createAction(SUBMIT, getValue(eventOrValue))
   }
+  // Once on async validation. Once on result.
   function validating() {
     return createAction(TOGGLE_VALIDATING)
   }
   // Object of actions.
   return {
-    blur,
     // Close the field. Reset all values to default.
     clear: () => createAction(CLEAR),
     // Not sure when you would use this.
     clearError: () => createAction(CLEAR_ERROR),
     // Async error result. Sync errors should be calculated in container. See derivedState().
     error: (value) => createAction(ERROR, value, true),
-    // When a user clicks on a field to edit it.
-    focus,
+    handleBlur: blur,
     handleChange: update,
+    handleFocus: focus,
     handleOpen: open,
     handleSubmit: submit,
     // Set metadata about the editing process. If you need a place to put extra information.
@@ -221,12 +228,7 @@ export function getActions(formId, fieldId) {
     save: () => createAction(SAVE),
     // Has been saved on server.
     saved: () => createAction(SAVED),
-    // Submit, close, save.
-    submit,
     toggleValidating: validating,
-    // On every change of field value.
-    update,
-    // Once on async validation. Once on result.
     validating,
   }
 }

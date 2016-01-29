@@ -34,12 +34,13 @@ class EditableField extends Component {
   render() {
     const { children, field, form } = this.props
     const { editable, label, id, required } = field
-    const { status } = form
+    const { saving, status } = form
 
     return (
       <div className="editable-form form-horizontal" onSubmit={this.handleSubmit}>
         <FormGroup id={id} label={label} editable={editable} required={required} status={status}>
           { children }
+          { saving && <span>Saving...</span>}
         </FormGroup>
       </div>
     )

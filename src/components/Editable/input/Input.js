@@ -6,23 +6,28 @@ import Icon from '../Icon'
 // 2. Also has a clear button that changes input value to empty string.
 
 class Input extends Component {
+  constructor(props) {
+    super(props)
+    this.handleChange = this.handleChange.bind(this)
+    this.clearInputValue = this.clearInputValue.bind(this)
+    this.handleKeyDown = this.handleKeyDown.bind(this)
+  }
 
   componentDidMount() {
     // When initialized trigger the tick function every interval.
     this.interval = setInterval(() => this.tick(), 300)
   }
+  // Only update when the props value changes.
+  shouldComponentUpdate(nextProps) {
+    return nextProps.value !== this.props.value
+  }
   componentWillUnmount() {
     clearInterval(this.interval)
   }
 
-  // Only update when the props value changes.
-  shouldComponentUpdate(nextProps, nextState) {
-    return nextProps.value !== this.props.value
-  }
-
   // The value has changed. Do stuff.
   changeValue(newValue) {
-    const {value, onChange} = this.props
+    const { value, onChange } = this.props
     // When it's a new value send it to parent.
     if (newValue !== value) {
       onChange(newValue)
@@ -30,24 +35,12 @@ class Input extends Component {
   }
 
   // Extract new value from change event.
-  handleChange(e) {
-    const newValue = e.target.value
+  handleChange(event) {
+    const newValue = event.target.value
     // Pass it along.
     this.changeValue(newValue)
   }
-  handleBlur(e) {
-    const newValue = e.target.value
-    const { onClose } = this.props
-    // Save value.
-    if (newValue) {
-      // submit.
-    }
-    // Empty value. Just close the form.
-    else {
-      onClose()
-    }
-  }
-  // The function that is called every interval.
+
   tick() {
     const { id } = this.props
     // Get the form field value. Not using refs so it's usable with Redux...
@@ -59,43 +52,33 @@ class Input extends Component {
     }
   }
   clearInputValue() {
-    //console.log('clear')
+    // console.log('clear')
     this.changeValue('')
   }
-  handleKeyDown(e) {
-    const {onClose, onNext} = this.props
-    switch (e.keyCode) {
+  handleKeyDown(event) {
+    const { onClose, onNext } = this.props
+    switch (event.keyCode) {
       // escape key.
       case 27:
         if (onClose) {
-          e.preventDefault()
+          event.preventDefault()
           onClose()
         }
         break
       case 9:
         if (onNext) {
-          e.preventDefault()
+          event.preventDefault()
           onNext()
         }
+        break
       default:
+        break
     }
     // return 13
     // tab 9
   }
   render() {
-    const {id, onChange, value, ...other} = this.props
-    let clearEl = false
-    if (value) {
-      clearEl =
-        <button
-          type="button"
-          title="Clear input value"
-          className="input-clear-x btn btn-default btn-xs"
-          onClick={this.clearInputValue.bind(this)}
-        >
-          <Icon symbol="remove" />
-        </button>
-    }
+    const { id, onChange, value, ...other } = this.props
 
     return (
       // Is a blur the same as a save?
@@ -104,13 +87,21 @@ class Input extends Component {
           {...other}
           autoFocus
           aria-describedby={`${id}-helpBlock`}
-          onKeyDown={this.handleKeyDown.bind(this)}
-          onChange={this.handleChange.bind(this)}
-          onBlur={this.handleBlur.bind(this)}
+          onKeyDown={this.handleKeyDown}
+          onChange={this.handleChange}
           id={id}
           value={value}
         />
-        {clearEl}
+        { value &&
+          <button
+            type="button"
+            title="Clear input value"
+            className="input-clear-x btn btn-default btn-xs"
+            onClick={this.clearInputValue}
+          >
+            <Icon symbol="remove" />
+          </button>
+        }
       </div>
     )
   }
@@ -118,6 +109,8 @@ class Input extends Component {
 
 Input.propTypes = {
   onChange: PropTypes.func.isRequired,
+  onClose: PropTypes.func,
+  onNext: PropTypes.func,
   // Needed in place of refs.
   id: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,

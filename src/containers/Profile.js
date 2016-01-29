@@ -3,7 +3,7 @@ import mapValues from 'lodash/mapValues'
 import merge from 'lodash/merge'
 
 import Component from '../components/Profile'
-import fieldValidation from '../utils/formValidation'
+import { fieldValidation } from '../utils/formValidation'
 
 function mapStateToProps(state) {
   const id = {

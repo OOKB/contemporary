@@ -32,6 +32,8 @@ class FormGroup extends Component {
 
 FormGroup.propTypes = {
   children: PropTypes.node.isRequired,
+  className: PropTypes.string,
+  editable: PropTypes.bool.isRequired,
   id: PropTypes.string.isRequired,
   label: PropTypes.string,
   hasErrors: PropTypes.bool,

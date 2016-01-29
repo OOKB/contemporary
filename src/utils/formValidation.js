@@ -35,7 +35,7 @@ export const validatorToFunc = memoize(_validatorToFunc)
 
 // Return any errors.
 export function fieldValidation(validators) {
-  if (!validators.length) {
+  if (!validators || !validators.length) {
     return undefined
   }
   // Turn each string/array into a validation function.

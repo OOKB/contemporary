@@ -5,17 +5,14 @@ import radium from 'radium'
 const styles = {
   base: {
     background: 'transparent',
-    backgroundColor: 'none',
-    backgroundImage: 'none',
     border: 'none',
-    textDecoration: 'none',
+    borderBottomColor: currentColor,
     borderBottomStyle: 'dashed',
     borderBottomWidth: '1px',
-    // borderBottomColor: currentColor,
     borderRadius: 0,
-    padding: 0,
-    paddingTop: '.5em',
-    paddingBottom: '.1em',
+    paddingLeft: 0,
+    paddingRight: 0,
+    textDecoration: 'none',
   },
 }
 

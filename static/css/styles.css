@@ -132,3 +132,14 @@ footer .social a {
   background-color: rgba(0,75,124,.15);
   outline: rgba(0,75,124,.15);
 }
+
+/**
+{
+    border: none;
+    border-bottom: 1px dashed currentColor;
+    background: transparent;
+    font-size: 1rem;
+    padding-left: 0;
+    padding-right: 0;
+}
+**/

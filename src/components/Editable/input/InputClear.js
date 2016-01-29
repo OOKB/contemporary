@@ -34,7 +34,7 @@ InputClear.propTypes = {
 }
 InputClear.defaultProps = {
   style: {
-    color: 'black',
+    color: 'currentColor',
     ':hover': {
       color: 'red',
     },

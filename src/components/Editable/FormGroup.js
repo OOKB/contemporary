@@ -4,26 +4,9 @@ import classNames from 'classnames'
 
 // Editable formGroup.
 
-const defaultStyle = {
-  color: 'blue',
-  background: 'lightblue',
-}
-const errorStyle = {
-  color: 'red',
-  background: 'lightred',
-}
-const successStyle = {
-  color: 'forestgreen',
-  background: 'lightgreen',
-}
-const warningStyle = {
-  color: 'yellow',
-  background: 'lightyellow',
-}
-
 class FormGroup extends Component {
   render() {
-    const { label, status, id, required, children, editable, className, style } = this.props
+    const { label, status, id, required, children, editable, className } = this.props
     const cssClasses = {
       editable,
       'form-group': true,
@@ -34,7 +17,7 @@ class FormGroup extends Component {
     }
 
     return (
-      <div className={classNames(cssClasses, className)} style={[ defaultStyle, style ]} id={`${id}-group`}>
+      <div className={classNames(cssClasses, className)} id={`${id}-group`}>
         { label &&
           <label className="control-label col-md-3" htmlFor={ id }>
             { label }
@@ -55,7 +38,6 @@ FormGroup.propTypes = {
   label: PropTypes.string,
   required: PropTypes.bool,
   status: PropTypes.string,
-  style: PropTypes.object,
 }
 
 FormGroup.defaultProps = {

@@ -42,7 +42,7 @@ class EditField extends Component {
     return (
       <div className={classNames('editable-form col-md-9', className)}>
         <div className="editable-row">
-          <input
+          <Input
             {...other}
             className="form-control"
             id={id}
@@ -53,7 +53,7 @@ class EditField extends Component {
           />
           <EditableButtons
             disabled={hasErrors}
-            onSubmit={() => {onSubmit(value)}}
+            onSubmit={onSubmit}
             onClose={onClose}
           />
         </div>

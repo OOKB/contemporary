@@ -50,7 +50,7 @@ export default function reducer(_state = defaultFormState, action) {
     prefix = prefix.split('.')
   }
   if (!prefix || !action.type || !typeIndex[action.type]) return _state
-  console.log('process form action')
+
   // Used during rehydration.
   const formState = _state.asMutable ? _state : immutable(_state)
   // Get the state slice we need for this action.
@@ -153,10 +153,10 @@ function getPrefix(formId, fieldId) {
   return [ formId, fieldId ]
 }
 
-export function getState(formState, formId, fieldId) {
+export function getState(formState, formId, fieldId, validate) {
   const prefix = getPrefix(formId, fieldId)
   const fieldState = getFieldState(formState, prefix)
-  return derivedState(fieldState)
+  return derivedState(fieldState, validate)
 }
 export function getValue(thing) {
   if (thing.target && thing.target.value) {

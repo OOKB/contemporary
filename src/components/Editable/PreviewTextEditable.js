@@ -5,7 +5,9 @@ import radium from 'radium'
 const styles = {
   base: {
     background: 'transparent',
-    border: 'none',
+    borderLeft: 'none',
+    borderRight: 'none',
+    borderTop: 'none',
     borderBottom: '1px dashed currentColor',
     borderRadius: 0,
     fontSize: '1rem',

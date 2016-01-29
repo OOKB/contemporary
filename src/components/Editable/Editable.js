@@ -38,7 +38,13 @@ class EditableField extends Component {
 
     return (
       <div className="editable-form form-horizontal" onSubmit={this.handleSubmit}>
-        <FormGroup id={id} label={label} editable={editable} required={required} status={status}>
+        <FormGroup
+          id={id}
+          label={label}
+          editable={editable}
+          required={required}
+          status={status}
+        >
           { children }
           { saving && <span>Saving...</span>}
         </FormGroup>

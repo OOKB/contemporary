@@ -8,7 +8,7 @@ function Wrapper(props) {
   const { action, field, form, value } = props
   const { onBlur, onChange, onClose, onOpen, onSubmit } = action
   const { editable, id, type } = field
-  const { errorMessage, open } = form
+  const { errorMessage, hasError, open } = form
   function handleOpen() {
     onOpen(form.value || value)
   }
@@ -18,7 +18,7 @@ function Wrapper(props) {
         <PreviewText
           editable={editable}
           onClick={handleOpen}
-          value={value}
+          value={form.value || value}
         />
       }
       {
@@ -27,6 +27,7 @@ function Wrapper(props) {
           defaultValue={value}
           id={id}
           key={id}
+          hasError={hasError}
           onBlur={onBlur}
           onChange={onChange}
           onClose={onClose}

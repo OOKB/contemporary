@@ -93,3 +93,42 @@ footer .social a {
   font-size: 1em;
   padding: 0 0 .25em 0;
 }
+
+.form-group::after,
+.editable-row::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+.col-md-3, .col-md-9, .editable-input, .editable-buttons {
+  float: left;
+}
+
+.editable-input input {
+  font-size: 1em;
+}
+
+.col-md-3 {
+  width: calc(100% / 12 * 3);
+  padding-left: .75em;
+  padding-right: .75em;
+}
+
+.col-md-9 {
+  width: calc(100% / 12 * 9);
+}
+
+.editable-input input {
+  font-size: 1em;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(0,75,124,1);
+  padding: .25em;
+}
+
+.editable-input input:active,
+.editable-input input:focus {
+  background-color: rgba(0,75,124,.15);
+  outline: rgba(0,75,124,.15);
+}

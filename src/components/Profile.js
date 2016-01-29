@@ -10,10 +10,9 @@ const Field = connectTextField({ formId: 'profile' })(Wrapper)
 
 // Basic suggestion button.
 function Profile({ field, fields, profile }) {
-
   return (
     <div>
-      <h2>Form</h2>
+      <h2>Profile</h2>
       <div>
         {
           fields.map(id => <Field key={id} field={field[id]} value={profile[id]} id={id} />)
@@ -30,6 +29,7 @@ Profile.propTypes = {
 }
 Profile.defaultProps = {
   profile: {
+    id: 'kai',
     email: 'kai@cape.io',
     name: 'kai curry',
   },

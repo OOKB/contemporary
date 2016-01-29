@@ -9,15 +9,16 @@ export default function connectTextField(options = {}) {
   function getInfo(ownProps) {
     return {
       formId: ownProps.formId || options.formId || 'default',
-      fieldId: ownProps.id || ownProps.fieldId || options.fieldId || 'NO_FIELD_ID',
+      fieldId: ownProps.field.id || ownProps.fieldId || options.fieldId || 'NO_FIELD_ID',
+      validate: ownProps.field.validate,
     }
   }
   // Pass in a component and it will get connected for you.
   return Component => {
     function mapStateToProps(state, ownProps) {
-      const { formId, fieldId } = getInfo(ownProps)
+      const { formId, fieldId, validate } = getInfo(ownProps)
       return {
-        form: getState(state.form, formId, fieldId),
+        form: getState(state.form, formId, fieldId, validate),
       }
     }
     function mapDispatchToProps(dispatch, ownProps) {

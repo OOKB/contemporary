@@ -5,8 +5,10 @@ import radium from 'radium'
 const styles = {
   base: {
     background: 'transparent',
-    border: 'none',
+    borderTop: 'none',
+    borderRight: 'none',
     borderBottom: '1px dashed currentColor',
+    borderLeft: 'none',
     borderRadius: 0,
     fontSize: '1rem',
     padding: '.25em',

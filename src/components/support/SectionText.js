@@ -1,5 +1,7 @@
 import React, { PropTypes } from 'react'
 
+import PlanText from './PlanText'
+
 function SectionText({ sectionName, sectionBlurb, memberAlready, featureButtons, individualFeatures, teamFeatures, value, onClick }) {
   return (
     <div>

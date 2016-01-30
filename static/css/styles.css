@@ -2,6 +2,11 @@ html {
   margin: 0;
 }
 
+body {
+  margin:0;
+  padding: 0;
+}
+
 /** fixing a footer problem **/
 footer .social a {
   display: inline-block;
@@ -132,14 +137,3 @@ footer .social a {
   background-color: rgba(0,75,124,.15);
   outline: rgba(0,75,124,.15);
 }
-
-/**
-{
-    border: none;
-    border-bottom: 1px dashed currentColor;
-    background: transparent;
-    font-size: 1rem;
-    padding-left: 0;
-    padding-right: 0;
-}
-**/

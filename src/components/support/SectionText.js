@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 
-function SectionText({ sectionName, sectionBlurb, memberAlready, featureButtons, individualFeatures, teamFeatures, }) {
+function SectionText({ sectionName, sectionBlurb, memberAlready, featureButtons, individualFeatures, teamFeatures, value, onClick }) {
   return (
     <div>
       <p>
@@ -10,6 +10,7 @@ function SectionText({ sectionName, sectionBlurb, memberAlready, featureButtons,
         { featureButtons && featureButtons.map(({ planType, color }, index) => (
           <button
             key={index}
+            onClick={ onClick }
             className={`mr1 border-button ${planType}-plan ${color}`}
             >
               Learn more about { planType } membership
@@ -17,9 +18,7 @@ function SectionText({ sectionName, sectionBlurb, memberAlready, featureButtons,
           ))
         }
       </p>
-      <div>
-        <p>SHOW FEATURES HERE FOR EACH MEMBERSHIP LEVEL WHEN YOU CLICK THE ABOVE BUTTONS</p>
-      </div>
+      <PlanText teamFeatures={teamFeatures} individualFeatures={individualFeatures} />
       <p dangerouslySetInnerHTML={{ __html: memberAlready }}/>
     </div>
   )
@@ -34,6 +33,8 @@ SectionText.propTypes = {
   teamFeatures: PropTypes.array.isRequired,
   planType: PropTypes.string.isRequired,
   color: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
 }
 SectionText.defaultProps = {
   sectionName: 'SectionText',

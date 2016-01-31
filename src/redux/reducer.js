@@ -3,8 +3,9 @@ import merge from 'lodash/merge'
 import { combineReducers } from 'redux'
 
 import db from './modules/db'
-import socket from './modules/socket'
 import form from './modules/editField'
+import socket from './modules/socket'
+import stripe from './modules/stripe'
 // Updates an entity cache in response to any action with response.entities.
 // Define our default entities collection database.
 const defaultEntityState = {}
@@ -38,6 +39,7 @@ const rootReducer = combineReducers({
   form,
   id,
   socket,
+  stripe,
 })
 
 export default rootReducer

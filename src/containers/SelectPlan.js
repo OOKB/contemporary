@@ -1,6 +1,9 @@
+import { compose } from 'redux'
 import { connect } from 'react-redux'
 import sortBy from 'lodash/sortBy'
 import values from 'lodash/values'
+
+import stripe from './stripe'
 import Component from '../components/Support/Support'
 // Redux connections.
 
@@ -23,8 +26,15 @@ function mapStateToProps(state) {
   }
   return {
     plans,
+    stripe: {
+      panelLabel: 'Join Now',
+    },
   }
 }
+
 // const mapDispatchToProps = {
 // }
-export default connect(mapStateToProps)(Component)
+export default compose(
+  connect(mapStateToProps),
+  stripe(),
+)(Component)

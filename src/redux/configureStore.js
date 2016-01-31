@@ -1,5 +1,6 @@
 // Redux.
 import { applyMiddleware, createStore, compose } from 'redux'
+import defaults from 'lodash/defaults'
 // Redux Middleware.
 // Allow function action creators.
 import thunk from 'redux-thunk'
@@ -9,6 +10,7 @@ import thunk from 'redux-thunk'
 import createSocketMiddleware from './middleware/socket'
 const socket = createSocketMiddleware()
 
+import defaultState from './defaultState'
 // Redux Reducers.
 // Our reducer index.
 import rootReducer from './reducer'
@@ -31,8 +33,8 @@ const finalCreateStore = compose(
 
 // Configure and create Redux store.
 // Allow the function to accept an initialState object.
-export default function configureStore(initialState) {
-  const store = finalCreateStore(rootReducer, initialState)
+export default function configureStore(initialState = {}) {
+  const store = finalCreateStore(rootReducer, defaults(initialState, defaultState))
 
   if (module.hot) {
     // Enable Webpack hot module replacement for reducers

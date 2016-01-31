@@ -3,11 +3,11 @@ import OptionsBox from './OptionsBox'
 
 class Plans extends Component {
   render() {
-    const { plans } = this.props
+    const { plans, stripeAction } = this.props
     return (
       <div>
         { plans && plans.map(plan =>
-          <OptionsBox key={plan.type} {...plan} onClick={this.showStripeDialog} />
+          <OptionsBox key={plan.type} {...plan} onClick={stripeAction.open} />
         )}
       </div>
     )
@@ -19,7 +19,6 @@ Plans.propTypes = {
   stripeAction: PropTypes.object.isRequired,
   stripeConfig: PropTypes.object.isRequired,
   stripeState: PropTypes.object.isRequired,
-  token: PropTypes.func.isRequired,
 }
 Plans.defaultProps = {
 }

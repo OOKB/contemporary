@@ -1,12 +1,13 @@
 import React, { PropTypes } from 'react'
 
 // Basic suggestion button.
-function Option({ name, amount, onClick }) {
+function Option({ id, name, amount, onClick }) {
   const price = `$${amount / 100}`
   function handleClick() {
     onClick({
       amount,
       description: name,
+      subscriptionId: id,
     })
   }
   return (

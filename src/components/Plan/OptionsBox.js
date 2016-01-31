@@ -5,7 +5,7 @@ import Option from './Option'
 function OptionsBox({ name, type, options, onClick }) {
   return (
     <div className={`six columns ${type}-plan`}>
-      <div className="inner  white">
+      <div className="inner white">
         <h3 className="p1">{name}</h3>
         <ul className="plan-options list-reset">
           { options && options.map(option =>

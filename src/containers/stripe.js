@@ -90,7 +90,7 @@ export default function connectTextField(options = {}) {
       }
       render() {
         // @TODO remove `closed`, `opened`, `onSubmit` functions.
-        return <ComposedComponent {...this.pops} />
+        return <ComposedComponent {...this.props} />
       }
     }
     Stripe.propTypes = {

@@ -11,8 +11,8 @@ function Support({ pageName, pageSection, pageSections }) {
       <Row {...pageSection.membership}>
         <Membership />
       </Row>
-      { pageSections && pageSections.map(({ sectionName, sectionBlurb }) => (
-        <Row sectionName={sectionName} sectionBlurb={sectionBlurb} />
+      { pageSections && pageSections.map(({ sectionName, sectionBlurb }, index) => (
+        <Row key={index} sectionName={sectionName} sectionBlurb={sectionBlurb} />
         ))
       }
     </div>

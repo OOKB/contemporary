@@ -25,8 +25,10 @@ const defaultState = immutable({
   subscriptionId: null,
 })
 
-export default function reducer(state = defaultState, action) {
+export default function reducer(_state = defaultState, action) {
   const { type, payload } = action
+  if (!type) return _state
+  const state = _state.asMutable ? _state : immutable(_state)
   switch (type) {
     case CLOSE:
       return state.set('opened', false)

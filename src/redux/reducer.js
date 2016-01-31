@@ -3,6 +3,7 @@ import merge from 'lodash/merge'
 import { combineReducers } from 'redux'
 
 import db from './modules/db'
+import filter from './modules/filter'
 import form from './modules/editField'
 import socket from './modules/socket'
 import stripe from './modules/stripe'
@@ -36,6 +37,7 @@ const rootReducer = combineReducers({
   db,
   entity,
   errorMessage,
+  filter,
   form,
   id,
   socket,

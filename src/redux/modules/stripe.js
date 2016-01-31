@@ -18,11 +18,11 @@ const defaultState = immutable({
   // amount: 0,
   // description: '',
   // email: null,
-
   opened: false,
   opening: false,
   subscribing: false,
   subscriptionId: null,
+  tokenInfo: {},
 })
 
 export default function reducer(_state = defaultState, action) {
@@ -34,12 +34,13 @@ export default function reducer(_state = defaultState, action) {
       return state.set('opened', false)
     case CLOSED:
       return state.merge({ closed: true, closing: false, opened: false, opening: false })
+      // .without('amount', 'description', 'subscriptionId')
     case OPEN:
       return state.merge(payload).set('opening', true)
     case OPENED:
       return state.merge({ closed: false, closing: false, opened: true, opening: false })
     case SUBSCRIBE:
-      return state.merge(payload).set('subscribing', true)
+      return state.merge({ subscribing: true, tokenInfo: payload })
     default:
       return state
   }

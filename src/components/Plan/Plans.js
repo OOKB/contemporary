@@ -1,9 +1,14 @@
 import React, { PropTypes, Component } from 'react'
 import OptionsBox from './OptionsBox'
+import Subscribing from './Subscribing'
 
 class Plans extends Component {
   render() {
-    const { plans, stripeAction } = this.props
+    const { plans, stripeAction, stripeState } = this.props
+    const { amount, description, subscribing } = stripeState
+    if (subscribing) {
+      return <Subscribing amount={amount} description={description} />
+    }
     return (
       <div>
         { plans && plans.map(plan =>

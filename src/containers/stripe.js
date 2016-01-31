@@ -43,13 +43,13 @@ export default function connectTextField(options = {}) {
         const { stripeState } = this.props
         // Enable to mount a component with the stripe checkout open.
         if (stripeState.opened || stripeState.opening) {
-          this.showStripeDialog()
+          this.showStripeDialog(this.props)
         }
       }
       // Only open/close Stripe checkout as a reaction to prop changes.
       componentWillUpdate(nextProps) {
         if (!this.props.stripeState.opening && nextProps.stripeState.opening) {
-          this.showStripeDialog()
+          this.showStripeDialog(nextProps)
         } else if (!this.props.stripeState.closing && nextProps.stripeState.closing) {
           this.stripeHandler.close()
         }
@@ -65,8 +65,8 @@ export default function connectTextField(options = {}) {
         return config
       }
       stripeHandler: null;
-      showStripeDialog() {
-        const { stripeAction, stripeConfig, stripeState, onSubmit } = this.props
+      showStripeDialog(props) {
+        const { stripeAction, stripeConfig, stripeState, onSubmit } = props
         const { panelLabel, name } = stripeConfig
         const { amount, description, subscriptionId } = stripeState
         function token(tokenObj) {
@@ -80,13 +80,14 @@ export default function connectTextField(options = {}) {
             onSubmit(token)
           }
         }
-        this.stripeHandler.open({
+        const config = {
           amount,
           description,
           name,
           panelLabel,
           token,
-        })
+        }
+        this.stripeHandler.open(config)
       }
       render() {
         // @TODO remove `closed`, `opened`, `onSubmit` functions.

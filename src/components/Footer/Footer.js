@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 
-function Footer({blurb, social, sponsors}) {
+function Footer({ blurb, social, sponsors }) {
   return (
     <footer>
       <div className="container">
@@ -38,13 +38,16 @@ function Footer({blurb, social, sponsors}) {
 }
 
 Footer.propTypes = {
-  sponsors: PropTypes.array.isRequired,
-  social: PropTypes.array.isRequired,
+  sponsors: PropTypes.arrayOf(PropTypes.shape({
+    href: PropTypes.string.isRequired,
+    src: PropTypes.string.isRequired,
+  })).isRequired,
+  social: PropTypes.arrayOf(PropTypes.shape({
+    href: PropTypes.string.isRequired,
+    icon: PropTypes.string.isRequired,
+    service: PropTypes.string.isRequired,
+  })).isRequired,
   blurb: PropTypes.string.isRequired,
-  href: PropTypes.string.isRequired,
-  src: PropTypes.string.isRequired,
-  service: PropTypes.string.isRequired,
-  icon: PropTypes.string.isRequired,
 }
 
 Footer.defaultProps = {

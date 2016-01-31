@@ -1,26 +1,15 @@
 import React, { PropTypes } from 'react'
 
-import Plans from '../Plan/Plans'
-import SectionText from './SectionText'
+import SelectPlan from '../../containers/SelectPlan'
 
 // Basic suggestion button.
-function Membership({ plans, sectionName }) {
+function Membership() {
   return (
-      <article className="pad-top border-top">
-        <section id="{ sectionName }">
-          <h2>{ sectionName }</h2>
-          <div className="group mb4">
-            <div className="six columns">
-              <SectionText />
-            </div>
-            <div className="six columns">
-              <div className="group">
-                <Plans plans={plans} />
-              </div>
-            </div>
-          </div>
-        </section>
-      </article>
+    <div className="six columns">
+      <div className="group">
+        <SelectPlan />
+      </div>
+    </div>
   )
 }
 

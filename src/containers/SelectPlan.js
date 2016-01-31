@@ -4,7 +4,7 @@ import sortBy from 'lodash/sortBy'
 import values from 'lodash/values'
 
 import stripe from './stripe'
-import Component from '../components/Support/Support'
+import Component from '../components/Plan/Plans'
 // Redux connections.
 
 function mapStateToProps(state) {

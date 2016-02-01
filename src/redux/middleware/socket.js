@@ -21,7 +21,7 @@ export default function createSocketIoMiddleware(options = {}) {
   }, options)
 
   // Socket.io
-  const socket = io('http://contemporary.l.cape.io/')
+  const socket = io('http://contemporary.cape.io/')
 
   return store => {
     // Wire socket.io to dispatch actions sent by the server.

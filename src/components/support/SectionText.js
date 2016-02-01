@@ -6,9 +6,6 @@ function SectionText({ sectionName, sectionBlurb, memberAlready, featureButtons,
   return (
     <div>
       <p>
-        { sectionBlurb }
-      </p>
-      <p>
         { featureButtons && featureButtons.map(({ planType, color }, index) => (
           <button
             key={index}

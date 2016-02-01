@@ -1,30 +1,22 @@
 import React, { PropTypes } from 'react'
 
-function PlanText({ individualFeatures, teamFeatures, value, onClick }) {
+function PlanText({ features }) {
   return (
     <div>
-      { individualFeatures && individualFeatures.map(({ title, blurb }, index) => (
-        <section>
-          <h3>{title}</h3>
-          <p dangerouslySetInnerHTML={{ __html: blurb }}/>
-        </section>
+      {
+        features.map(({ title, blurb }, index) => (
+          <section key={index}>
+            <h3>{title}</h3>
+            <p>{blurb}</p>
+          </section>
         ))
       }
-      { teamFeatures && teamFeatures.map(({ title, blurb }, index) => (
-        <section>
-          <h3>{title}</h3>
-          <p dangerouslySetInnerHTML={{ __html: blurb }}/>
-        </section>
-        ))
-      }    </div>
+    </div>
   )
 }
 
 PlanText.propTypes = {
-  individualFeatures: PropTypes.array.isRequired,
-  teamFeatures: PropTypes.array.isRequired,
-  value: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired,
+  features: PropTypes.array.isRequired,
 }
 
 export default PlanText

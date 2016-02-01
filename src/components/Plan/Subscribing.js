@@ -4,7 +4,7 @@ import React, { PropTypes } from 'react'
 function Subscribing({ amount, description, statusMsg }) {
   const title = `${description}: $${amount / 100}`
   return (
-    <div className="subscribing">
+    <div className="subscribing six columns">
       <h3>{ title }</h3>
       <p>{ statusMsg }</p>
     </div>

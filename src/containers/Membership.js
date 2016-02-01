@@ -4,28 +4,26 @@ import sortBy from 'lodash/sortBy'
 import values from 'lodash/values'
 
 import stripe from './stripe'
-import Component from '../components/Support/SectionText'
+import Component from '../components/Support/Membership'
 // Redux connections.
 
 function mapStateToProps(state) {
-  const { entity: { plan } } = state
-  const plans = []
-  if (plan.individual) {
-    plans.push({
-      type: 'individual',
-      name: 'Individual Membership',
-      options: values(plan.individual),
-    })
+  const {
+    db: { membership },
+    entity: { plan },
+  } = state
+
+  function getOptions(id) {
+    const vals = values(plan[id])
+    if (id === 'team') {
+      sortBy(vals, 'amount')
+    }
+    return vals
   }
-  if (plan.team) {
-    plans.push({
-      type: 'team',
-      name: 'Team Membership',
-      options: sortBy(values(plan.team), 'amount'),
-    })
-  }
+  const plans = membership.plans.map(item => ({ ...item, options: getOptions(item.type) }))
   return {
     plans,
+    sectionBlurb: membership.sectionBlurb,
     stripe: {
       panelLabel: 'Join Now',
     },

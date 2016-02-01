@@ -1,19 +1,26 @@
 import React, { PropTypes } from 'react'
 
-import SelectPlan from '../../containers/SelectPlan'
+import Blurb from './Blurb'
+import Plans from '../Plan/Plans'
+import SectionText from './SectionText'
 
 // Basic suggestion button.
-function Membership() {
+function Membership({ plans, sectionBlurb, stripeAction, stripeState }) {
   return (
-    <div className="six columns">
-      <div className="group">
-        <SelectPlan />
-      </div>
+    <div>
+      <Blurb sectionBlurb={sectionBlurb}>
+        <SectionText />
+      </Blurb>
+      <Plans plans={plans} stripeAction={stripeAction} stripeState={stripeState} />
     </div>
   )
 }
 
 Membership.propTypes = {
+  plans: PropTypes.array.isRequired,
+  sectionBlurb: PropTypes.string.isRequired,
+  stripeAction: PropTypes.object.isRequired,
+  stripeState: PropTypes.object.isRequired,
 }
 Membership.defaultProps = {
 }

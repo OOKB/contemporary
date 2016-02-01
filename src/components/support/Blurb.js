@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 
 // Basic suggestion button.
-function Blurb({ sectionBlurb }) {
+function Blurb({ children, sectionBlurb }) {
   return (
     <div className="group mb4">
       <div className="six columns">

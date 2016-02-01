@@ -10,12 +10,10 @@ class Plans extends Component {
       return <Subscribing amount={amount} description={description} />
     }
     return (
-      <div className="six columns">
-        <div className="group">
-          { plans && plans.map(plan =>
-            <OptionsBox key={plan.type} {...plan} onClick={stripeAction.open} />
-          )}
-        </div>
+      <div>
+        { plans && plans.map(plan =>
+          <OptionsBox key={plan.type} {...plan} onClick={stripeAction.open} />
+        )}
       </div>
     )
   }
@@ -24,7 +22,6 @@ class Plans extends Component {
 Plans.propTypes = {
   plans: PropTypes.array.isRequired,
   stripeAction: PropTypes.object.isRequired,
-  stripeConfig: PropTypes.object.isRequired,
   stripeState: PropTypes.object.isRequired,
 }
 Plans.defaultProps = {

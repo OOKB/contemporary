@@ -5,6 +5,7 @@ export const CLOSED = 'stripe/CLOSED'
 export const OPEN = 'stripe/OPEN'
 export const OPENED = 'stripe/OPENED'
 export const SUBSCRIBE = 'stripe/SUBSCRIBE'
+export const SUBSCRIBED = 'stribe/SUBSCRIBED'
 
 const defaultState = immutable({
   // Config allows a place to store static default stripe config info.
@@ -20,6 +21,7 @@ const defaultState = immutable({
   // email: null,
   opened: false,
   opening: false,
+  subscribed: false,
   subscribing: false,
   subscriptionId: null,
   tokenInfo: {},
@@ -41,7 +43,12 @@ export default function reducer(_state = defaultState, action) {
       return state.merge({ closed: false, closing: false, opened: true, opening: false })
     case SUBSCRIBE:
       return state.merge({ subscribing: true, tokenInfo: payload })
+    case SUBSCRIBED:
+      return state.merge({ subscribing: false, subscribed: true, tokenInfo: {} })
     default:
+      if (action.response && action.response.stripe) {
+        return state.merge(action.response.stripe)
+      }
       return state
   }
 }
@@ -70,5 +77,10 @@ export function subscribe(tokenInfo) {
   return {
     type: SUBSCRIBE,
     payload: tokenInfo,
+  }
+}
+export function subscribed() {
+  return {
+    type: SUBSCRIBED,
   }
 }

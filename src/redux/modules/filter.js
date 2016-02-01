@@ -38,6 +38,9 @@ export default function reducer(_state = defaultState, action) {
     case UPDATE_SUBJECT:
       return state.set('page', state.page.merge(payload))
     default:
+      if (action.response && action.response.filter) {
+        return state.merge(action.response.filter)
+      }
       return state
   }
 }

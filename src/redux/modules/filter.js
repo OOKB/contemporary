@@ -42,6 +42,12 @@ export default function reducer(_state = defaultState, action) {
   }
 }
 
+function getStateSlice(state) {
+  return state.filter
+}
+export function getFilter(state, path) {
+  return get(getStateSlice(state), path, null)
+}
 export function replaceSubject(info) {
   const payload = isString(info) ? { primarySubject: info } : info
   return {
@@ -72,9 +78,10 @@ export function updateAndClose(groupId, fieldId, value) {
   }
 }
 
-export function toggle(groupId, filterType) {
+export function toggle(groupId, filterType, newValue = true) {
   return (dispatch, getState) => {
-    const value = !get(getState().filter, [ groupId, filterType, 'active' ])
+    const oldValue = getFilter(getState(), [ groupId, filterType, 'active' ])
+    const value = newValue === oldValue ? false : newValue
     return dispatch(update(groupId, filterType, 'active', value))
   }
 }

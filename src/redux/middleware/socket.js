@@ -2,13 +2,14 @@ import io from 'socket.io-client'
 import { parse } from 'query-string'
 import isString from 'lodash/isString'
 
-import { connect, disconnect, joined } from '../modules/socket'
+import { connect, disconnect, JOINED } from '../modules/socket'
 
 function getSessionId() {
   return sessionStorage.sessionId || null
 }
 // Insert sessionId.
 function setSessionId(id) {
+  console.log('setSessionId', id)
   sessionStorage.sessionId = id
 }
 // Should save presenter to sessionStorage too.
@@ -29,6 +30,13 @@ export default function createSocketIoMiddleware(options = {}) {
       // If an action comes from the server do not send it back to the server.
       act.sendSocket = false
       store.dispatch(act)
+      switch (action.type) {
+        // Joined. Server returns valid sessionId.
+        case JOINED:
+          setSessionId(action.payload)
+          break
+        default:
+      }
     })
     // When the connection is established. Before any events.
     socket.on('connect', () => {
@@ -40,11 +48,6 @@ export default function createSocketIoMiddleware(options = {}) {
         // Tell server result of our local sessionId.
         sessionId: getSessionId(),
       }))
-    })
-    // Joined. Server returns valid sessionId.
-    socket.on('joined', ({ sessionId }) => {
-      setSessionId(sessionId)
-      store.dispatch(joined(sessionId))
     })
     // Tell redux we are no longer connected.
     socket.on('disconnect', () => {

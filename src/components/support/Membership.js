@@ -5,11 +5,11 @@ import Plans from '../Plan/Plans'
 import SectionText from './SectionText'
 
 // Basic suggestion button.
-function Membership({ plans, sectionBlurb, stripeAction, stripeState }) {
+function Membership({ features, plans, sectionBlurb, setFeature, stripeAction, stripeState }) {
   return (
     <div>
       <Blurb sectionBlurb={sectionBlurb}>
-        <SectionText />
+        <SectionText plans={plans} features={features} onClick={setFeature} />
       </Blurb>
       <Plans plans={plans} stripeAction={stripeAction} stripeState={stripeState} />
     </div>

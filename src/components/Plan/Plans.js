@@ -10,10 +10,12 @@ class Plans extends Component {
       return <Subscribing amount={amount} description={description} />
     }
     return (
-      <div>
-        { plans && plans.map(plan =>
-          <OptionsBox key={plan.type} {...plan} onClick={stripeAction.open} />
-        )}
+      <div className="six columns">
+        <div className="group">
+          { plans && plans.map(plan =>
+            <OptionsBox key={plan.type} {...plan} onClick={stripeAction.open} />
+          )}
+        </div>
       </div>
     )
   }

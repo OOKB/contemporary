@@ -40,13 +40,13 @@ SectionText.propTypes = {
 }
 SectionText.defaultProps = {
   sectionName: 'SectionText',
-  sectionBlurb: "Our members are crucial to the overall health of the museum. In return for their important philanthropic support, we offer a selection of benefits and resources that are designed to help artists continue making their work.",
+  sectionBlurb: 'Our members are crucial to the overall health of the museum. In return for their important philanthropic support, we offer a selection of benefits and resources that are designed to help artists continue making their work.',
   memberAlready: 'Already a member? <a href="TK" className="button">Login here</a>',
   featureButtons: [
     {
-      'planType': 'individual',
-      'planContent': 'individualFeatures',
-      'color': 'blue',
+      planType: 'individual',
+      planContent: 'individualFeatures',
+      color: 'blue',
     },
     {
       'planType': 'team',

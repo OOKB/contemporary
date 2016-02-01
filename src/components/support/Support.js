@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 
-import Membership from './Membership'
+import SectionText from './SectionText'
 import Row from './Row'
 
 // Basic suggestion button.
@@ -9,7 +9,7 @@ function Support({ pageName, pageSection, pageSections }) {
     <div className="container">
       <h1>{ pageName }</h1>
       <Row {...pageSection.membership}>
-        <Membership />
+        <SectionText />
       </Row>
       { pageSections && pageSections.map(({ sectionName, sectionBlurb }, index) => (
         <Row key={index} sectionName={sectionName} sectionBlurb={sectionBlurb} />

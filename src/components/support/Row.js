@@ -6,7 +6,9 @@ function Row({ children, sectionName }) {
       <article className="pad-top border-top">
         <section id={ sectionName }>
           <h2>{ sectionName }</h2>
-          { children }
+          <div className="group mb4">
+            { children }
+          </div>
         </section>
       </article>
   )

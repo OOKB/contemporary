@@ -7,8 +7,7 @@ function Donate({ sectionBlurb }) {
   return (
     <div>
       <Blurb sectionBlurb={sectionBlurb} />
-      {/*<DonationForm /> ??? */}
-      <p>Donation Form TK</p>
+      {/* <DonationForm /> ??? */}
     </div>
   )
 }

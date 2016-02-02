@@ -1,22 +1,26 @@
 import immutable from 'seamless-immutable'
 import get from 'lodash/get'
 import isString from 'lodash/isString'
+import omit from 'lodash/omit'
+import { locationInfo } from '../../utils/routes'
 
 export const REPLACE_SUBJECT = 'filter/REPLACE_SUBJECT'
 export const UPDATE = 'filter/UPDATE'
 export const UPDATE_CLOSE = 'filter/UPDATE_CLOSE'
 export const UPDATE_SUBJECT = 'filter/UPDATE_SUBJECT'
 
+// Not sure if this belongs here or what.
 export const defaultPageInfo = immutable({
   hash: null,
   position: 0,
-  primarySubject: 'home',
+  routeId: 'default',
+  primarySubject: null,
   subject: null,
-  id: null,
+  entityId: null,
+  query: {},
 })
 
 const defaultState = immutable({
-  page: defaultPageInfo,
 })
 
 export default function reducer(_state = defaultState, action) {
@@ -39,7 +43,7 @@ export default function reducer(_state = defaultState, action) {
       return state.set('page', state.page.merge(payload))
     default:
       if (action.response && action.response.filter) {
-        return state.merge(action.response.filter)
+        return state.merge(omit(action.response.filter, 'page'))
       }
       return state
   }
@@ -52,7 +56,7 @@ export function getFilter(state, path) {
   return get(getStateSlice(state), path, null)
 }
 export function replaceSubject(info) {
-  const payload = isString(info) ? { primarySubject: info } : info
+  const payload = isString(info) ? { id: info } : info
   return {
     type: REPLACE_SUBJECT,
     payload,
@@ -91,4 +95,18 @@ export function toggle(groupId, filterType, newValue = true) {
 
 export function handleSearch(groupId, filterType, newTxt) {
   return update(groupId, filterType, 'value', newTxt.toLowerCase())
+}
+// Sure, you could parse the url all the damn time and calculate the value.
+// I want to get away from having to reply on having a location object.
+// Changing url should change state. I think of it like an action creator.
+export function initBrowser() {
+  const location = locationInfo(document.location)
+  console.log(location)
+  const { route, hash, query } = location
+  const routeId = get(route, 'id', 404)
+  let page = defaultPageInfo.merge({ hash: hash.slice(1), query, routeId })
+  if (route) {
+    page = page.merge(route.params)
+  }
+  return page
 }

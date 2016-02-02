@@ -6,6 +6,14 @@ import Header from '../components/Header/Header'
 import Footer from '../components/Footer/Footer'
 import Support from '../components/Support/Support'
 import Profile from './Profile'
+import NotFound from '../components/NotFound'
+// Key shall match a primarySubject. @see `valid` {} in /src/routes.js
+// Value is the container/component you'd like rendered on match.
+const routeIndex = {
+  404: NotFound,
+  profile: Profile,
+  support: Support,
+}
 
 class App extends Component {
   constructor(props) {
@@ -36,14 +44,14 @@ class App extends Component {
   }
 
   render() {
-    const { children } = this.props
+    const { children, primarySubject } = this.props
+    const MainElement = routeIndex[primarySubject] || NotFound
     return (
       <div>
         { this.renderErrorMessage() }
         <Header />
-        <Profile />
         <main>
-          <Support />
+          <MainElement />
           { children }
         </main>
         <Footer />
@@ -57,12 +65,14 @@ App.propTypes = {
   resetErrorMessage: PropTypes.func.isRequired,
   children: PropTypes.node,
   db: PropTypes.object.isRequired,
+  primarySubject: PropTypes.string.isRequired,
 }
 
 function mapStateToProps(state) {
   return {
     errorMessage: state.errorMessage,
     db: state.db,
+    primarySubject: state.filter.page.primarySubject,
   }
 }
 

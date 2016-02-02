@@ -7,6 +7,8 @@ import Footer from '../components/Footer/Footer'
 import Support from '../components/Support/Support'
 import Profile from './Profile'
 import NotFound from '../components/NotFound'
+
+// Convert a primarySubject to a component!
 // Key shall match a primarySubject. @see `valid` {} in /src/routes.js
 // Value is the container/component you'd like rendered on match.
 const routeIndex = {
@@ -45,6 +47,7 @@ class App extends Component {
 
   render() {
     const { children, primarySubject } = this.props
+    // Decide what component to render based on primarySubject.
     const MainElement = routeIndex[primarySubject] || NotFound
     return (
       <div>

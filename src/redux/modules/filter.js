@@ -96,12 +96,14 @@ export function toggle(groupId, filterType, newValue = true) {
 export function handleSearch(groupId, filterType, newTxt) {
   return update(groupId, filterType, 'value', newTxt.toLowerCase())
 }
+
 // Sure, you could parse the url all the damn time and calculate the value.
 // I want to get away from having to reply on having a location object.
 // Changing url should change state. I think of it like an action creator.
 export function initBrowser() {
+  // Send browser location info to be processed.
   const location = locationInfo(document.location)
-  console.log(location)
+  // console.log(location)
   const { route, hash, query } = location
   const routeId = get(route, 'id', 404)
   let page = defaultPageInfo.merge({ hash: hash.slice(1), query, routeId })

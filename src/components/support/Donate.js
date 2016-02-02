@@ -3,17 +3,17 @@ import React, { PropTypes } from 'react'
 import Blurb from './Blurb'
 
 // Basic suggestion button.
-function Donate({ sectionName, sectionBlurb }) {
+function Donate({ sectionBlurb }) {
   return (
     <div>
       <Blurb sectionBlurb={sectionBlurb} />
-      {/*<DonationForm /> ??? */}
+      {/* <DonationForm /> ??? */}
     </div>
   )
 }
 
 Donate.propTypes = {
-  sectionName: PropTypes.string.isRequired,
+  sectionBlurb: PropTypes.string.isRequired,
 }
 Donate.defaultProps = {
 }

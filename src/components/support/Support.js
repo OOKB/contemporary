@@ -2,26 +2,25 @@ import React, { PropTypes } from 'react'
 
 import Membership from '../../containers/Membership'
 import Row from './Row'
-import Blurb from './Blurb'
 import Donate from './Donate'
 import Wishlist from './Wishlist'
 import Supporters from './Supporters'
 
 // Basic suggestion button.
-function Support({ pageName, pageSection, pageSections }) {
+function Support({ pageName, pageSection }) {
   return (
     <div className="container">
       <h1>{ pageName }</h1>
-      <Row {...pageSections.donate}>
-        <Donate />
+      <Row sectionName={pageSection.donate.sectionName}>
+        <Donate sectionBlurb={pageSection.donate.sectionBlurb}/>
       </Row>
-      <Row {...pageSections.membership}>
+      <Row {...pageSection.membership}>
         <Membership />
       </Row>
-      <Row {...pageSections.wishlist}>
+      <Row {...pageSection.wishlist}>
         <Wishlist />
       </Row>
-      <Row {...pageSections.supporters}>
+      <Row {...pageSection.supporters}>
         <Supporters />
       </Row>
     </div>
@@ -30,11 +29,11 @@ function Support({ pageName, pageSection, pageSections }) {
 
 Support.propTypes = {
   pageName: PropTypes.string.isRequired,
-  pageSections: PropTypes.array.isRequired,
+  pageSection: PropTypes.object.isRequired,
 }
 Support.defaultProps = {
   pageName: 'Support',
-  pageSections: {
+  pageSection: {
     membership: {
       sectionName: 'Membership',
     },

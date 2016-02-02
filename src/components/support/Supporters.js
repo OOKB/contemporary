@@ -1,11 +1,13 @@
 import React, { PropTypes } from 'react'
 
+import Blurb from './Blurb'
+
 // Basic suggestion button.
 function Supporters({ sectionBlurb }) {
   return (
     <div>
       <Blurb sectionBlurb={sectionBlurb} />
-      <p> somehow get the lists? </p>
+      <p> somehow make the lists? </p>
     </div>
   )
 }

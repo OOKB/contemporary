@@ -1,18 +1,14 @@
 import React, { PropTypes } from 'react'
 
+import Blurb from './Blurb'
+
 // Basic suggestion button.
-function Donate({ sectionName }) {
+function Donate({ sectionName, sectionBlurb }) {
   return (
-      <article className="pad-top border-top">
-        <section id="{ sectionName }">
-          <h2>{ sectionName }</h2>
-          <div className="group mb4">
-            <div className="six columns">
-              TK. Need a donation form... can use the old wufoo one until we build our own?
-            </div>
-          </div>
-        </section>
-      </article>
+    <div>
+      <Blurb sectionBlurb={sectionBlurb} />
+      {/*<DonationForm /> ??? */}
+    </div>
   )
 }
 
@@ -20,6 +16,5 @@ Donate.propTypes = {
   sectionName: PropTypes.string.isRequired,
 }
 Donate.defaultProps = {
-  sectionName: 'Donate',
 }
 export default Donate

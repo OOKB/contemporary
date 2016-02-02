@@ -19,9 +19,9 @@ function mapStateToProps(state) {
   const activeFeature = getFilter(state, [ 'membership', 'feature', 'active' ])
 
   function getOptions(id) {
-    const vals = values(plan[id])
+    let vals = values(plan[id])
     if (id === 'team') {
-      sortBy(vals, 'amount')
+      vals = sortBy(vals, 'amount')
     }
     return vals
   }

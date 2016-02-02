@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react'
 
 import Drawer from './Drawer'
 
-function Nav({ navLinks, mainlink, url, primary, sublink }) {
+function Nav({ navLinks }) {
   return (
     <nav>
       <ul className="main-menu list-reset clearfix sticky" id="main-menu-wrap">
@@ -20,10 +20,6 @@ function Nav({ navLinks, mainlink, url, primary, sublink }) {
 
 Nav.propTypes = {
   navLinks: PropTypes.array.isRequired,
-  mainlink: PropTypes.string.isRequired,
-  url: PropTypes.string.isRequired,
-  primary: PropTypes.string.isRequired,
-  sublink: PropTypes.array.isRequired,
 }
 Nav.defaultProps = {
   navLinks: [

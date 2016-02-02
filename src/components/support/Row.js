@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 
 // Basic suggestion button.
-function Row({ children, sectionName, sectionBlurb }) {
+function Row({ children, sectionName }) {
   return (
       <article className="pad-top border-top">
         <section id={ sectionName }>
@@ -17,7 +17,6 @@ function Row({ children, sectionName, sectionBlurb }) {
 Row.propTypes = {
   children: PropTypes.node,
   sectionName: PropTypes.string.isRequired,
-  sectionBlurb: PropTypes.string.isRequired,
 }
 
 export default Row

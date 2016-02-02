@@ -12,7 +12,7 @@ function Wishlist({ sectionBlurb }) {
 }
 
 Wishlist.propTypes = {
-  sectionName: PropTypes.string.isRequired,
+  sectionBlurb: PropTypes.string.isRequired,
 }
 Wishlist.defaultProps = {
 }

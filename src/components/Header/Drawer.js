@@ -7,8 +7,8 @@ function Drawer({ primary, sublink }) {
         <p dangerouslySetInnerHTML={{ __html: primary }} />
       </div>
       <ul className="eight columns offset-by-one sub-menu list-reset">
-        { sublink && sublink.map(({ title, url, secondary }) => (
-          <li className="group">
+        { sublink && sublink.map(({ title, url, secondary }, index) => (
+          <li className="group" key={index}>
             <p className="four columns">
               <a className="sub-link" href={ url }>{ title }</a>
             </p>
@@ -26,7 +26,7 @@ function Drawer({ primary, sublink }) {
 
 Drawer.propTypes = {
   primary: PropTypes.string.isRequired,
-  sublink: PropTypes.array.isRequired,
+  sublink: PropTypes.array,
 }
 
 export default Drawer

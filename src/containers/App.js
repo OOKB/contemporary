@@ -1,5 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
+import get from 'lodash/get'
+
 import { resetErrorMessage } from '../redux/actions'
 
 import Header from '../components/Header/Header'
@@ -75,7 +77,7 @@ function mapStateToProps(state) {
   return {
     errorMessage: state.errorMessage,
     db: state.db,
-    primarySubject: state.filter.page.primarySubject,
+    primarySubject: get(state, [ 'filter', 'primarySubject' ]),
   }
 }
 

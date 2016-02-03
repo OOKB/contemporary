@@ -2,8 +2,9 @@ import immutable from 'seamless-immutable'
 import get from 'lodash/get'
 import isString from 'lodash/isString'
 import omit from 'lodash/omit'
-import { locationInfo } from '../../utils/routes'
+import pick from 'lodash/pick'
 
+import { UPDATE_LOCATION } from '../history'
 export const REPLACE_SUBJECT = 'filter/REPLACE_SUBJECT'
 export const UPDATE = 'filter/UPDATE'
 export const UPDATE_CLOSE = 'filter/UPDATE_CLOSE'
@@ -14,13 +15,13 @@ export const defaultPageInfo = immutable({
   hash: null,
   position: 0,
   routeId: 'default',
-  primarySubject: null,
-  subject: null,
-  entityId: null,
   query: {},
 })
 
 const defaultState = immutable({
+  primarySubject: null,
+  subject: null,
+  entityId: null,
 })
 
 export default function reducer(_state = defaultState, action) {
@@ -39,8 +40,9 @@ export default function reducer(_state = defaultState, action) {
         active: false,
       })
       return state.setIn(payload.path, newVal)
+    case UPDATE_LOCATION:
     case UPDATE_SUBJECT:
-      return state.set('page', state.page.merge(payload))
+      return state.merge(pick(payload, 'primarySubject', 'subject', 'entityId'))
     default:
       if (action.response && action.response.filter) {
         return state.merge(omit(action.response.filter, 'page'))
@@ -95,20 +97,4 @@ export function toggle(groupId, filterType, newValue = true) {
 
 export function handleSearch(groupId, filterType, newTxt) {
   return update(groupId, filterType, 'value', newTxt.toLowerCase())
-}
-
-// Sure, you could parse the url all the damn time and calculate the value.
-// I want to get away from having to reply on having a location object.
-// Changing url should change state. I think of it like an action creator.
-export function initBrowser() {
-  // Send browser location info to be processed.
-  const location = locationInfo(document.location)
-  // console.log(location)
-  const { route, hash, query } = location
-  const routeId = get(route, 'id', 404)
-  let page = defaultPageInfo.merge({ hash: hash.slice(1), query, routeId })
-  if (route) {
-    page = page.merge(route.params)
-  }
-  return page
 }

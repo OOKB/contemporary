@@ -44,4 +44,10 @@ const rootReducer = combineReducers({
   stripe,
 })
 
-export default rootReducer
+export default function combination(state = {}, action) {
+  const _action = {
+    ...action,
+    _state: state,
+  }
+  return rootReducer(state, _action)
+}

@@ -1,5 +1,6 @@
 import Pattern from 'url-pattern'
 import { parse } from 'query-string'
+// import clone from 'lodash/clone'
 import find from 'lodash/find'
 import isFunction from 'lodash/isFunction'
 import pick from 'lodash/pick'
@@ -54,17 +55,24 @@ export default function createRouter() {
     // Get the route.
     const route = getRoute(id)
     // Run the match method.
-    const params = route.pattern.match(path)
-    // There is a match against this route.
-    if (params) {
-      if (isFunction(route.validate)) {
-        return route.validate(params) ? { ...route, params } : null
-      }
-      // Add the params result to the route.
-      return { ...route, params }
+    let params = route.pattern.match(path)
+    // No match, return.
+    if (!params) return null
+    // Check validate function.
+    if (isFunction(route.validate) && !route.validate(params)) {
+      return null
     }
-    // No match.
-    return params
+    // There is a valid match against this route.
+    if (isFunction(route.getParams)) {
+      params = route.getParams(params, path, route)
+    }
+    // Clone the route props and add params and path to it.
+    const info = {
+      ...route,
+      params,
+      path,
+    }
+    return info
   }
 
   // Check a path against all routes.
@@ -94,7 +102,10 @@ export default function createRouter() {
     // Parse pathname based on routes above.
     info.route = pathInfo(pathname)
     // Parse query string.
-    info.query = parse(search)
+    info.query = search ? parse(search) : null
+    if (info.route && isFunction(info.route.getState)) {
+      info.state = info.route.getState(info)
+    }
     return info
   }
   return {

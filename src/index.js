@@ -7,8 +7,7 @@ import 'isomorphic-fetch'
 import configureStore from './redux/configureStore'
 // Root React component.
 import Root from './containers/Root'
-import './routes'
-import { initBrowser } from './redux/modules/filter'
+
 // Define our destination where we insert our root react component.
 const destEl = document.getElementById('root')
 
@@ -19,9 +18,6 @@ const initialState = {
   },
   entity: {
     plan: {},
-  },
-  filter: {
-    page: initBrowser(),
   },
 }
 

@@ -1,4 +1,4 @@
-import createRouter from '../utils/routes'
+import createRouter from 'location-info'
 
 const valid = {
   visit: true,

@@ -5,6 +5,15 @@ import find from 'lodash/find'
 import isFunction from 'lodash/isFunction'
 import pick from 'lodash/pick'
 
+
+// We are removing the actual hash.
+export function getHash(hash) {
+  if (hash[0] === '#') {
+    return hash.slice(1)
+  }
+  return hash
+}
+
 export default function createRouter() {
   // Route database.
   const routeIndex = {}
@@ -33,6 +42,11 @@ export default function createRouter() {
   // @id is a machine readable string for the route.
   // @path is a path string. See url-pattern module for possible options.
   // @props object that might include validate function.
+  // methods include `validate`, `getState`, `getParams`, `getLocation`
+  // `getParams` is mostly if you want to process the pathname with a function instead of string.
+  // `validate` should return true or false.
+  // `getState` should return an object.
+  // `getLocation` should return an absolute path.
   function makeRoute(id, path, props = {}) {
     // path is not required. Default to use the id.
     const _path = path || `/${id}/`
@@ -51,6 +65,7 @@ export default function createRouter() {
   }
 
   // Check path against specific route. If it's a match grab all info about the route.
+  // Calls the `validate` and `getParams` methods on the route if it has them.
   function routeInfo(id, path) {
     // Get the route.
     const route = getRoute(id)
@@ -76,6 +91,8 @@ export default function createRouter() {
   }
 
   // Check a path against all routes.
+  // Use this if you have a simple path string.
+  // Note that path should not include the search (?foo=bar) portion of the url.
   function pathInfo(path) {
     // Default to no route.
     let route = null
@@ -92,18 +109,17 @@ export default function createRouter() {
     // If we found an id return the route object. Otherwise null.
     return id ? route : null
   }
-  function getHash(hash) {
-    if (hash[0] === '#') {
-      return hash.slice(1)
-    }
-    return hash
-  }
-  // Makes a new object based on browser document.location object.
+
+  // Makes a new object based on browser document.location or similar object.
+  // An object with a `pathname` property is sufficient.
+  // Calls the `getState` and `getLocation` function.
+  // Returns a plain object with no methods.
   function locationInfo(location) {
     // Grab props that we will process.
     const { pathname, search, hash } = location
     // Grab the properties we pass along from the location object.
-    const info = pick(location, 'protocol', 'hostname', 'port')
+    // Pathname gets deleted if there is a route match.
+    const info = pick(location, 'protocol', 'hostname', 'port', 'pathname')
     if (hash) {
       info.hash = getHash(hash)
     }
@@ -113,6 +129,7 @@ export default function createRouter() {
     if (search) {
       info.query = parse(search)
     }
+    // Route match.
     if (route) {
       info.routeId = route.id
       info.params = route.params
@@ -120,6 +137,8 @@ export default function createRouter() {
       if (isFunction(route.getState)) {
         info.state = info.route.getState(info)
       }
+      // What the url should be.
+      // Opportunity to set a redirect or correct the location of a pushState.
       info.location = isFunction(route.getLocation) ? route.getLocation(info) : pathname
     }
     return info

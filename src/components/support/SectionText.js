@@ -42,7 +42,7 @@ function SectionText({ buttonTxt, plans, features, memberAlready, onClick }) {
 SectionText.propTypes = {
   displayFeatureId: PropTypes.string,
   memberAlready: PropTypes.object.isRequired,
-  features: PropTypes.array.isRequired,
+  features: PropTypes.array,
   onClick: PropTypes.func.isRequired,
 }
 SectionText.defaultProps = {

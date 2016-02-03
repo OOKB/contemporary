@@ -1,16 +1,16 @@
 import React, { PropTypes } from 'react'
 
 import Membership from '../../containers/Membership'
-import Row from './Row'
+import Row from '../Row'
 import Donate from './Donate'
 import Wishlist from './Wishlist'
+import Page from '../Page'
 import Supporters from './Supporters'
 
 // Basic suggestion button.
 function Support({ pageName, pageSection }) {
   return (
-    <div className="container">
-      <h1>{ pageName }</h1>
+    <Page pageName={pageName}>
       <Row sectionName={pageSection.donate.sectionName}>
         <Donate sectionBlurb={pageSection.donate.sectionBlurb}/>
       </Row>
@@ -23,7 +23,7 @@ function Support({ pageName, pageSection }) {
       <Row sectionName={pageSection.supporters.sectionName}>
         <Supporters sectionBlurb={pageSection.supporters.sectionBlurb}/>
       </Row>
-    </div>
+    </Page>
   )
 }
 

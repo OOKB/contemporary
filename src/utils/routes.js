@@ -120,6 +120,7 @@ export default function createRouter() {
       if (isFunction(route.getState)) {
         info.state = info.route.getState(info)
       }
+      info.location = isFunction(route.getLocation) ? route.getLocation(info) : pathname
     }
     return info
   }

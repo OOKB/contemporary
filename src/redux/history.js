@@ -1,6 +1,7 @@
 import get from 'lodash/get'
 import isString from 'lodash/isString'
-import set from 'lodash/set'
+import pick from 'lodash/pick'
+// import set from 'lodash/set'
 
 // Sure, you could parse the url all the damn time and calculate the state slice.
 // I want to get away from the idea of having a location object.
@@ -30,9 +31,11 @@ export const goForward = transition('forward')
 export const routeActions = { push, replace, go, goBack, goForward }
 
 export function updateLocation(location) {
+  const payload = isString(location) ? { location } : location
+  // console.log(payload)
   return {
     type: UPDATE_LOCATION,
-    payload: isString(location) ? { location } : location,
+    payload,
   }
 }
 // export function updateHash(hash) {
@@ -53,10 +56,10 @@ export function updateLocation(location) {
 
 // Send an action on every history change.
 // Forward / Back
-function historyChange(location, dispatch) {
+function listenHistoryChange(location, dispatch) {
   window.addEventListener('popstate', () => {
     // console.log('historyChange', event)
-    dispatch(updateLocation(location))
+    dispatch(updateLocation(pick(location, 'pathname', 'hash', 'search')))
   }, false)
 }
 
@@ -66,34 +69,45 @@ export default function routerStoreEnhancer(getRoutes, options = {}) {
   const history = options.history || window.history
   const location = options.location || document.location
 
+  function historyChange(method, pathname) {
+    if (location.pathname !== pathname) {
+      console.log('change addressbar', method, pathname)
+      history[method]({}, '', pathname)
+    }
+  }
+
   return createStore => (reducer, initialState, enhancer) => {
-    let previousLocation = undefined
+    // let previousLocation = undefined
     let nextTransitionMethod = defaultTransition
 
     const { dispatch, ...store } = createStore(reducer, initialState, enhancer)
 
     const router = getRoutes({ getState: store.getState, dispatch })
 
-    historyChange(location, dispatch)
     // Update URL to reflect change of location string.
-    store.subscribe(() => {
-      // Grab the location string from state.
-      const newLocation = get(store.getState(), locationPath)
-      // See if it has changed.
-      if (newLocation !== previousLocation) {
-        previousLocation = newLocation
-        history[nextTransitionMethod](newLocation)
-        nextTransitionMethod = defaultTransition
-      }
-    })
+    // store.subscribe(() => {
+    //   // Grab the location string from state.
+    //   const newLocation = get(store.getState(), locationPath)
+    //   // See if it has changed.
+    //   if (newLocation !== previousLocation) {
+    //     previousLocation = newLocation
+    //     history[nextTransitionMethod](newLocation)
+    //     nextTransitionMethod = defaultTransition
+    //   }
+    // })
 
     function _dispatch(action) {
       // Listen to every action and save it's transitionMethod.
       nextTransitionMethod = get(action, [ 'meta', 'transitionMethod' ], nextTransitionMethod)
       if (action.type === UPDATE_LOCATION) {
+        const payload = router.locationInfo(action.payload)
+        if (payload.location) {
+          const transitionMethod = defaultTransition
+          historyChange(transitionMethod, payload.location)
+        }
         return dispatch({
           ...action,
-          payload: router.locationInfo(action.payload),
+          payload,
         })
       }
       if (action.type !== TRANSITION) {
@@ -103,6 +117,7 @@ export default function routerStoreEnhancer(getRoutes, options = {}) {
       const { payload: { method, args } } = action
       history[method](...args)
     }
+    listenHistoryChange(location, _dispatch)
 
     // Set initialState.
     _dispatch(updateLocation(location))

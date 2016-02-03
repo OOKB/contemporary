@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 
+import Link from '../../containers/Link'
 import Drawer from './Drawer'
 
 function Nav({ navLinks }) {
@@ -8,7 +9,7 @@ function Nav({ navLinks }) {
       <ul className="main-menu list-reset clearfix sticky" id="main-menu-wrap">
         { navLinks && navLinks.map(({ mainlink, url, primary, sublink }, index) => (
           <li className="mainlink evenly-spread drop-down" key={index}>
-            <a className="main-link" href={ url }>{ mainlink }</a>
+            <Link className="main-link" href={ url }>{ mainlink }</Link>
             <Drawer primary={primary} sublink={sublink} />
           </li>
           ))

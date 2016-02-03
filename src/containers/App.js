@@ -8,13 +8,13 @@ import Header from '../components/Header/Header'
 import Footer from '../components/Footer/Footer'
 import Support from '../components/Support/Support'
 import Profile from './Profile'
-import NotFound from '../components/NotFound'
+import Page from '../components/Page'
 
 // Convert a primarySubject to a component!
 // Key shall match a primarySubject. @see `valid` {} in /src/routes.js
 // Value is the container/component you'd like rendered on match.
 const routeIndex = {
-  404: NotFound,
+  page: Page,
   profile: Profile,
   support: Support,
 }
@@ -50,7 +50,7 @@ class App extends Component {
   render() {
     const { children, primarySubject } = this.props
     // Decide what component to render based on primarySubject.
-    const MainElement = routeIndex[primarySubject] || NotFound
+    const MainElement = routeIndex[primarySubject] || Page
     return (
       <div>
         { this.renderErrorMessage() }

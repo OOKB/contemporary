@@ -10,9 +10,10 @@ function Support({ children, pageName }) {
 }
 
 Support.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
   pageName: PropTypes.string.isRequired,
 }
 Support.defaultProps = {
+  pageName: 'Error 404: Not Found',
 }
 export default Support

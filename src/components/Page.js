@@ -1,6 +1,5 @@
 import React, { PropTypes } from 'react'
 
-// Basic suggestion button.
 function Support({ children, pageName }) {
   return (
     <div className="container">

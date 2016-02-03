@@ -7,7 +7,6 @@ import Wishlist from './Wishlist'
 import Page from '../Page'
 import Supporters from './Supporters'
 
-// Basic suggestion button.
 function Support({ pageName, pageSection }) {
   return (
     <Page pageName={pageName}>

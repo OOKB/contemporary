@@ -2,8 +2,6 @@ import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { updateLocation } from '../redux/history'
 
-// Redux connections.
-
 function mapStateToProps() {
   return {}
 }

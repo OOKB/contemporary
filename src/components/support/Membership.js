@@ -4,7 +4,6 @@ import Blurb from './Blurb'
 import Plans from '../Plan/Plans'
 import SectionText from './SectionText'
 
-// Basic suggestion button.
 function Membership({ features, plans, sectionBlurb, setFeature, stripeAction, stripeState }) {
   return (
     <div>

@@ -1,6 +1,5 @@
 import React, { PropTypes } from 'react'
 
-// Basic suggestion button.
 function Row({ children, sectionName }) {
   return (
       <article className="pad-top border-top">

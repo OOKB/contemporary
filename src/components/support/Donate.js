@@ -2,7 +2,6 @@ import React, { PropTypes } from 'react'
 
 import Blurb from './Blurb'
 
-// Basic suggestion button.
 function Donate({ sectionBlurb }) {
   return (
     <div>

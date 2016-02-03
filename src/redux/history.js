@@ -32,52 +32,32 @@ export const routeActions = { push, replace, go, goBack, goForward }
 export function updateLocation(location) {
   return {
     type: UPDATE_LOCATION,
-    payload: location,
+    payload: isString(location) ? { location } : location,
   }
 }
-function updateHash(hash) {
-  return {
-    type: UPDATE_HASH,
-    payload: hash,
-  }
-}
+// export function updateHash(hash) {
+//   return {
+//     type: UPDATE_HASH,
+//     payload: hash,
+//   }
+// }
 
 // Send an action on every hash change.
-function hashChange(dispatch) {
-  window.addEventListener('hashchange', () => {
-    dispatch(updateHash(window.location.hash))
-  }, false)
-}
+// function hashChange(dispatch) {
+//   window.addEventListener('hashchange', () => {
+//     dispatch(updateLocation({
+//       hash: window.location.hash,
+//     }))
+//   }, false)
+// }
 
 // Send an action on every history change.
 // Forward / Back
-function historyChange(dispatch) {
-  // window.addEventListener('popstate', event => {
-  //   const { state } = event
-  //   console.log('historyChange', event)
-  //   if (typeof state === 'string') {
-  //     dispatch(updateLocation(state))
-  //   }
-  // }, false)
-  window.onpopstate = (state) => {
-    console.log('historyChange', state)
-  }
-}
-
-function locationState(locationObj, locationInfo) {
-  // Send browser location info to be processed.
-  const location = locationInfo(locationObj)
-  // console.log(location)
-  const { route, hash, query } = location
-  const routeId = get(route, 'id', 404)
-  let page = { hash: hash.slice(1), query, routeId }
-  if (route) {
-    page = {
-      ...page,
-      ...route.params,
-    }
-  }
-  return page
+function historyChange(location, dispatch) {
+  window.addEventListener('popstate', () => {
+    // console.log('historyChange', event)
+    dispatch(updateLocation(location))
+  }, false)
 }
 
 export default function routerStoreEnhancer(getRoutes, options = {}) {
@@ -93,9 +73,8 @@ export default function routerStoreEnhancer(getRoutes, options = {}) {
     const { dispatch, ...store } = createStore(reducer, initialState, enhancer)
 
     const router = getRoutes({ getState: store.getState, dispatch })
-    dispatch(updateLocation(locationState(location, router.locationInfo)))
-    hashChange(dispatch)
-    historyChange(dispatch)
+
+    historyChange(location, dispatch)
     // Update URL to reflect change of location string.
     store.subscribe(() => {
       // Grab the location string from state.
@@ -112,13 +91,9 @@ export default function routerStoreEnhancer(getRoutes, options = {}) {
       // Listen to every action and save it's transitionMethod.
       nextTransitionMethod = get(action, [ 'meta', 'transitionMethod' ], nextTransitionMethod)
       if (action.type === UPDATE_LOCATION) {
-        let payload = action.payload
-        if (isString(payload)) {
-          payload = get(router.pathInfo(payload), 'params', payload)
-        }
         return dispatch({
           ...action,
-          payload,
+          payload: router.locationInfo(action.payload),
         })
       }
       if (action.type !== TRANSITION) {
@@ -128,6 +103,10 @@ export default function routerStoreEnhancer(getRoutes, options = {}) {
       const { payload: { method, args } } = action
       history[method](...args)
     }
+
+    // Set initialState.
+    _dispatch(updateLocation(location))
+
     return {
       ...store,
       dispatch: _dispatch,

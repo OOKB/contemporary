@@ -24,6 +24,10 @@ const defaultState = immutable({
   entityId: null,
 })
 
+function subjectFields(payload) {
+  return pick(payload, 'primarySubject', 'subject', 'entityId')
+}
+
 export default function reducer(_state = defaultState, action) {
   const { type, payload } = action
   if (!type) return _state
@@ -41,8 +45,9 @@ export default function reducer(_state = defaultState, action) {
       })
       return state.setIn(payload.path, newVal)
     case UPDATE_LOCATION:
+      return payload.params ? subjectFields(payload.params) : state
     case UPDATE_SUBJECT:
-      return state.merge(pick(payload, 'primarySubject', 'subject', 'entityId'))
+      return state.merge(subjectFields(payload))
     default:
       if (action.response && action.response.filter) {
         return state.merge(omit(action.response.filter, 'page'))

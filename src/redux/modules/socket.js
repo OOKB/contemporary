@@ -49,6 +49,13 @@ export default function reducer(_state = defaultState, action) {
   }
 }
 
+export function idReducer(state = null, action) {
+  if (action.type === CONNECTED && action.payload.socketId) {
+    return action.payload.socketId
+  }
+  return state
+}
+
 export function connect(payload) {
   return {
     type: CONNECT,

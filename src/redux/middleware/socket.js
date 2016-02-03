@@ -43,7 +43,7 @@ export default function createSocketIoMiddleware(options = {}) {
       // Tell local state we are connected.
       store.dispatch(connect({
         // Send url query information.
-        page: store.getState().filter.page,
+        // page: store.getState().filter.page,
         // Tell server result of our local sessionId.
         sessionId: getSessionId(),
       }))

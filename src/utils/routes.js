@@ -92,19 +92,34 @@ export default function createRouter() {
     // If we found an id return the route object. Otherwise null.
     return id ? route : null
   }
-
+  function getHash(hash) {
+    if (hash[0] === '#') {
+      return hash.slice(1)
+    }
+    return hash
+  }
   // Makes a new object based on browser document.location object.
   function locationInfo(location) {
     // Grab props that we will process.
-    const { pathname, search } = location
+    const { pathname, search, hash } = location
     // Grab the properties we pass along from the location object.
-    const info = pick(location, 'protocol', 'hostname', 'port', 'hash')
+    const info = pick(location, 'protocol', 'hostname', 'port')
+    if (hash) {
+      info.hash = getHash(hash)
+    }
     // Parse pathname based on routes above.
-    info.route = pathInfo(pathname)
+    const route = pathInfo(pathname)
     // Parse query string.
-    info.query = search ? parse(search) : null
-    if (info.route && isFunction(info.route.getState)) {
-      info.state = info.route.getState(info)
+    if (search) {
+      info.query = parse(search)
+    }
+    if (route) {
+      info.routeId = route.id
+      info.params = route.params
+      // Allow route getState function to set specific state object.
+      if (isFunction(route.getState)) {
+        info.state = info.route.getState(info)
+      }
     }
     return info
   }

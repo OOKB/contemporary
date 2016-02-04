@@ -1,5 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 
+import Link from '../../containers/Link'
+
 function Drawer({ primary, sublink }) {
   return (
     <div className="drawer bg-white">
@@ -10,6 +12,7 @@ function Drawer({ primary, sublink }) {
         { sublink && sublink.map(({ title, url, secondary }, index) => (
           <li className="group" key={index}>
             <p className="four columns">
+              {/*<Link className="sub-link" href={ url }>{ title }</Link>*/}
               <a className="sub-link" href={ url }>{ title }</a>
             </p>
             <p

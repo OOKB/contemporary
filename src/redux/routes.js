@@ -1,6 +1,7 @@
 import createRouter from 'location-info'
 
 const valid = {
+  home: true,
   visit: true,
   about: true,
   programs: {
@@ -23,6 +24,7 @@ function validate({ primarySubject, subject, entityId }) {
 }
 
 const router = createRouter()
+router.makeRoute('home', '/')
 // For this site basically every page can fall into this arrangement.
 router.makeRoute('default', '/(:primarySubject/)(:subject/)(:entityId/)', { validate })
 

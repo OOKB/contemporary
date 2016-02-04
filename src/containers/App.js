@@ -6,6 +6,7 @@ import { resetErrorMessage } from '../redux/actions'
 
 import Header from '../components/Header/Header'
 import Footer from '../components/Footer/Footer'
+import Home from '../components/Home/Home'
 import Support from '../components/Support/Support'
 import Profile from './Profile'
 import Page from '../components/Page'
@@ -15,6 +16,7 @@ import Page from '../components/Page'
 // Value is the container/component you'd like rendered on match.
 const routeIndex = {
   page: Page,
+  home: Home,
   profile: Profile,
   support: Support,
 }

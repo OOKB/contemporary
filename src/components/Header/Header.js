@@ -1,13 +1,16 @@
 import React, { Component, PropTypes } from 'react'
 
+import Link from '../../containers/Link'
 import Nav from './Nav'
 
-function Header({ title, location }) {
+function Header({ title, location, url }) {
   return (
     <header className="internal">
       <div className="container">
         <div className="clearfix">
-          <h1 className="wordmark pull-left m0"><a href="/">{ title }</a></h1>
+          <h1 className="wordmark pull-left m0">
+            <Link className="no-style" href={ url }>{ title }</Link>
+          </h1>
           <div className="pull-right text-right">
             <p className="small m0">{ location }</p>
           </div>
@@ -21,12 +24,14 @@ function Header({ title, location }) {
 }
 
 Header.propTypes = {
-  title: PropTypes.string.isRequired,
-  location: PropTypes.string.isRequired,
+  title: PropTypes.string,
+  location: PropTypes.string,
+  url: PropTypes.string,
 }
 Header.defaultProps = {
   title: 'The Contemporary',
   location: 'In Baltimore, MD',
+  url: '/'
 }
 
 export default Header

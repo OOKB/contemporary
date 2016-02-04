@@ -12,7 +12,7 @@ export const TRANSITION = '@@router/TRANSITION'
 export const UPDATE_LOCATION = '@@router/UPDATE_LOCATION'
 export const UPDATE_HASH = '@@router/UPDATE_HASH'
 
-const LOCATION_PATH = [ 'routing', 'location' ]
+// const LOCATION_PATH = [ 'routing', 'location' ]
 const DEFAULT_TRANSITION_METHOD = 'pushState'
 
 function transition(method) {
@@ -38,21 +38,6 @@ export function updateLocation(location) {
     payload,
   }
 }
-// export function updateHash(hash) {
-//   return {
-//     type: UPDATE_HASH,
-//     payload: hash,
-//   }
-// }
-
-// Send an action on every hash change.
-// function hashChange(dispatch) {
-//   window.addEventListener('hashchange', () => {
-//     dispatch(updateLocation({
-//       hash: window.location.hash,
-//     }))
-//   }, false)
-// }
 
 // Send an action on every history change.
 // Forward / Back
@@ -64,7 +49,7 @@ function listenHistoryChange(location, dispatch) {
 }
 
 export default function routerStoreEnhancer(getRoutes, options = {}) {
-  const locationPath = options.locationPath || LOCATION_PATH
+  // const locationPath = options.locationPath || LOCATION_PATH
   const defaultTransition = options.defaultTransition || DEFAULT_TRANSITION_METHOD
   const history = options.history || window.history
   const location = options.location || document.location
@@ -81,20 +66,6 @@ export default function routerStoreEnhancer(getRoutes, options = {}) {
     let nextTransitionMethod = defaultTransition
 
     const { dispatch, ...store } = createStore(reducer, initialState, enhancer)
-
-    const router = getRoutes({ getState: store.getState, dispatch })
-
-    // Update URL to reflect change of location string.
-    // store.subscribe(() => {
-    //   // Grab the location string from state.
-    //   const newLocation = get(store.getState(), locationPath)
-    //   // See if it has changed.
-    //   if (newLocation !== previousLocation) {
-    //     previousLocation = newLocation
-    //     history[nextTransitionMethod](newLocation)
-    //     nextTransitionMethod = defaultTransition
-    //   }
-    // })
 
     function _dispatch(action) {
       // Listen to every action and save it's transitionMethod.
@@ -117,6 +88,9 @@ export default function routerStoreEnhancer(getRoutes, options = {}) {
       const { payload: { method, args } } = action
       history[method](...args)
     }
+
+    const router = getRoutes({ getState: store.getState, _dispatch })
+
     listenHistoryChange(location, _dispatch)
 
     // Set initialState.

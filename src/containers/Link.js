@@ -20,12 +20,13 @@ function mapDispatchToProps(dispatch, ownProps) {
   }
 }
 
-function Component({ onClick, ...props }) {
+function Anchor({ onClick, ...props }) {
   return <a onClick={onClick} {...props} />
 }
-Component.propTypes = {
-  href: PropTypes.string.isRequired,
+Anchor.propTypes = {
+  href: PropTypes.string,
+  to: PropTypes.string,
   onClick: PropTypes.func.isRequired,
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Component)
+export default connect(mapStateToProps, mapDispatchToProps)(Anchor)

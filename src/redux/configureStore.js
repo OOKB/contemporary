@@ -10,10 +10,9 @@ import thunk from 'redux-thunk'
 import createSocketMiddleware from './middleware/socket'
 const socket = createSocketMiddleware()
 
-import defaultState from './defaultState'
 // Redux Reducers.
 // Our reducer index.
-import rootReducer from './reducer'
+import rootReducer, { defaultState } from './reducer'
 
 import history from './history'
 import getRoutes from './routes'

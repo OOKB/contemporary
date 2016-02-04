@@ -9,6 +9,8 @@ import routing from './modules/routing'
 import socket, { idReducer as id } from './modules/socket'
 import stripe from './modules/stripe'
 
+export defaultState from './defaultState'
+
 // Updates an entity cache in response to any action with response.entities.
 // Define our default entities collection database.
 const defaultEntityState = {}

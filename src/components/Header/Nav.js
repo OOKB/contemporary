@@ -98,7 +98,7 @@ Nav.defaultProps = {
     {
       "mainlink": "Resources",
       "url": "/resources/",
-      "primary": "The Contemporary offers an array of resources for artists in our area including access to Workspace, Studio Visits, Equipment Library, Art Retreat, and Grit Fund—some resources are only available to our members. <br><br> <a href='#'> Become a Member </a>"
+      "primary": "The Contemporary offers an array of resources for artists in our area including access to Workspace, Studio Visits, Equipment Library, Art Retreat, and Grit Fund—some resources are only available to our members. <br><br> <a href='/support/#membership'> Become a Member </a>"
 ,
       "sublink": [
         {

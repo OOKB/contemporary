@@ -10,6 +10,45 @@ body {
 .bt1 { border-top: 1px solid; }
 .bb1 { border-bottom: 1px solid; }
 
+.no-style {}
+
+a.no-style,
+a.no-style:hover {
+  text-decoration: none;
+  color: currentColor;
+  background: transparent;
+  border: none;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.border-button {
+  background: transparent;
+  border: 1px solid currentColor;
+  padding: .75em;
+  border-radius: .25em;
+  display: inline-block;
+  margin-right: 1rem;
+}
+
+.border-button:hover {
+  box-shadow: inset 0 0 1rem 0 rgba(026,010,008,.1);
+}
+
+.border-button.orange:active,
+.border-button.orange:focus {
+  background-color: rgba(255,117,044,1);
+  border-color: currentColor;
+  color: white;
+}
+
+.orange:focus {
+  outline-color: rgba(255,117,044,1);
+}
+
+
 /** fixing a footer problem **/
 footer .social a {
   display: inline-block;
@@ -79,23 +118,14 @@ footer .social a {
   color: rgba(026,010,008,1);
 }
 
-.border-button {
-  background: transparent;
-  border: 1px solid;
-  padding: .75em;
-  border-radius: .25em;
-  display: inline-block;
-  margin-right: 1rem;
-}
-
-.border-button:hover {
-  box-shadow: inset 0 0 1rem 0 rgba(026,010,008,.1);
-}
-
 .border-button.individual-plan:active,
 .border-button.individual-plan:focus {
   background-color: rgba(000,075,124,1);
   color:white;
+}
+
+.border-button.individual-plan:focus {
+  outline-color: rgba(000,075,124,1);
 }
 
 .border-button.team-plan:active,
@@ -103,6 +133,11 @@ footer .social a {
   background-color: rgba(040,109,076,1);
   color:white;
 }
+
+.border-button.team-plan:focus {
+  outline-color: rgba(040,109,076,1);
+}
+
 
 /** okay. buttons on the form? **/
 .editable-empty button {

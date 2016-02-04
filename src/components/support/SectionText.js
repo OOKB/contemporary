@@ -16,7 +16,7 @@ function SectionText({ buttonTxt, plans, features, memberAlready, onClick }) {
             return (
               <button
                 key={type}
-                className={classnames('mr1', 'border-button', color, { active }, `${type}-plan`)}
+                className={classnames('mr1', 'mb1', 'border-button', color, { active }, `${type}-plan`)}
                 onClick={handleClick}
               >
                 { buttonTemplate({ type }) }

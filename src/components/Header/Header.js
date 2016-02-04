@@ -7,7 +7,7 @@ function Header({ title, location }) {
     <header className="internal">
       <div className="container">
         <div className="clearfix">
-          <h1 className="wordmark pull-left m0">{ title }</h1>
+          <h1 className="wordmark pull-left m0"><a href="/">{ title }</a></h1>
           <div className="pull-right text-right">
             <p className="small m0">{ location }</p>
           </div>

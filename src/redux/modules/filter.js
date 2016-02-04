@@ -50,7 +50,7 @@ export default function reducer(_state = defaultState, action) {
       return state.merge(subjectFields(payload))
     default:
       if (action.response && action.response.filter) {
-        return state.merge(omit(action.response.filter, 'page'))
+        return state.merge(omit(action.response.filter, 'page', 'primarySubject', 'subject'))
       }
       return state
   }

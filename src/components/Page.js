@@ -3,7 +3,7 @@ import React, { PropTypes } from 'react'
 function Support({ children, pageName }) {
   return (
     <div className="container">
-      <h1>{ pageName }</h1>
+    <h1>{ pageName }</h1>
       { children }
     </div>
   )
@@ -14,6 +14,6 @@ Support.propTypes = {
   pageName: PropTypes.string.isRequired,
 }
 Support.defaultProps = {
-  pageName: 'Error 404: Not Found',
+  pageName: 'Error 404: Page Not Found',
 }
 export default Support

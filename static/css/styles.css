@@ -10,6 +10,8 @@ body {
 .bt1 { border-top: 1px solid; }
 .bb1 { border-bottom: 1px solid; }
 
+.pt1 { padding-top: 1rem; }
+
 .no-style {}
 
 a.no-style,

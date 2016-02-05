@@ -8,7 +8,7 @@ import thunk from 'redux-thunk'
 // import createLogger from 'redux-logger'
 // Socket.io linking
 import createSocketMiddleware from './middleware/socket'
-const socket = createSocketMiddleware()
+const socket = createSocketMiddleware({ location: 'http://contemporary.cape.io/' })
 
 // Redux Reducers.
 // Our reducer index.

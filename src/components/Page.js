@@ -1,9 +1,10 @@
 import React, { PropTypes } from 'react'
 
-function Support({ children, pageName }) {
+function Support({ children, pageName, pageClass }) {
+  const classNames = "container " + `${pageClass}`
   return (
-    <div className="container">
-      <h1>{ pageName }</h1>
+    <div className={classNames} >
+      <h1 className="pageName">{ pageName }</h1>
       { children }
     </div>
   )

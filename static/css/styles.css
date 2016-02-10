@@ -189,3 +189,12 @@ footer .social a {
   background-color: rgba(0,75,124,.15);
   outline: rgba(0,75,124,.15);
 }
+
+/** logo/homepage fixes **/
+.home .pageName { display: none; }
+.three.columns.logo-wrapper .three.columns {
+  width: calc(100% + 1.5rem);
+  margin-top: 11.5%;
+  margin-left: -.75rem;
+  margin-bottom: 0;
+}

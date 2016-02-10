@@ -3,7 +3,7 @@ import React, { PropTypes } from 'react'
 function Blurb({ children, sectionBlurb }) {
   return (
     <div className="six columns">
-      <p>{ sectionBlurb }</p>
+      <p dangerouslySetInnerHTML={{ __html: sectionBlurb }} />
       { children }
     </div>
   )

@@ -18,7 +18,7 @@ Home.propTypes = {
   url: PropTypes.string,
   bgColor: PropTypes.string,
   bgImage: PropTypes.string,
-  blocks: PropTypes.array,
+  blocks: PropTypes.object,
 }
 Home.defaultProps = {
   pageClass: 'home',

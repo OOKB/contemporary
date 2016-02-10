@@ -26,7 +26,7 @@ function HomepageBlocks({ sectionName, blocks }) {
 }
 
 HomepageBlocks.propTypes = {
-  blocks: PropTypes.array,
+  blocks: PropTypes.object,
 }
 
 export default HomepageBlocks

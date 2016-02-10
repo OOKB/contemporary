@@ -3,8 +3,7 @@ import React, { PropTypes } from 'react'
 function Logo({ logoSvg }) {
   return (
     <div>
-      <div dangerouslySetInnerHTML={{ __html: logoSvg }}
- />
+      <div dangerouslySetInnerHTML={{ __html: logoSvg }} />
     </div>
   )
 }

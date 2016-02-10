@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 
-import Blurb from './Blurb'
+import Blurb from '../Blurb'
 
 function Donate({ sectionBlurb }) {
   return (

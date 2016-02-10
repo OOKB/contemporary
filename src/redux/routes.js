@@ -22,11 +22,10 @@ function validate({ primarySubject, subject, entityId }) {
   return true
 }
 
-const router = createRouter()
-router.makeRoute('home', '/', { getParams: () => ({ primarySubject: 'home' }) })
-// For this site basically every page can fall into this arrangement.
-router.makeRoute('default', '/(:primarySubject/)(:subject/)(:entityId/)', { validate })
-
-export default function getRoutes(store) {
+export default function createRoutes() {
+  const router = createRouter()
+  router.makeRoute('home', '/', { getParams: () => ({ primarySubject: 'home' }) })
+  // For this site basically every page can fall into this arrangement.
+  router.makeRoute('default', '/(:primarySubject/)(:subject/)(:entityId/)', { validate })
   return router
 }

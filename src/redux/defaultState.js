@@ -44,6 +44,9 @@ export default {
       sectionBlurb: 'Our members are crucial to the overall health of the museum. In return for their important philanthropic support, we offer a selection of benefits and resources that are designed to help artists continue making their work.',
     },
   },
+  entity: {
+    plan: {},
+  },
   stripe: {
     config: {
       image: 'https://dbox.cape.io/7192159/cape/contemporary/media/contemporary-neon-sq.jpg',

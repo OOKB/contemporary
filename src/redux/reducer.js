@@ -6,7 +6,7 @@ import db from './modules/db'
 import filter from './modules/filter'
 import form from './modules/editField'
 import routing from './modules/routing'
-import socket, { idReducer as id } from './modules/socket'
+import socket, { idReducer as id } from 'cape-redux-socket'
 import stripe from './modules/stripe'
 
 export defaultState from './defaultState'

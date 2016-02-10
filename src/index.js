@@ -7,20 +7,13 @@ import configureStore from './redux/configureStore'
 // Root React component.
 import Root from './containers/Root'
 
+// Define our inital state object. This could be a fetch() to an API endpoint.
+const initialState = window.__data || {}
+// Configure and create our Redux store.
+const store = configureStore(initialState)
+
 // Define our destination where we insert our root react component.
 const destEl = document.getElementById('root')
 
-// Define our inital state object. This could be a fetch() to an API endpoint.
-const initialState = {
-  db: {
-    currentYear: new Date().getFullYear(),
-  },
-  entity: {
-    plan: {},
-  },
-}
-
-// Configure and create our Redux store.
-const store = configureStore(initialState)
 // The root component needs the Redux `store` and router history as props.
 render(<Root store={store} />, destEl)

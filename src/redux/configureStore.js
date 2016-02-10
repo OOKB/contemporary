@@ -4,18 +4,25 @@ import merge from 'lodash/merge'
 // Redux Middleware.
 // Allow function action creators.
 import thunk from 'redux-thunk'
-// Log state changes to console.
-// import createLogger from 'redux-logger'
+
+import {
+  syncHistoryWithStore,
+  createHistoryCache,
+  historyMiddleware,
+  makeHydratable,
+  historyReducer,
+  getInitState,
+} from 'redux-history-sync'
+
 // Socket.io linking
-import createSocketMiddleware from './middleware/socket'
-const socket = createSocketMiddleware({ location: 'http://contemporary.cape.io/' })
+import io from 'socket.io-client'
+import { middleware as createSocketMiddleware } from 'cape-redux-socket'
+const location = 'http://edit.l.cape.io/'
+const socket = createSocketMiddleware(io(location))
 
 // Redux Reducers.
 // Our reducer index.
 import rootReducer, { defaultState } from './reducer'
-
-import history from './history'
-import getRoutes from './routes'
 
 // Redux Dev stuff.
 // The redux state sidebar thing store enhancer.
@@ -27,19 +34,26 @@ const middleware = [
   thunk,
 ]
 
-const finalCreateStore = compose(
-  history(getRoutes),
-  applyMiddleware(...middleware),
-  // Logger must be last middleware in chain(#20).
-  // applyMiddleware(createLogger()),
-  DevTools.instrument()
-)(createStore)
+const calculatedState = {
+  db: {
+    currentYear: new Date().getFullYear(),
+  },
+}
 
 // Configure and create Redux store.
 // Allow the function to accept an initialState object.
 export default function configureStore(initialState = {}) {
-  const store = finalCreateStore(rootReducer, merge(initialState, defaultState))
-
+  const initState = merge(initialState, calculatedState, defaultState)
+  const store = createStore(
+    rootReducer,
+    initState,
+    compose(
+      applyMiddleware(...middleware),
+      // Logger must be last middleware in chain(#20).
+      // applyMiddleware(createLogger()),
+      DevTools.instrument()
+    )
+  )
   if (module.hot) {
     // Enable Webpack hot module replacement for reducers
     module.hot.accept('./reducer', () => {
@@ -47,5 +61,6 @@ export default function configureStore(initialState = {}) {
       store.replaceReducer(nextRootReducer)
     })
   }
+  syncHistoryWithStore(history, store)
   return store
 }

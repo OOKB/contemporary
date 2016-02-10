@@ -7,6 +7,7 @@ import { resetErrorMessage } from '../redux/actions'
 import Header from '../components/Header/Header'
 import Footer from '../components/Footer/Footer'
 import Home from '../components/Home/Home'
+import About from '../components/About/About'
 import Support from '../components/Support/Support'
 import Profile from './Profile'
 import Page from '../components/Page'
@@ -17,6 +18,7 @@ import Page from '../components/Page'
 const routeIndex = {
   page: Page,
   home: Home,
+  about: About,
   profile: Profile,
   support: Support,
 }

@@ -8,6 +8,8 @@ import Header from '../components/Header/Header'
 import Footer from '../components/Footer/Footer'
 import Home from '../components/Home/Home'
 import About from '../components/About/About'
+import Programs from '../components/Programs/Programs'
+import Resources from '../components/Resources/Resources'
 import Support from '../components/Support/Support'
 import Profile from './Profile'
 import Page from '../components/Page'
@@ -19,6 +21,8 @@ const routeIndex = {
   page: Page,
   home: Home,
   about: About,
+  programs: Programs,
+  resources: Resources,
   profile: Profile,
   support: Support,
 }

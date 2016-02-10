@@ -3,6 +3,7 @@ import React, { PropTypes } from 'react'
 import Page from '../Page'
 import Row from '../Row'
 import Blurb from '../Blurb'
+import People from './People'
 
 function About({ pageName, pageSection }) {
   return (
@@ -17,9 +18,15 @@ function About({ pageName, pageSection }) {
           <div dangerouslySetInnerHTML={{ __html: pageSection.history.sectionBlurb }} />
         </div>
       </div>
-      <Row sectionName={pageSection.staff.sectionName} />
-      <Row sectionName={pageSection.board.sectionName} />
-      <Row sectionName={pageSection.curatorialcouncil.sectionName} />
+      <Row sectionName={pageSection.staff.sectionName}>
+        <People />
+      </Row>
+      <Row sectionName={pageSection.curatorialcouncil.sectionName}>
+        <People />
+      </Row>
+      <Row sectionName={pageSection.board.sectionName}>
+        <People />
+      </Row>
     </Page>
   )
 }
@@ -47,6 +54,10 @@ About.defaultProps = {
     },
     curatorialcouncil: {
       sectionName: "Curatorial Council",
+      emeritus: {
+        firstname: 'Tom',
+        lastname: 'Finkelpearl',
+      },
     },
   },
 }

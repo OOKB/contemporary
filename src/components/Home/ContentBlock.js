@@ -1,12 +1,12 @@
 import React, { PropTypes } from 'react'
 
-function ContentBlock({  }) {
+function ContentBlock({ sectionName, url, bgColor }) {
+  const innerClass = "inner tile imged bg-" + `${ bgColor }`
   return (
     <div className="three columns">
-      <div className="inner tile imged bg-color">
-        <a href="{ url }" className="bigBlock">
-          {/*{{#big}}<!--nothing-->{{/big}}{{^big}}<h2>{{title}}</h2>{{/big}}*/}
-          <p>something contenty</p>
+      <div className={innerClass} >
+        <a href={ url } className="bigBlock">
+          <h2>{ sectionName }</h2>
         </a>
       </div>
     </div>

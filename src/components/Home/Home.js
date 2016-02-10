@@ -1,25 +1,31 @@
 import React, { PropTypes } from 'react'
 
 import Page from '../Page'
-import Row from '../Row'
 import HomepageBlocks from './HomepageBlocks'
 
-function Home({ pageName }) {
+function Home({ pageName, blocks, pageClass }) {
   return (
-    <Page pageName={pageName}>
-      <HomepageBlocks />
+    <Page pageName={pageName} pageClass={pageClass}>
+      <HomepageBlocks blocks={blocks}/>
     </Page>
   )
 }
 
 Home.propTypes = {
+  pageClass: PropTypes.string,
   pageName: PropTypes.string.isRequired,
+  sectionName: PropTypes.string,
+  url: PropTypes.string,
+  bgColor: PropTypes.string,
+  bgImage: PropTypes.string,
+  blocks: PropTypes.array,
 }
 Home.defaultProps = {
-  pageName: 'The Contemporary (homepage test)',
+  pageClass: 'home',
+  pageName: 'The Contemporary',
   slideshow: [
     {
-      "title": "GhostFood",
+      "sectionName": "GhostFood",
       "url": "/programs/projects/ghostfood/",
       "image": "/img/ghostfood.jpg",
     },
@@ -28,52 +34,52 @@ Home.defaultProps = {
       "byline": "Coco Fusco, Artist",
       "extra": "CoHosts: Guest Spot",
       "url": "https://vimeo.com/84395255",
-      "bg-color": "darkblue",
+      "bgColor": "darkblue",
     },
     {
-      "title": "Speaker Series",
-      "blurb": "Our annual Speaker Series, which is held at the Baltimore School for the Arts, features internationally-recognized artists, critics, and art professionals. Each year the theme shifts to reflect contemporary practices and trends. All lectures are free and open to the public.",
+      "sectionName": "Speaker Series",
       "url": "/programs/speaker-series/",
       "image": "/img/tile_1.jpg",
     },
     {
-      "title": "Scroll",
-      "blurb": "<em>Scroll</em> is an annual publication that is produced entirely by our intern staff. Each issue of Scroll explores a different cultural topic related to the mission and efforts of the museum and is available, for free, in print and online.",
+      "sectionName": "Scroll",
       "url": "/programs/scroll/",
       "image": "/img/tile_2.jpg",
     },
   ],
-  blocks: [
-    {
-      "title": "Grit Fund",
-      "blurb": "The Grit Fund supports unincorporated and collaborative artist-organized activity that contributes significantly to Baltimore’s arts landscape but seldom qualifies for traditional funding.",
-      "url": "#page1",
-      "image": "/img/gritfund2.jpg",
-      "bg-color": "red",
+  blocks: {
+    artistretreat: {
+      "sectionName": "Artist Retreat",
+      "url": "/resources/#artist-retreat",
+      "bgColor": "lightgreen",
+    },
+    gritfund: {
+      "sectionName": "Grit Fund",
+      "url": "/gritfund/",
+      "bgImage": "http://contemporary.ookb.co/img/gritfund2.jpg",
+      "bgColor": "red",
       "big": true,
     },
-    {
-      "title": "Membership",
-      "blurb": "Our members are crucial to the overall health of the museum. …",
+    membership: {
+      "sectionName": "Membership",
       "url": "/support/#membership",
-      "bg-color": "orange",
+      "bgColor": "orange",
     },
-    {
-      "title": "Mailing List",
+    mailinglist: {
+      "sectionName": "Mailing List",
       "url": "http://contemporary.us7.list-manage1.com/subscribe?u=eff2e5ec224690abbfe4e9f4d&id=9909b16eee",
-      "bg-color": "red",
+      "bgColor": "red",
     },
-    {
-      "title": "Donate!",
-      "blurb": "We rely on your donation to keep our operation up and running! …",
+    donate: {
+      "sectionName": "Donate!",
       "url": "/support/#donate",
-      "bg-color": "darkgreen",
+      "bgColor": "darkgreen",
     },
-    {
-      "title": "Contact",
+    contact: {
+      "sectionName": "Contact",
       "url": "/contact/",
-      "bg-color": "blue",
+      "bgColor": "blue",
     },
-  ],
+  },
 }
 export default Home

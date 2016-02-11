@@ -2,19 +2,21 @@ import React, { PropTypes } from 'react'
 
 import Placeholder from '../Placeholder'
 
-function Shop({ pageName, pageSection }) {
+function Shop({ pageName, pageBlurb }) {
   return (
     <Placeholder>
-      <p>Shoppy Things</p>
+      <h3>{pageName}</h3>
+      <p className="lead">{pageBlurb}</p>
     </Placeholder>
   )
 }
 
 Shop.propTypes = {
   pageName: PropTypes.string.isRequired,
-  pageSection: PropTypes.object.isRequired,
+  pageBlurb: PropTypes.string.isRequired,
 }
 Shop.defaultProps = {
-  pageName: 'Shop',
+  pageName: 'The Contemporary Shop',
+  pageBlurb: 'Coming soon...'
 }
 export default Shop

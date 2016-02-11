@@ -7,7 +7,7 @@ function Placeholder({ children, pageName, pageClass, pageBlurb }) {
   return (
     <div className={classNames} >
       <div className="mt4 four offset-by-four text-center">
-        <Logo />
+        <Logo className="mb2"/>
         { children }
       </div>
     </div>

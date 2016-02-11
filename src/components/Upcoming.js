@@ -5,12 +5,24 @@ function Upcoming({ children, src, upcomingBlurb }) {
     <div className="upcoming">
       <div className="four columns image">
         <img src={ src } />
-      </div>
-      <div className="four columns description">
-        <p> { upcomingBlurb } </p>
+        <h3>Title of thing</h3>
+        <p>Times, dates, locations, people, etc.</p>
+        <p>some sort of super short description or blurb?</p>
+        <button>Registration button if an event with registration required.</button>
       </div>
       <div className="four columns image">
         <img src={ src } />
+        <h3>Title of thing</h3>
+        <p>Times, dates, locations, people, etc.</p>
+        <p>some sort of super short description or blurb?</p>
+        <button>Registration button if an event with registration required.</button>
+      </div>
+      <div className="four columns image">
+        <img src={ src } />
+        <h3>Title of thing</h3>
+        <p>Times, dates, locations, people, etc.</p>
+        <p>some sort of super short description or blurb?</p>
+        <button>Registration button if an event with registration required.</button>
       </div>
     </div>
   )

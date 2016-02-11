@@ -3,10 +3,15 @@ import React, { PropTypes } from 'react'
 function Current({ children, src, currentBlurb }) {
   return (
     <div className="current">
-      <div className="six columns image">
+      <div className="two columns title">
+        <h3>Title of thing</h3>
+        <h4>Maybe some other information if useful related to date, times, locations, etc.</h4>
+      </div>
+      <div className="five columns image">
         <img src={ src } />
       </div>
-      <div className="six columns description">
+      <div className="five columns description">
+        <p>Really long blurb about the thing</p>
         <p> { currentBlurb } </p>
       </div>
     </div>

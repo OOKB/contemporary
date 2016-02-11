@@ -3,29 +3,62 @@ import React, { PropTypes } from 'react'
 function Archive({ children, src }) {
   return (
     <div className="archive">
+      <p className="lead twelve columns">It would be good to have some sort of filtering tools</p>
       <div className="three columns image">
+        <p>Year/Date</p>
         <img src={ src } />
+        <h3>Title</h3>
+        <p>Site(s)</p>
+        <p>Artist(s)</p>
       </div>
       <div className="three columns image">
+        <p>Year/Date</p>
         <img src={ src } />
+        <h3>Title</h3>
+        <p>Site(s)</p>
+        <p>Artist(s)</p>
       </div>
       <div className="three columns image">
+        <p>Year/Date</p>
         <img src={ src } />
+        <h3>Title</h3>
+        <p>Site(s)</p>
+        <p>Artist(s)</p>
       </div>
       <div className="three columns image">
+        <p>Year/Date</p>
         <img src={ src } />
+        <h3>Title</h3>
+        <p>Site(s)</p>
+        <p>Artist(s)</p>
       </div>
       <div className="three columns image">
+        <p>Year/Date</p>
         <img src={ src } />
+        <h3>Title</h3>
+        <p>Site(s)</p>
+        <p>Artist(s)</p>
       </div>
       <div className="three columns image">
+        <p>Year/Date</p>
         <img src={ src } />
+        <h3>Title</h3>
+        <p>Site(s)</p>
+        <p>Artist(s)</p>
       </div>
       <div className="three columns image">
+        <p>Year/Date</p>
         <img src={ src } />
+        <h3>Title</h3>
+        <p>Site(s)</p>
+        <p>Artist(s)</p>
       </div>
       <div className="three columns image">
+        <p>Year/Date</p>
         <img src={ src } />
+        <h3>Title</h3>
+        <p>Site(s)</p>
+        <p>Artist(s)</p>
       </div>
     </div>
   )

@@ -9,7 +9,11 @@ import Footer from '../components/Footer/Footer'
 import Home from '../components/Home/Home'
 import About from '../components/About/About'
 import Programs from '../components/Programs/Programs'
+import Projects from '../components/Projects/Projects'
+import Speakers from '../components/Speakers/Speakers'
+import Scroll from '../components/Scroll/Scroll'
 import Resources from '../components/Resources/Resources'
+import Gritfund from '../components/Gritfund/Gritfund'
 import Support from '../components/Support/Support'
 import Profile from './Profile'
 import Page from '../components/Page'
@@ -22,7 +26,11 @@ const routeIndex = {
   home: Home,
   about: About,
   programs: Programs,
+  projects: Projects,
+  speakers: Speakers,
+  scroll: Scroll,
   resources: Resources,
+  gritfund: Gritfund,
   profile: Profile,
   support: Support,
 }

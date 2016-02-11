@@ -4,11 +4,23 @@ const valid = {
   visit: true,
   about: true,
   programs: {
+    projects: true,
+    speakers: true,
+    scroll: true,
     subject: {
       entityId: true,
     },
   },
-  resources: true,
+  projects: true,
+  speakers: true,
+  scroll: true,
+  resources: {
+    gritfund: true,
+    subject: {
+      entityId: true,
+    }
+  },
+  gritfund: true,
   support: true,
   shop: true,
   contact: true,

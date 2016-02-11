@@ -4,7 +4,7 @@ function Row({ children, sectionName }) {
   return (
       <article className="pad-top border-top">
         <section id={ sectionName }>
-          <h2>{ sectionName }</h2>
+          <h2>{ sectionName }.</h2>
           <div className="group mb4">
             { children }
           </div>

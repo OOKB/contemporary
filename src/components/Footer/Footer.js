@@ -1,6 +1,8 @@
 import React, { Component, PropTypes } from 'react'
 
-function Footer({ blurb, social, sponsors }) {
+import SocialLinks from '../SocialLinks'
+
+function Footer({ blurb, sponsors }) {
   return (
     <footer>
       <div className="container">
@@ -22,14 +24,7 @@ function Footer({ blurb, social, sponsors }) {
             <p className="four columns">
               { blurb }
             </p>
-            <div className="social four columns offset-by-four text-right">
-            { social && social.map(({ href, icon }, index) => (
-              <a key={index} href={href} className="darkblue">
-                <i className={`fa fa-lg ${ icon }`} />
-              </a>
-              ))
-            }
-            </div>
+            <SocialLinks className="social four columns offset-by-four text-right" />
           </div>
         </div>
       </div>
@@ -41,11 +36,6 @@ Footer.propTypes = {
   sponsors: PropTypes.arrayOf(PropTypes.shape({
     href: PropTypes.string.isRequired,
     src: PropTypes.string.isRequired,
-  })).isRequired,
-  social: PropTypes.arrayOf(PropTypes.shape({
-    href: PropTypes.string.isRequired,
-    icon: PropTypes.string.isRequired,
-    service: PropTypes.string.isRequired,
   })).isRequired,
   blurb: PropTypes.string.isRequired,
 }
@@ -72,38 +62,6 @@ Footer.defaultProps = {
     {
       "href": "http://www.ihg.com/hotelindigo/hotels/us/en/baltimore/balhn/hoteldetail",
       "src":"/img/sponsors/hotelindigo.png",
-    },
-  ],
-  social: [
-    {
-      "service":"Facebook",
-      "href":"https://www.facebook.com/thecontemporarymuseum",
-      "icon":"fa-facebook-square",
-    },
-    {
-      "service":"Instagram",
-      "href":"https://www.instagram.com/thecontemporary/",
-      "icon":"fa-instagram",
-    },
-    {
-      "service":"Twitter",
-      "href":"https://twitter.com/ThContemporary",
-      "icon":"fa-twitter-square ",
-    },
-    {
-      "service":"Tumblr",
-      "href":"http://thecontemporarymuseum.tumblr.com/",
-      "icon":"fa-tumblr-square",
-    },
-    {
-      "service":"Vimeo",
-      "href":"https://vimeo.com/thecontemporarymuseum",
-      "icon":"fa-vimeo-square",
-    },
-    {
-      "service":"YouTube",
-      "href":"https://www.youtube.com/channel/UCz7EO0hiR08D87j1mssO8Sw",
-      "icon":"fa-youtube-square",
     },
   ],
 }

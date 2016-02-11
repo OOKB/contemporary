@@ -7,11 +7,18 @@ import { resetErrorMessage } from '../redux/actions'
 import Header from '../components/Header/Header'
 import Footer from '../components/Footer/Footer'
 import Home from '../components/Home/Home'
+import Visit from '../components/Visit/Visit'
 import About from '../components/About/About'
 import Programs from '../components/Programs/Programs'
+import Projects from '../components/Projects/Projects'
+import Speakers from '../components/Speakers/Speakers'
+import Scroll from '../components/Scroll/Scroll'
 import Resources from '../components/Resources/Resources'
+import Gritfund from '../components/Gritfund/Gritfund'
 import Support from '../components/Support/Support'
 import Profile from './Profile'
+import Shop from '../components/Shop/Shop'
+import Contact from '../components/Contact/Contact'
 import Page from '../components/Page'
 
 // Convert a primarySubject to a component!
@@ -20,11 +27,18 @@ import Page from '../components/Page'
 const routeIndex = {
   page: Page,
   home: Home,
+  visit: Visit,
   about: About,
   programs: Programs,
+  projects: Projects,
+  speakers: Speakers,
+  scroll: Scroll,
   resources: Resources,
+  gritfund: Gritfund,
   profile: Profile,
   support: Support,
+  shop: Shop,
+  contact: Contact,
 }
 
 class App extends Component {

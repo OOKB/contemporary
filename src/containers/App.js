@@ -16,6 +16,7 @@ import Resources from '../components/Resources/Resources'
 import Gritfund from '../components/Gritfund/Gritfund'
 import Support from '../components/Support/Support'
 import Profile from './Profile'
+import Contact from '../components/Contact/Contact'
 import Page from '../components/Page'
 
 // Convert a primarySubject to a component!
@@ -33,6 +34,7 @@ const routeIndex = {
   gritfund: Gritfund,
   profile: Profile,
   support: Support,
+  contact: Contact,
 }
 
 class App extends Component {

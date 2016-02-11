@@ -1,21 +1,20 @@
 import React, { PropTypes } from 'react'
 
 import Placeholder from '../Placeholder'
-import SocialLinks from '../SocialLinks'
 
-function Contact({ pageName, pageSection }) {
+function Visit({ pageName, pageSection }) {
   return (
     <Placeholder>
-      <SocialLinks />
+      <p>Visity Things</p>
     </Placeholder>
   )
 }
 
-Contact.propTypes = {
+Visit.propTypes = {
   pageName: PropTypes.string.isRequired,
   pageSection: PropTypes.object.isRequired,
 }
-Contact.defaultProps = {
-  pageName: 'Contact',
+Visit.defaultProps = {
+  pageName: 'Visit',
 }
-export default Contact
+export default Visit

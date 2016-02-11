@@ -4,7 +4,7 @@ import { combineReducers } from 'redux'
 
 import db from './modules/db'
 import filter from './modules/filter'
-import form from './modules/editField'
+import form from 'redux-field'
 import routing from './modules/routing'
 import socket, { idReducer as id } from 'cape-redux-socket'
 import stripe from './modules/stripe'

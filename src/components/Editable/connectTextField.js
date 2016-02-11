@@ -1,7 +1,7 @@
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
-import { getActions, getState } from '../../redux/modules/editField'
+import { getActions, getState } from 'redux-field'
 
 // This gets state and actions for a specific field. That is all.
 // The formId and fieldId can be sent via init as an object or with props on each instance.

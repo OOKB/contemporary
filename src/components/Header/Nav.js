@@ -1,6 +1,6 @@
-import React, { Component, PropTypes } from 'react'
+import React, { PropTypes } from 'react'
 
-import Link from '../../containers/Link'
+import Link from 'redux-history-sync'
 import Drawer from './Drawer'
 
 function Nav({ navLinks }) {
@@ -166,7 +166,7 @@ Nav.defaultProps = {
       "url": "/contact/",
       "primary": "429 N. Eutaw St, 1S <br/>Baltimore, MD 21201 <br/><br/>o: 443.388.8980 <br/>f: 410.387.7658 <br/>info@contemporary.org",
       "signup": "true"
-    }
+    },
   ],
 }
 export default Nav

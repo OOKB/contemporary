@@ -1,6 +1,6 @@
-import React, { Component, PropTypes } from 'react'
+import React, { PropTypes } from 'react'
 
-import Link from '../../containers/Link'
+import Link from 'redux-history-sync'
 import Nav from './Nav'
 
 function Header({ title, location, url }) {
@@ -31,7 +31,7 @@ Header.propTypes = {
 Header.defaultProps = {
   title: 'The Contemporary',
   location: 'In Baltimore, MD',
-  url: '/'
+  url: '/',
 }
 
 export default Header

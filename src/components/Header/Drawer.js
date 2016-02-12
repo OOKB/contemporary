@@ -1,6 +1,6 @@
-import React, { Component, PropTypes } from 'react'
+import React, { PropTypes } from 'react'
 
-import Link from '../../containers/Link'
+// import Link from 'redux-history-sync'
 
 function Drawer({ primary, sublink }) {
   return (

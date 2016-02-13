@@ -30,7 +30,11 @@ router.addRoute('home', '/')
 router.addRoutes([
   'about',
   'contact',
+  'gritfund',
+  'page',
   'projects',
+  'resources',
+  'scroll',
   'shop',
   'speakers',
   'support',
@@ -44,6 +48,7 @@ export default function getRouteInfo(state) {
   const history = selectActiveKeyDefault(state)
   // Location object gets sent to locationInfo
   const route = router.locationInfo(history.location)
+  // I think this would be a good place to get/create title and meta information.
   return {
     history,
     route,

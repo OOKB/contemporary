@@ -4,7 +4,6 @@ import isString from 'lodash/isString'
 import omit from 'lodash/omit'
 import pick from 'lodash/pick'
 
-import { UPDATE_LOCATION } from '../history'
 export const REPLACE_SUBJECT = 'filter/REPLACE_SUBJECT'
 export const UPDATE = 'filter/UPDATE'
 export const UPDATE_CLOSE = 'filter/UPDATE_CLOSE'
@@ -44,8 +43,6 @@ export default function reducer(_state = defaultState, action) {
         active: false,
       })
       return state.setIn(payload.path, newVal)
-    case UPDATE_LOCATION:
-      return payload.params ? subjectFields(payload.params) : state
     case UPDATE_SUBJECT:
       return state.merge(subjectFields(payload))
     default:

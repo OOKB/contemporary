@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 
-// import Link from 'redux-history-sync'
+import { Link } from 'redux-history-sync'
 
 function Drawer({ primary, sublink }) {
   return (
@@ -12,8 +12,7 @@ function Drawer({ primary, sublink }) {
         { sublink && sublink.map(({ title, url, secondary }, index) => (
           <li className="group" key={index}>
             <p className="four columns">
-              {/*<Link className="sub-link" href={ url }>{ title }</Link>*/}
-              <a className="sub-link" href={ url }>{ title }</a>
+              <Link className="sub-link" href={ url }>{ title }</Link>
             </p>
             <p
               className="eight columns secondary"

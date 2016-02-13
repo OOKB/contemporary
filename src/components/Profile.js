@@ -1,12 +1,12 @@
 import React, { PropTypes } from 'react'
 
-import connectTextField from './Editable/connectTextField'
+import { connectField } from 'redux-field'
 import Wrapper from './Editable/Wrapper'
 
 // We need a magic component that gets all field state info applied to it.
 // You could do this for each kind of form field if you want. Or just let it handle
 // various field types itself.
-const Field = connectTextField({ formId: 'profile' })(Wrapper)
+const Field = connectField({ formId: 'profile' })(Wrapper)
 
 // Basic suggestion button.
 function Profile({ field, fields, profile }) {

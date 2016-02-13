@@ -18,7 +18,7 @@ const historyCache = createHistoryCache()
 // Socket.io linking
 import io from 'socket.io-client'
 import { middleware as createSocketMiddleware } from 'cape-redux-socket'
-const location = 'http://edit.l.cape.io/'
+const location = process.env.SOCKET_LOC || ''
 const socket = createSocketMiddleware(io(location))
 
 // Redux Reducers.

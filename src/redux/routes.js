@@ -1,8 +1,7 @@
 import createRouter from 'location-info'
+import { selectActiveKeyDefault } from 'redux-history-sync'
 
 const valid = {
-  visit: true,
-  about: true,
   programs: {
     projects: true,
     speakers: true,
@@ -11,19 +10,12 @@ const valid = {
       entityId: true,
     },
   },
-  projects: true,
-  speakers: true,
-  scroll: true,
   resources: {
     gritfund: true,
     subject: {
       entityId: true,
-    }
+    },
   },
-  gritfund: true,
-  support: true,
-  shop: true,
-  contact: true,
 }
 // Validation for a default route.
 function validate({ primarySubject, subject, entityId }) {
@@ -33,11 +25,27 @@ function validate({ primarySubject, subject, entityId }) {
   if (entityId && !route.subject.entityId) return false
   return true
 }
+const router = createRouter()
+router.addRoute('home', '/')
+router.addRoutes([
+  'about',
+  'contact',
+  'projects',
+  'shop',
+  'speakers',
+  'support',
+  'visit',
+])
+// For this site basically every section with sub-pages can fall into this arrangement.
+router.addRoute('default', '/:primarySubject/(:subject/)(:entityId/)', { validate })
 
-export default function createRoutes() {
-  const router = createRouter()
-  router.makeRoute('home', '/', { getParams: () => ({ primarySubject: 'home' }) })
-  // For this site basically every page can fall into this arrangement.
-  router.makeRoute('default', '/(:primarySubject/)(:subject/)(:entityId/)', { validate })
-  return router
+// Pass in the state object and return some info about a "route".
+export default function getRouteInfo(state) {
+  const history = selectActiveKeyDefault(state)
+  // Location object gets sent to locationInfo
+  const route = router.locationInfo(history.location)
+  return {
+    history,
+    route,
+  }
 }

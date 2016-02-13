@@ -5,6 +5,7 @@ import { Provider } from 'react-redux'
 // Will uglify be smart enough to remove this code in prod?
 import DevTools from './DevTools'
 import App from './App'
+import ErrorMessage from './ErrorMessage'
 
 const devEnv = process.env.NODE_ENV !== 'production'
 
@@ -15,6 +16,7 @@ export default class Root extends Component {
     return (
       <Provider store={store}>
         <div>
+          <ErrorMessage />
           <App />
           { devEnv && <DevTools /> }
         </div>

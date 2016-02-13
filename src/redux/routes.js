@@ -32,6 +32,7 @@ router.addRoutes([
   'contact',
   'gritfund',
   'page',
+  'profile',
   'projects',
   'resources',
   'scroll',

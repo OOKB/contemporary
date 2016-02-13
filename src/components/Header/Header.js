@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 
-import Link from 'redux-history-sync'
+import { Link } from 'redux-history-sync'
 import Nav from './Nav'
 
 function Header({ title, location, url }) {
@@ -15,9 +15,7 @@ function Header({ title, location, url }) {
             <p className="small m0">{ location }</p>
           </div>
         </div>
-
         <Nav />
-
       </div>
     </header>
   )

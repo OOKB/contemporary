@@ -36,8 +36,9 @@ const routeIndex = {
 }
 
 function Router(props) {
-  const { route: { routeId } } = props
-  const MainElement = routeIndex[routeId] || routeIndex.notFound
+  const { route: { routeId, params } } = props
+  const { primarySubject } = params
+  const MainElement = routeIndex[routeId] || routeIndex[primarySubject] || routeIndex.notFound
   return <MainElement {...props} />
 }
 

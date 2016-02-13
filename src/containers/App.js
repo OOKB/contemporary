@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import get from 'lodash/get'
+
+import getRouteInfo from '../redux/routes'
 
 import Header from '../components/Header/Header'
 import Router from './Router'
@@ -12,7 +13,6 @@ class App extends Component {
     // Decide what component to render based on primarySubject.
     return (
       <div>
-        { this.renderErrorMessage() }
         <Header />
         <main>
           <Router {...route} />
@@ -24,14 +24,12 @@ class App extends Component {
 }
 
 App.propTypes = {
-  db: PropTypes.object.isRequired,
   route: PropTypes.object.isRequired,
 }
 
 function mapStateToProps(state) {
   return {
-    db: state.db,
-    primarySubject: get(state, [ 'filter', 'primarySubject' ]),
+    route: getRouteInfo(state),
   }
 }
 

@@ -24,7 +24,6 @@ const socket = createSocketMiddleware(io(location))
 // Our reducer index.
 import rootReducer, { defaultState } from './reducer'
 
-// Redux Dev stuff.
 // The redux state sidebar thing store enhancer.
 import DevTools from '../containers/DevTools'
 
@@ -39,10 +38,9 @@ const calculatedState = {
     currentYear: new Date().getFullYear(),
   },
 }
-
 // Configure and create Redux store.
-// Allow the function to accept an initialState object.
-export default function configureStore(initialState = {}) {
+// Function requires an initialState object.
+export default function configureStore(initialState) {
   const initState = merge(initialState, calculatedState, defaultState)
   const store = createStore(
     rootReducer,

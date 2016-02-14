@@ -70,7 +70,7 @@
     "react-textarea-autosize": "^3.1.0",
     "react-widgets": "3.1.x",
     "redux": "3.x",
-    "redux-field": "^1.0.0",
+    "redux-field": "^1.1.0",
     "redux-history-sync": "^1.2.0",
     "redux-localstorage": "^1.0.0-rc4",
     "redux-thunk": "^1.0.0",

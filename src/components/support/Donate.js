@@ -1,12 +1,13 @@
 import React, { PropTypes } from 'react'
 
 import Blurb from '../Blurb'
+import Contribute from './Contribute'
 
 function Donate({ sectionBlurb }) {
   return (
     <div>
       <Blurb sectionBlurb={sectionBlurb} />
-      {/* <DonationForm /> ??? */}
+      <Contribute />
     </div>
   )
 }
